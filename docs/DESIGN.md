@@ -8,12 +8,17 @@
 recruit/
 ├── companies/            # 投递追踪核心：每家公司一个 Markdown 文件
 │   └── _template.md      # 公司记录模板
+├── data/
+│   └── companies.json    # 企业招聘入口库（系统分类，飞书适配器数据源）
 └── inbox/                # 半自动搜集产出的待审核候选信息
 tools/
 ├── recruit.py            # CLI 主工具（Python 标准库，零第三方依赖）
+├── .venv/                # 虚拟环境（playwright，已 gitignore）
 └── scraper/
-    ├── sources.json      # 信息源配置
-    └── scrape_github.py  # GitHub 汇总源抓取
+    ├── sources.json      # 信息源配置（GitHub 汇总源）
+    ├── scrape_github.py  # GitHub 汇总源抓取
+    ├── build_company_db.py  # 构建企业招聘入口库
+    └── scrape_feishu.py  # 飞书招聘系统岗位批量抓取
 docs/
 └── DESIGN.md             # 本文档
 ```
@@ -70,8 +75,24 @@ docs/
 3. 候选写入 `recruit/inbox/<日期>_<信息源>_candidates.md`，标注命中原因与已入库状态
 4. 人工审核后用 `recruit.py add` 入库，审核完毕删除候选文件
 
+## 4.1 企业招聘入口库（companies.json）
+
+- 由 `build_company_db.py` 从候选文件与 Campus2026 汇总源自动提取企业，按链接域名分类
+- 系统分类：`feishu`（*.jobs.feishu.cn）/ `moka`（*.mokahr.com）/ `zhiye`（*.zhiye.com）/ `beisen`（talent.*.com）/ `website`（自研官网）/ `unknown`（待补充）
+- 同名企业多条记录时保留结构化价值更高的链接（飞书 > Moka/智联/北森 > 官网）
+- 飞书系企业可手动增补（`{"name": ..., "recruit_system": "feishu", "org": ...}`）
+
+## 4.2 飞书招聘适配器（scrape_feishu.py）
+
+- 原理：Playwright 驱动系统 Chrome 获取浏览器指纹（curl 直连被字节风控拒绝），页面同源调用岗位接口
+  `POST /api/v1/search/job/posts?portal_type=6&portal_entrance=1`（无签名可用）
+- 数据：岗位标题/发布时间/招聘类型/类别，按方向关键词过滤后输出到 inbox
+- 依赖：`tools/.venv`（playwright）+ 系统 Chrome；企业清单来自 companies.json 中 `feishu` 系
+- 当前状态：8 家飞书系企业（智元/小鹏/星动纪元/自变量/蔚来/上海AI实验室/银河通用/松灵），
+  接口返回以社招岗位为主，校招岗位开放后同接口可获取
+
 ## 5. 扩展预留
 
 - `recruit/interviews/`：面试复盘知识库（后续）
 - `recruit/notes/`：八股/项目笔记（后续）
-- scraper 多源：牛客源、公司官网源（后续）
+- scraper 多源：牛客源、Moka/智联/北森适配器（companies.json 已分类，按需实现）

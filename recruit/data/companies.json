@@ -1,0 +1,2735 @@
+{
+  "generated_at": "2026-08-03",
+  "companies": [
+    {
+      "name": "360",
+      "recruit_system": "zhiye",
+      "org": "360campus",
+      "url": "https://360campus.zhiye.com/jobs",
+      "source": "自动提取"
+    },
+    {
+      "name": "Agility Robotics (US)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.agilityrobotics.com/about/careers",
+      "source": "自动提取"
+    },
+    {
+      "name": "Amazon (美国)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.amazon.jobs/en/jobs/3131315/2026-applied-science-internship-united-states-phd-student-science-recruiting-frontier-ai-robotics",
+      "source": "自动提取"
+    },
+    {
+      "name": "BrainCo",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/jdEogRHz-8CZtOk3e9HX-A",
+      "source": "自动提取"
+    },
+    {
+      "name": "CNRS",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.lirmm.fr/2026/02/06/launch-of-the-cnrs-singapore-international-project-embodied-ai/",
+      "source": "自动提取"
+    },
+    {
+      "name": "DIJ 大疆",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://we.dji.com/index_en.html",
+      "source": "自动提取"
+    },
+    {
+      "name": "DIJ大疆",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://we.dji.com/index_en.html",
+      "source": "自动提取"
+    },
+    {
+      "name": "Dyna Robotics",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.xiaohongshu.com/explore/689916ec000000002501124e?note_flow_source=wechat&xsec_token=ABHCM5cemUQ0M6aqXqVjJ8mmx42_6HMUG_xVF4Ijqph0U=",
+      "source": "自动提取"
+    },
+    {
+      "name": "EIR四川具身人形机器人科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/6dRpEag8yW3jkZqudjarWA?scene=1&click_id=2",
+      "source": "自动提取"
+    },
+    {
+      "name": "ELIXIR Lab",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/1926318970459358101",
+      "source": "自动提取"
+    },
+    {
+      "name": "EmbodyX 具身智能",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/_AmGwRrALjAUxZY-M4jnXw?scene=1&click_id=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "FieldAI(美国加州)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://builtin.com/job/robotics-research-internship-locomotion-planning-summer-2026/8518317",
+      "source": "自动提取"
+    },
+    {
+      "name": "IBM",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://careers.ibm.com/job/search",
+      "source": "自动提取"
+    },
+    {
+      "name": "IDEA机器人感知/VLA 研发招聘",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/1923711689230099670",
+      "source": "自动提取"
+    },
+    {
+      "name": "IHMC (美国)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.ihmc.us/2026-summer-robotics-lab-ai-for-legged-robots-engineering-internships/",
+      "source": "自动提取"
+    },
+    {
+      "name": "Leading Future",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/AcvO97ME7vKv_YJCA29HPw?scene=1&click_id=9",
+      "source": "自动提取"
+    },
+    {
+      "name": "MBZUAI 机器人系RCL实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/1890568428944867704?utm_id=595638774930837&utm_source=wechat_session&utm_divsion=zhihu_pc_share&utm_campaign=pc_sharescan_app&utm_content=share_app&utm_medium=social&s_r=0",
+      "source": "自动提取"
+    },
+    {
+      "name": "NTU Pine Lab (南洋理工感知与具身智能实验室)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://pine-lab-ntu.github.io/joinus.html",
+      "source": "自动提取"
+    },
+    {
+      "name": "NUS CLeAR Lab",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.xiaohongshu.com/explore/687df4c30000000023007cfa?note_flow_source=wechat&xsec_token=CBnnN_5DmnU4PmhI_f5Uax8wR9Q0CGYNi_mOZ1tesmxzw=",
+      "source": "自动提取"
+    },
+    {
+      "name": "NUS CLeAR 实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.xiaohongshu.com/explore/6878e000000000002201e7dc?xsec_source=pc_feed&note_flow_source=wechat",
+      "source": "自动提取"
+    },
+    {
+      "name": "NVIDIA",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/MlJPcf63BvFB1M3oPk-cnQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "OPPO",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://careers.oppo.com/university/oppo/campus/post?recruitType=Intern",
+      "source": "自动提取"
+    },
+    {
+      "name": "PaXini",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/F9-vJjEJY65-yqbcX5IIsg?scene=1&click_id=9",
+      "source": "自动提取"
+    },
+    {
+      "name": "Physical Intelligence Lab",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/1976670311270355199",
+      "source": "自动提取"
+    },
+    {
+      "name": "ScaleLab",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/1972675367178348195",
+      "source": "自动提取"
+    },
+    {
+      "name": "Sharpa",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/tjV-u67J4gM7JlpZcq7kkw",
+      "source": "自动提取"
+    },
+    {
+      "name": "Sharpa Robotics",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/9ATMCSt39EEN-zibG9aiDA",
+      "source": "自动提取"
+    },
+    {
+      "name": "Wayve(伦敦)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://builtin.com/job/research-scientist-intern-embodied-ai/7427242",
+      "source": "自动提取"
+    },
+    {
+      "name": "oppo",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://careers.oppo.com/university/oppo/campus/post",
+      "source": "自动提取"
+    },
+    {
+      "name": "smartx",
+      "recruit_system": "moka",
+      "org": "smartx",
+      "url": "https://app.mokahr.com/campus_apply/smartx/4183#/jobs?zhineng=111480",
+      "source": "自动提取"
+    },
+    {
+      "name": "vivo",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://hr.vivo.com",
+      "source": "自动提取"
+    },
+    {
+      "name": "xLean颗粒进化",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/xSWufmYqSI7wbV7e_-XzUA",
+      "source": "自动提取"
+    },
+    {
+      "name": "“共创明天代表作” 智源研究院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Wmew6mBISII9BdTRFT4Hug",
+      "source": "自动提取"
+    },
+    {
+      "name": "七牛云",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://campus.qiniu.com/campus/jobs",
+      "source": "自动提取"
+    },
+    {
+      "name": "上海交通大学戴国浩组(上海)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://dai.sjtu.edu.cn/join.html",
+      "source": "自动提取"
+    },
+    {
+      "name": "上海交通大学自动化与感知学院具身智能机器人方向课题组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/vjbM061UMr5WMKHFL0urmw?scene=1&click_id=16",
+      "source": "自动提取"
+    },
+    {
+      "name": "上海人工智能实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/TmQh9kPVEbhD7ClAnEMgzw",
+      "source": "自动提取"
+    },
+    {
+      "name": "上海人工智能实验室 (上海)",
+      "recruit_system": "feishu",
+      "org": "aicarrier",
+      "url": "https://aicarrier.jobs.feishu.cn/522799/m/position/detail/7604704515585296694",
+      "source": "自动提取"
+    },
+    {
+      "name": "上海人工智能实验室具身智能中心",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/1915789829809108777",
+      "source": "自动提取"
+    },
+    {
+      "name": "上海市人形机器人创新孵化器",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/CFxUD1mNZryqA2gZWUL-0Q?scene=1&click_id=17",
+      "source": "自动提取"
+    },
+    {
+      "name": "上海青心意创科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/4TyA2wRo5CFsZcSCRsGFuw",
+      "source": "自动提取"
+    },
+    {
+      "name": "上纬启元",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/qXtjgZxSoxmjkFGAmf08sQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "东风研发总院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/2zAOI4VKfk1Om5_f29o67w?scene=1&click_id=12",
+      "source": "自动提取"
+    },
+    {
+      "name": "中三兵器装备集刁自动化研究所有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/K-kLck70XAZrtBX77T4lcw",
+      "source": "自动提取"
+    },
+    {
+      "name": "中国电信人工智能研究院（TeleAI）",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/SqgHK4ECAnrrwf7JbCLE0A",
+      "source": "自动提取"
+    },
+    {
+      "name": "中国科学技术大学先进技术研究院具身机器人与智能系统工程技术中心",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/n0_zro2C4_6FL0VeWInNkQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "中国科学技术大学通用人工智能研究所",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/V-7OiZNSH7Q4OkjuHs4ctg",
+      "source": "自动提取"
+    },
+    {
+      "name": "中国科学院工业人工智能研究所",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/43QrshZtTAsIjryalbgtOg",
+      "source": "自动提取"
+    },
+    {
+      "name": "中国科学院空间应用工程与技术中心",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Q5ODTLuguMO50Cu0cysXVw?scene=1&click_id=3",
+      "source": "自动提取"
+    },
+    {
+      "name": "中国科学院空间应用工程与技术中心 空间实验技术研究室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/uugTBbyUzia61rxzPW1s_Q",
+      "source": "自动提取"
+    },
+    {
+      "name": "中国科学院空间应用工程与技术中心2025年空间实验技术研究室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "http://www.csu.cas.cn/gb/yjdw/rczp/202512/t20251212_8026997.html",
+      "source": "自动提取"
+    },
+    {
+      "name": "中国科学院软件研究所",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/wKCukOLG0zloC-ktPodDsw",
+      "source": "自动提取"
+    },
+    {
+      "name": "中国空间技术研究院CAST+AI·R人工智能专班",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/c4fAcV0U_J0zBxbS0VXEKA",
+      "source": "自动提取"
+    },
+    {
+      "name": "中国银行",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://campus.chinahr.com/pages/2024-boc-spring",
+      "source": "自动提取"
+    },
+    {
+      "name": "中天机器人有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/HwAHYE44hqTu5lj1xKItAw",
+      "source": "自动提取"
+    },
+    {
+      "name": "中控信息",
+      "recruit_system": "moka",
+      "org": "zkxx",
+      "url": "https://app.mokahr.com/campus-recruitment/zkxx/72098#/",
+      "source": "自动提取"
+    },
+    {
+      "name": "中煤科工机器人科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/nVEaT5mQJoc7GIRtu6Zn-g",
+      "source": "自动提取"
+    },
+    {
+      "name": "中科深谷",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/LLpmbRY2Kf7Uphiz4QKjTQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "中科院自动化所",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/ROqIpm_r8uD-hPOEyEtZEg",
+      "source": "自动提取"
+    },
+    {
+      "name": "中科院自动化所多模态人工智能系统全国重点实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/1970235359657961203",
+      "source": "自动提取"
+    },
+    {
+      "name": "中科院自动化所水下机器人团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/1976370255329775664",
+      "source": "自动提取"
+    },
+    {
+      "name": "中科院香港创新研究院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/eRXlCiL5E29jfYe6aMPrfg",
+      "source": "自动提取"
+    },
+    {
+      "name": "中移信息技术有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/oI0P-UFkVRl8V0dIL0HdhA",
+      "source": "自动提取"
+    },
+    {
+      "name": "中联重科股份有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/ukOxOA23-yM0md91m55xyA?scene=1&click_id=11",
+      "source": "自动提取"
+    },
+    {
+      "name": "中能坤域科技控股(浙江)有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/vWVeQOFNTbtUAtGkWnAkjw",
+      "source": "自动提取"
+    },
+    {
+      "name": "中豫具身智能实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/212AE8IjogJ_mUPl8F4MUg",
+      "source": "自动提取"
+    },
+    {
+      "name": "中金公司",
+      "recruit_system": "zhiye",
+      "org": "cicc",
+      "url": "https://cicc.zhiye.com/custom/projectxq?jc=3&hideMenu=1&jobAdId=435abd0e-2a3c-4945-a512-f33b141a4f32",
+      "source": "自动提取"
+    },
+    {
+      "name": "云深处",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "云鲸",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "云鲸智能具身智能团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Qh-TEWsCPUAaUt2_EYI1DQ?scene=1&click_id=4",
+      "source": "自动提取"
+    },
+    {
+      "name": "京东",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://campus.jd.com/#/jobs",
+      "source": "自动提取"
+    },
+    {
+      "name": "京东探索研究院具身实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/1970884250363491139",
+      "source": "自动提取"
+    },
+    {
+      "name": "京东探索研究院具身智能实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/kFJ6v2bptHQu8xUr5Sd4cA",
+      "source": "自动提取"
+    },
+    {
+      "name": "人形机器人(上海)有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/-KgpSyNyN3LBL2XhIe0V5Q",
+      "source": "自动提取"
+    },
+    {
+      "name": "亿嘉和",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.yijiahe.com/",
+      "source": "自动提取"
+    },
+    {
+      "name": "仁新机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/nV4ISv7C6PF_pCaLHYsQJw?scene=1&click_id=27",
+      "source": "自动提取"
+    },
+    {
+      "name": "众擎",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "众擎机器人科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/JkbWOZCpxg--U8sSfcaApA",
+      "source": "自动提取"
+    },
+    {
+      "name": "优必选",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/0T4578KsButWwDNeIUe3Ow",
+      "source": "自动提取"
+    },
+    {
+      "name": "优必选科技",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/YyyWnwx5cAcqkj4bjx0mRA",
+      "source": "自动提取"
+    },
+    {
+      "name": "优理奇机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/nSvsC3YCvTT-lxVtB8oNGQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "伽利略",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/iH_YSzSV2lLpCq3U9oO2ig",
+      "source": "自动提取"
+    },
+    {
+      "name": "低空具身智能机器人中心",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Xk78tkwdeUbGTBZA5mDm8Q?scene=1&click_id=36",
+      "source": "自动提取"
+    },
+    {
+      "name": "傅利叶",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "光明实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/16837208315",
+      "source": "自动提取"
+    },
+    {
+      "name": "光轮智能",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/ize-DKceJzbr2fffrIu3vw",
+      "source": "自动提取"
+    },
+    {
+      "name": "全灵",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.zhipin.com/gongsi/job/fb232170d51123f71X192N-8FlA~.html?ka=seo_companys_open_joblist",
+      "source": "自动提取"
+    },
+    {
+      "name": "具身刺绣 × 青少年女性心身健康研究项目",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/0kEXKIbFwYZO9P-JvB399Q?scene=1&click_id=14",
+      "source": "自动提取"
+    },
+    {
+      "name": "具身智能 × 教育创新，学术合作实习生正式招募",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/XjUWy8gmWw0vq9tEftKRlg?scene=1&click_id=12",
+      "source": "自动提取"
+    },
+    {
+      "name": "凤麟核集团",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/A25Mn2gBllZD3UqQdlAvnw?scene=1&click_id=10",
+      "source": "自动提取"
+    },
+    {
+      "name": "加州大学圣地亚哥分校（UC San Diego）Halıcıoğlu 数据科学研究所的因果智能实验室（Causal Intelligence Lab）",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/uUZecxTonEEkbraFA37xow",
+      "source": "自动提取"
+    },
+    {
+      "name": "加速进化",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "北京华晟经世信息技术股份有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/9eduitgVcHjm78gP-N5E5Q",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京大学先进制造与机器人学院庞智博教授课题组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/nShm0ieNnhUboLIAd2kRYw?scene=1&click_id=28",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京大学前沿计算中心王亦洲组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://m.gaoxiaojob.com/announcement/detail/379901.html",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京大学工业具身智能实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/lVni2p2P75jdDKscFxg1-w",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京大学董豪组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/568456535",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京大学计算机学院张史梁老师课题组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/0mg9A1kq5qhQ4OjsVxjzyg",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京字节跳动科技有限公司 火山引擎",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/92odWhqbiqdNEp7Rd3TkJg?scene=1&click_id=10",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京市机器人产业协会",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/mX3sASzmMaXNXuP1UcgeJQ?scene=1&click_id=20",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京智源人工智能研究院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/rRovMg7TMF8bkH1SEkrvNA",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京智源人工智能研究院BAAI",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/tt2tbAcou9AMkn24IJjXow",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京智源人工智能研究院（BAAI）具身智能团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/tm-s4CME_X7684-rkcg3uA?scene=1&click_id=3",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京术锐机器人股份有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/kpkt5FVU7ZEOm82Ki62OLA?scene=1&click_id=29",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京松延动力科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/9BjOzW1F52jz2q3BOwitqA",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京灵生科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/wywa4iAob-8fUEehqFCCeA",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京理工大学（珠海）跨域智能无人团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/iBXrT5Ig0CGPCXq6DKLySQ?scene=1&click_id=10",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京白海豚海豚科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/nKaP_rhKCN7epyTCpkVSQQ?scene=1&click_id=2",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京睿尔曼智能科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/7giEW2eczLmAqJIgR5BBAA?scene=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京航空航天大学机械工程及自动化学院具身智能机器人研究院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/yEGfuTGVh5ghadYpxxsnCw?scene=1&click_id=42",
+      "source": "自动提取"
+    },
+    {
+      "name": "北京银河通用机器人股份有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/aC3LUlH52y4PbCjeCWDGDA",
+      "source": "自动提取"
+    },
+    {
+      "name": "北大信研院应急管理具身智能联合实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/AfXYNeOPFNGb2zlGfoXQcw?scene=1&click_id=18",
+      "source": "自动提取"
+    },
+    {
+      "name": "北大工业具身智能实验室（PI",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/07Ov3nQp53MbaDyUBe4yWg",
+      "source": "自动提取"
+    },
+    {
+      "name": "北大董豪组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/q2OX2BoOFjxjnd1Yeoukeg",
+      "source": "自动提取"
+    },
+    {
+      "name": "北大银河通用",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.xiaohongshu.com/explore?secondshare=weixin&share_from_user_hidden=true&appuid=&apptime=1751613651&share_id=d8d226e4e62f47b1b0e6a301ddbbdb02&xsec_source=h5_share&xsec_token=CBCoZwOSGTJKTpIvpByPGxKeNdSLxaOE37K8mYRxcVvhc%3D&wechatWid=496e30dbf7613c7a724eae732101c4c7&wechatOrigin=menu&target_note_id=68661e12000000001c033c93&note_flow_source=wechat",
+      "source": "自动提取"
+    },
+    {
+      "name": "北森",
+      "recruit_system": "zhiye",
+      "org": "beisen",
+      "url": "https://beisen.zhiye.com/campus/jobs",
+      "source": "自动提取"
+    },
+    {
+      "name": "北航国新院杨顺昆老师",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/13P4765T0WzTLSZbIdVdyg?scene=1&click_id=9",
+      "source": "自动提取"
+    },
+    {
+      "name": "千寻智能",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/kjBOACP8fwTwJxIsX5Pzhw",
+      "source": "自动提取"
+    },
+    {
+      "name": "千寻智能 Spirit Al",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Oj1SU5YC1g9fZvOKa4kpHw?scene=1&click_id=9",
+      "source": "自动提取"
+    },
+    {
+      "name": "华东师范大学计算机科学与技术学院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/KcE1yLx1jVgnDa0V65wYAg?scene=1&click_id=5",
+      "source": "自动提取"
+    },
+    {
+      "name": "华为",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://career.huawei.com/reccampportal/portal5/campus-recruitment.html",
+      "source": "自动提取"
+    },
+    {
+      "name": "华为制造部",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/XHx6wnSi_yE1GnkfnxQ3YA?scene=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "华威科",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/MmwxRd5nACNMh96aOKeGOQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "南京大学",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/IL3wzTgxXgnYUPcIw5xwvg",
+      "source": "自动提取"
+    },
+    {
+      "name": "南京大学三维视觉实验室龙霄潇课题组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/cnvg1LswhE8ZEoXxohPqIQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "南京大学机器人与自动化学院空中机器人课题组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/1945440685361721358",
+      "source": "自动提取"
+    },
+    {
+      "name": "南京大学计算机学院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/z0UezWgNG6QdClwaf6JM2g",
+      "source": "自动提取"
+    },
+    {
+      "name": "南京大学高阳组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://bb.jrzp.com/shiyezhaopin/234D27948359B10D.shtml",
+      "source": "自动提取"
+    },
+    {
+      "name": "南京大手机器人有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/uoC2ZT4KfOvK0uhiG5OkrA",
+      "source": "自动提取"
+    },
+    {
+      "name": "南京我乐家居股份有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/eHxItEXymvHDnt2kD5QAVw?scene=1&click_id=10",
+      "source": "自动提取"
+    },
+    {
+      "name": "南京理工大学江苏省智能交通与车联网工程研究中心",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/lISrdoGMQXPdYe2S8XooTA",
+      "source": "自动提取"
+    },
+    {
+      "name": "南方科技大学戴建生院士团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/4CixmERZWkGlt8pqZnnkeg",
+      "source": "自动提取"
+    },
+    {
+      "name": "博银合创",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/wsVPhIqwbfVO0GgBqjgNoQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "卡尔动力",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/TW2BHLiN5099wkzesbaRBg",
+      "source": "自动提取"
+    },
+    {
+      "name": "卧安机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/zamY1Q7avzpRAsCn6hb1lw",
+      "source": "自动提取"
+    },
+    {
+      "name": "原力灵机",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/v-k46Wb956a2GcrqObCaQQ?scene=1&click_id=6",
+      "source": "自动提取"
+    },
+    {
+      "name": "厨芯科技",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/w9uNz-pGwya5Z2RgFTCAyQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "叠纸",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://career.papegames.com/campus/position/list?keywords=&category=&location=&project=&type=&job_hot_flag=&current=1&limit=10&functionCategory=&tag=",
+      "source": "自动提取"
+    },
+    {
+      "name": "可信人工智能与自主系统实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/jxKslFJU11YyoKYJq73chw",
+      "source": "自动提取"
+    },
+    {
+      "name": "合肥工业大学",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/LTsnQBx_FpT7e4KBGEhRvQ?scene=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "吉利",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://campus.geely.com/campus-recruitment/geely/78436/#/jobs",
+      "source": "自动提取"
+    },
+    {
+      "name": "吉利研究院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/_VuXs_OQ5nrEV8oX8S3rXQ?scene=1&click_id=14",
+      "source": "自动提取"
+    },
+    {
+      "name": "吉安核数集信息科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/xrn2869WoIY_ZRSFshuC4A",
+      "source": "自动提取"
+    },
+    {
+      "name": "同济大学数字创新中心 具身刺绣 × 青少年女性心身健康研究项目",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/0kEXKIbFwYZO9P-JvB399Q?scene=1&click_id=20",
+      "source": "自动提取"
+    },
+    {
+      "name": "同济大学设计创意学院CDI数字创新中心人机器人交互组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/bFBmN1ReroNgbcoXTYB1Mw",
+      "source": "自动提取"
+    },
+    {
+      "name": "启元实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/PpNXo4B45T82tySF4m4Ssg",
+      "source": "自动提取"
+    },
+    {
+      "name": "启元实验室自主系统中心具身智脑团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/PJZDmG1k3aH3C-R9sDKY5w",
+      "source": "自动提取"
+    },
+    {
+      "name": "启迪实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/tKaalh38WQzEKYCL9XlWwg",
+      "source": "自动提取"
+    },
+    {
+      "name": "哔哩哔哩",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://jobs.bilibili.com/campus/positions?type=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "国家地方共建具身智能机器人创新中心",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/aYmMZPQ6lA2olXrBnTQ5cA?scene=1&click_id=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "国巡机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/ZHtB97VHtFrv9X0oeR5h_Q",
+      "source": "自动提取"
+    },
+    {
+      "name": "图灵机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/iEgeShGegh3FFwf5mCHTlA?scene=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "地平线",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/kiA2aRJI00qv2yzcngYtfA?scene=1&click_id=10",
+      "source": "自动提取"
+    },
+    {
+      "name": "地瓜机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/MiLR0TyAu8ZGcmIlXfQPOQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "均胜集团",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/R4Bt_0hFg4PWLn-q0nrLNw",
+      "source": "自动提取"
+    },
+    {
+      "name": "埃夫特机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/bF3U-ujymv13lf1iwHoFSg",
+      "source": "自动提取"
+    },
+    {
+      "name": "复旦大学嵌入式深度学习实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/gD9uBJd6bZHnba61ijWqQg",
+      "source": "自动提取"
+    },
+    {
+      "name": "复旦大学嵌入式深度学习实验室(上海)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/gD9uBJd6bZHnba61ijWqQg",
+      "source": "自动提取"
+    },
+    {
+      "name": "复旦大学脑智研究院赵梦迪课题组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/ogyT5Z8K6RRWpl76aV9oWg",
+      "source": "自动提取"
+    },
+    {
+      "name": "大疆",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/PDSfLXGhiC3Mrfx1nCTCuA?scene=1&click_id=2",
+      "source": "自动提取"
+    },
+    {
+      "name": "大疆无人机感知团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/MniNaRFqe3qDwsr3gDKTog",
+      "source": "自动提取"
+    },
+    {
+      "name": "天奇股份",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/su94_m5lmIkxyh0L0rFOXA",
+      "source": "自动提取"
+    },
+    {
+      "name": "天津锐洁芯导机器人有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/NPoOD9ltKLrXGYWq8GcCGQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "奇瑞墨甲机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/bQzAtSy8qYTqAfiGtIKthw",
+      "source": "自动提取"
+    },
+    {
+      "name": "奇瑞智能化研究院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/KLpyehLO3Zhn69ym3fKBqA?scene=1&click_id=49",
+      "source": "自动提取"
+    },
+    {
+      "name": "奇瑞汽车 智能化研究院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/aVUfj082lSMqqY3CK6ZdjQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "字节跳动",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://jobs.bytedance.com/zh/position",
+      "source": "自动提取"
+    },
+    {
+      "name": "字节跳动Flow具身团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/b94VZCtdPXHW_YiuneZOGg",
+      "source": "自动提取"
+    },
+    {
+      "name": "它石智航",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/vd254vb_YxiKpHHZrWAKkg",
+      "source": "自动提取"
+    },
+    {
+      "name": "宇树",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "宇树机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.xiaohongshu.com/explore/67ee87d8000000001c031475?secondshare=weixin&share_from_user_hidden=false&appuid=&apptime=&share_id=&xsec_source=h5_share&xsec_token=ABqAdUJ2j9w7U8nRSwUIpFjl0v4LVxHkun-vmaDw0WHhE=",
+      "source": "自动提取"
+    },
+    {
+      "name": "宇树科技",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/d0U4SKIdOOASHcnWb9UYEg",
+      "source": "自动提取"
+    },
+    {
+      "name": "宇树科技股份有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/e_kN9rO3uEThn38x1CwpQg",
+      "source": "自动提取"
+    },
+    {
+      "name": "完美世界",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://recruit.games.wanmei.com/campus-recruitment/perfect-world/94767/#/",
+      "source": "自动提取"
+    },
+    {
+      "name": "密歇根大学 (美国安娜堡)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.scholarshipsads.com/usa-university-of-michigan-schmidt-ai-in-science-postdoctoral-fellowship-2026-fully-funded",
+      "source": "自动提取"
+    },
+    {
+      "name": "小米",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://xiaomi.jobs.f.mioffice.cn/campus/",
+      "source": "自动提取"
+    },
+    {
+      "name": "小米机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/G0jI5w3_mv4Zzn9eQbdGnw?scene=1&click_id=13",
+      "source": "自动提取"
+    },
+    {
+      "name": "小米汽车",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/9El0Uxv7pcxbLvkpV8T_Sw",
+      "source": "自动提取"
+    },
+    {
+      "name": "小米集团",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/2DybXBcmszZ7YL2JIpJrlw",
+      "source": "自动提取"
+    },
+    {
+      "name": "小红书",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://job.xiaohongshu.com/campus",
+      "source": "自动提取"
+    },
+    {
+      "name": "小鹏",
+      "recruit_system": "feishu",
+      "org": "xiaopeng",
+      "url": "https://xiaopeng.jobs.feishu.cn/campus/position/list",
+      "source": "自动提取"
+    },
+    {
+      "name": "小鹏机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/J7w18o67B1W_5aYtcOvtWA",
+      "source": "自动提取"
+    },
+    {
+      "name": "小鹏机器人中心多模态智能部",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/LEiXxrfJBqJcrdWbMAV8SQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "小鹏汽车",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/ZZ9nu2H6u8kd0mcblIBYQw?scene=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "小鹏汽车机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/fOFcbJp3wkWjvk9yqQiZoQ?scene=1&click_id=32",
+      "source": "自动提取"
+    },
+    {
+      "name": "小鹏集团机器人团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/CP_Zkb-V5OJkotDzCIcy0Q",
+      "source": "自动提取"
+    },
+    {
+      "name": "帆软",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://join.fanruan.com/",
+      "source": "自动提取"
+    },
+    {
+      "name": "帕西尼感知科技（天津）有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/xMtWHXXzzRZ00sHI9N6bPQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "平安银行",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://campus.pingan.com/pab",
+      "source": "自动提取"
+    },
+    {
+      "name": "广东具身风暴机器人有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/7jW2p58WkMKiQKUEEL_sWg?scene=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "广东福田实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/tPSGK5fUWrXEFpetpuo4-g",
+      "source": "自动提取"
+    },
+    {
+      "name": "广西具身智能数据采集及测试中心",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/vp00ha5_HxhpLa_BuGWTZg",
+      "source": "自动提取"
+    },
+    {
+      "name": "开普勒",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "微分智飞",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/7WEMP-Aj-xEkTJ3vZrRiXw",
+      "source": "自动提取"
+    },
+    {
+      "name": "微软",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://jobs.careers.microsoft.com/global/en/search?lc=China&lc=Hong%20Kong%20SAR&lc=Taiwan&exp=Students%20and%20graduates&et=Graduate&l=en_us&pg=1&pgSz=20&o=Relevance&flt=true",
+      "source": "自动提取"
+    },
+    {
+      "name": "德壹机器人郑州",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/AGaxWE-zyUYQj3Pvn6oHTQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "忆生科技",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/_5MOcvHsFhrYPt86Lhv5MA?scene=1&click_id=17",
+      "source": "自动提取"
+    },
+    {
+      "name": "快仓机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/f2m1g46Yaf-KNDKKcGrDaA",
+      "source": "自动提取"
+    },
+    {
+      "name": "快手",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://campus.kuaishou.cn/#/campus/index",
+      "source": "自动提取"
+    },
+    {
+      "name": "惠阳异构具身智能训练场项目",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Ca6PcpShadEfJK7jeVZrNA?scene=1&click_id=11",
+      "source": "自动提取"
+    },
+    {
+      "name": "慕尼黑工业大学 (德国慕尼黑)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://portal.mytum.de/jobs/index/jobs/wissenschaftler/NewsArticle_20260129_113700",
+      "source": "自动提取"
+    },
+    {
+      "name": "戴尔",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://jobs.dell.com/search-jobs/China",
+      "source": "自动提取"
+    },
+    {
+      "name": "招商银行",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://career.cmbchina.com/positionlist",
+      "source": "自动提取"
+    },
+    {
+      "name": "招商银行信用卡",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://career.cmbchina.com/positionlist/DF94FD6D-26D3-4A19-9E69-577C4BA1DE82",
+      "source": "自动提取"
+    },
+    {
+      "name": "拼多多",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://careers.pddglobalhr.com/campus/grad?t=jXsBunvmBf",
+      "source": "自动提取"
+    },
+    {
+      "name": "携程旅行",
+      "recruit_system": "moka",
+      "org": "qnjubz",
+      "url": "https://app.mokahr.com/su/qnjubz",
+      "source": "自动提取"
+    },
+    {
+      "name": "擎朗",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "数聚变（武汉）科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/J5wpNZBXqRlfWbTXE41SZQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "斯坦福大学 SAIL (美国斯坦福)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://ai.stanford.edu/postdoctoralfellows/",
+      "source": "自动提取"
+    },
+    {
+      "name": "斯坦福大学Vision and Learning Lab（SVL）",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/drEXQg3R55hS_ogAJ4KBTQ?scene=1&click_id=7",
+      "source": "自动提取"
+    },
+    {
+      "name": "无界智慧",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/xokgedigrlhdao3ZQcr0rQ?scene=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "无论科技",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/RqhTGxIcODUtIO-DWle3zQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "星动纪元",
+      "recruit_system": "feishu",
+      "org": "k0fqxcszc9",
+      "url": "https://k0fqxcszc9.jobs.feishu.cn/index",
+      "source": "自动提取"
+    },
+    {
+      "name": "星尘智能",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "星海图",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/bEg5WM2ho0RWMHoT_mXwFw",
+      "source": "自动提取"
+    },
+    {
+      "name": "星猿哲",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/d1Jpj5fk5KbNVTSXQlvSVw",
+      "source": "自动提取"
+    },
+    {
+      "name": "普林斯顿大学PRISM实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/gdC3vm8ueNMzgeniF3uJrw",
+      "source": "自动提取"
+    },
+    {
+      "name": "普渡",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "普渡机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/2xBq4rbYDk8ego1BX--J6w",
+      "source": "自动提取"
+    },
+    {
+      "name": "景联文科技",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/9ndw_OQ6NmJNhQx5vvcL4w",
+      "source": "自动提取"
+    },
+    {
+      "name": "智元",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Qkag6Tg4LXGLtEpQNPM77Q",
+      "source": "自动提取"
+    },
+    {
+      "name": "智元机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.zhiyuan-robot.com/recruitment/166.html",
+      "source": "自动提取"
+    },
+    {
+      "name": "智元机器人“优才计划”",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Yl51rrhJs8KTE-6kUE1qfw",
+      "source": "自动提取"
+    },
+    {
+      "name": "智元机器人具身研究中心罗剑岚博士团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/bWMn5FXM3LyWjhdrPOMUSw?scene=1&click_id=4",
+      "source": "自动提取"
+    },
+    {
+      "name": "智拓科技",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/5eAkbO7UMQXVvWT--n7UjQ?scene=1&click_id=11",
+      "source": "自动提取"
+    },
+    {
+      "name": "智源",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/9XUPMjT-j1IHebG2aF-VZw",
+      "source": "自动提取"
+    },
+    {
+      "name": "智源(北京)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://bbs.pku.edu.cn/v2/mobile/post-read.php?bid=896&threadid=18990421",
+      "source": "自动提取"
+    },
+    {
+      "name": "智源研究院智星计划",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/8Jasje98NASb67wFMWLA2Q?scene=1&click_id=19",
+      "source": "自动提取"
+    },
+    {
+      "name": "智瀚星途",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/qb-tejzfLA7pCUevTZ6eWw?scene=1&click_id=16",
+      "source": "自动提取"
+    },
+    {
+      "name": "朗毅机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/V04JcHBMDyWh-IssXposhQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "朗毅机器人有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/rgZUK4Y1Nz7bbV3zqSedRw",
+      "source": "自动提取"
+    },
+    {
+      "name": "期智研究院(上海)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.ncss.cn/student/m/jobs/Xgb3e9Wk9ZTfqabedERpVb/detail.html?type=null",
+      "source": "自动提取"
+    },
+    {
+      "name": "木兰机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/42hahFs1WG2mqX1btsi4qw",
+      "source": "自动提取"
+    },
+    {
+      "name": "机器人交互 / LLM 产品方向",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/QPzhvSfNiciU3VCKuoL5mQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "杉川机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/G6yOFRKq7rLXR-P9Ro_R6Q",
+      "source": "自动提取"
+    },
+    {
+      "name": "杭州云深处科技股份有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/_h2TkyPckFVxZMTZt1iy6A",
+      "source": "自动提取"
+    },
+    {
+      "name": "杭州宇树科技股份有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/QKJq5TfMW5Neut8UrWyuGA",
+      "source": "自动提取"
+    },
+    {
+      "name": "杭州湾具身智能创新中心",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/wWEzRHTjTATIKFZ3SiGNdg",
+      "source": "自动提取"
+    },
+    {
+      "name": "松延动力（北京）科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/OMikdQrYNg3X-Uu66vkjaw?scene=1&click_id=4",
+      "source": "自动提取"
+    },
+    {
+      "name": "松灵",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "松灵机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/LA9vR-OGN4ggzRlfNw10rA_",
+      "source": "自动提取"
+    },
+    {
+      "name": "极智嘉具身智能团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Qmz8gOQfYM3zydVgHWE_sw",
+      "source": "自动提取"
+    },
+    {
+      "name": "柏奥尼克机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/gcBn6wzWlzQvomKjK1dOYQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "正行创新，姚颂 & 于超团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/KUL2nVvOfbV-f3gAXJfaFg",
+      "source": "自动提取"
+    },
+    {
+      "name": "汉宇晨星",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/zREbnV4BqRpG4P5FrZeqcg",
+      "source": "自动提取"
+    },
+    {
+      "name": "江淮前沿技术协同创新中心",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/BxmSw-5IxnHXm8NLg5eCNQ?scene=1&click_id=13",
+      "source": "自动提取"
+    },
+    {
+      "name": "河南具身智能产业发展有限公司招聘10人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/uq0iEfOAfmFstIO8_e0Kgw?scene=1&click_id=8",
+      "source": "自动提取"
+    },
+    {
+      "name": "浙大",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/itkrbLKmH1J1aZc5fDngaw",
+      "source": "自动提取"
+    },
+    {
+      "name": "浙大具身智能与强化学习课题组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "http://xhslink.com/o/5uc5w8vZEg3",
+      "source": "自动提取"
+    },
+    {
+      "name": "浙江人形机器人中心/校招/社招/实习，直接联系微信：i",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/ogQcUXd9IIioAUgpA7AmsA",
+      "source": "自动提取"
+    },
+    {
+      "name": "浙江人形机器人创新中心",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/a9QJWQCMhAC1ES3G9gTm6g",
+      "source": "自动提取"
+    },
+    {
+      "name": "浙江大学 FAST LAB 实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Oics0tNXSdm2ZWe_kOiJ8A",
+      "source": "自动提取"
+    },
+    {
+      "name": "浙江大学机器人研究院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/rkklk9fRWEMnQv-4qyJ4Sg",
+      "source": "自动提取"
+    },
+    {
+      "name": "浙江大学高飞团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/k6K6wjE7qSPjUpSeohTbYg",
+      "source": "自动提取"
+    },
+    {
+      "name": "浙江清华长三角研究院信息所",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/oDl2gOQcx0OQtPtAWzNtAA",
+      "source": "自动提取"
+    },
+    {
+      "name": "浙江钱江机器人有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Mfv2whDmlU8SjcAlktv2AA",
+      "source": "自动提取"
+    },
+    {
+      "name": "海康机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/uwjpYf5cdAtndXrBNv2moA",
+      "source": "自动提取"
+    },
+    {
+      "name": "深信服",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://hr.sangfor.com/campucompon/schoolRecruitment",
+      "source": "自动提取"
+    },
+    {
+      "name": "深圳人工智能与机器人研究院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/dSSEYfFjo48OomKoSqZf_A",
+      "source": "自动提取"
+    },
+    {
+      "name": "深圳作为科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/1rE6QqP7KIe2j6uLAHqZQg",
+      "source": "自动提取"
+    },
+    {
+      "name": "深圳市大寰机器人科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/iNolcO39NnW0WQX_RbaArA?scene=1&click_id=25",
+      "source": "自动提取"
+    },
+    {
+      "name": "深圳市越疆科技股份有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/naMnqFAeK2JG7Bdjm_xXqg",
+      "source": "自动提取"
+    },
+    {
+      "name": "深圳技术大学灵巧机器人学课题组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/nwTmiZPDWA1VP2PxaAfWqg?scene=1&click_id=18",
+      "source": "自动提取"
+    },
+    {
+      "name": "深圳无界智慧",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/HfatLd5lBJeIMyc74YBgJg",
+      "source": "自动提取"
+    },
+    {
+      "name": "深圳晨昏线科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/m6HnuSKoQD7qbhHgkjZ0nA?scene=1&click_id=27",
+      "source": "自动提取"
+    },
+    {
+      "name": "深圳特修斯机器人有限公司新余研究所",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/z2qE2mnhxHkLbXXzTYHVNg",
+      "source": "自动提取"
+    },
+    {
+      "name": "深圳理工大学人工智能研究院具身智能中心",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/2047984422402658929",
+      "source": "自动提取"
+    },
+    {
+      "name": "深圳福田实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/0MKoU3hYcHCSfkJosSk0Sw?scene=1&click_id=32",
+      "source": "自动提取"
+    },
+    {
+      "name": "深庭纪",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/pADJF_XrWyRA3vo32LgUYg",
+      "source": "自动提取"
+    },
+    {
+      "name": "深蓝学院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/olNnazjFfafDhvfs7mvp0g",
+      "source": "自动提取"
+    },
+    {
+      "name": "清华+智谱",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/T2dt_TVkH_dcOH4m4VfQRw",
+      "source": "自动提取"
+    },
+    {
+      "name": "清华大学Xueyan Zou老师",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/1kUdcJZZMGxvo88F_a1aHw",
+      "source": "自动提取"
+    },
+    {
+      "name": "清华大学深圳国际研究生院AIoT",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/2020473631524800406",
+      "source": "自动提取"
+    },
+    {
+      "name": "清华大学电子工程系SenseLab",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/YJuFpSu256Ryimx_kgD74Q",
+      "source": "自动提取"
+    },
+    {
+      "name": "清华大学电子工程系SenseLab实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/YJuFpSu256Ryimx_kgD74Q",
+      "source": "自动提取"
+    },
+    {
+      "name": "清华大学设计未来课题组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Q_p3L3vyjQKqN3ILXjVH7g",
+      "source": "自动提取"
+    },
+    {
+      "name": "清华深圳研究院陈鑫磊课题组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/13570006013",
+      "source": "自动提取"
+    },
+    {
+      "name": "清华系具身智能人形机器人公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/NUcbD8FWd5FoVjtQ-3vGnA",
+      "source": "自动提取"
+    },
+    {
+      "name": "清华系具身智能数据团队·星忆智能",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/6YKY5yywgZDWwMjVOYKymA?scene=1&click_id=11",
+      "source": "自动提取"
+    },
+    {
+      "name": "清华证研院科创企业产融创新课题组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/-CM0tA85CJ9lIDztsBHB2w",
+      "source": "自动提取"
+    },
+    {
+      "name": "港科大谭平组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/IgdDbigndr_2kiaG291k3A",
+      "source": "自动提取"
+    },
+    {
+      "name": "港科广具身智能研究所(广州)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/-jDFhiogkHma3dhlb8aFsQ?scene=1&click_id=16",
+      "source": "自动提取"
+    },
+    {
+      "name": "湖北锋元具身机器人有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/0Qx9qx7TnIgpeeoqEcgpgQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "滑铁卢大学 (加拿大滑铁卢)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://wasp-hs.org/open-call-wasp-hs-postdoctoral-scholarship-on-child-ai-interaction/",
+      "source": "自动提取"
+    },
+    {
+      "name": "灵心巧手/赛那德招聘",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/fIf4jaZSLLrQ1Y7LlwgdEw",
+      "source": "自动提取"
+    },
+    {
+      "name": "热热数据",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/dN1jXl6z-L8v_K--AX2gLQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "特温特大学 (荷兰恩斯赫德)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://researchersjob.com/phd-position-in-micro-robotics/",
+      "source": "自动提取"
+    },
+    {
+      "name": "特马工业技术（上海）有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/3qtEiO-dB7VEm_yEbouOmw?scene=1&click_id=19",
+      "source": "自动提取"
+    },
+    {
+      "name": "猎户星空",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "珞石机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/xPIOfJrwZCQbFRA08hCsZg",
+      "source": "自动提取"
+    },
+    {
+      "name": "理想",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.lixiang.com/employ/social/list.html",
+      "source": "自动提取"
+    },
+    {
+      "name": "理想汽车",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/vHTNZpHXIOrJqIR1qDZq3w",
+      "source": "自动提取"
+    },
+    {
+      "name": "百度",
+      "recruit_system": "beisen",
+      "org": "baidu",
+      "url": "https://talent.baidu.com/jobs/list",
+      "source": "自动提取"
+    },
+    {
+      "name": "皇后大学 (加拿大金斯顿)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://researchersjob.com/phd-research-opportunity-3/",
+      "source": "自动提取"
+    },
+    {
+      "name": "眸深智能",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/PG4un99NXBDnOEgNtnxJUA",
+      "source": "自动提取"
+    },
+    {
+      "name": "知象光电",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/IDJKHK7K2UEtS76000RiOA",
+      "source": "自动提取"
+    },
+    {
+      "name": "石头",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "破壳机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/GIVq3WTkX2CYJHeP-u7BaA",
+      "source": "自动提取"
+    },
+    {
+      "name": "秦皇岛中秦智能装备有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/tsakRi77_z7p5HC51KuCDg?scene=1&click_id=45",
+      "source": "自动提取"
+    },
+    {
+      "name": "稳正资产",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/wmI9pK2k0vx3D1qSLzBOSg?scene=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "立德机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/K-frrWtGi_OYHxU_51DmZQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "米哈游",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://jobs.mihoyo.com/#/campus/position",
+      "source": "自动提取"
+    },
+    {
+      "name": "纽约大学 (美国纽约)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://haosu-robotics.github.io/joining.html",
+      "source": "自动提取"
+    },
+    {
+      "name": "网易",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://game.campus.163.com/position",
+      "source": "自动提取"
+    },
+    {
+      "name": "网易游戏",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://game.campus.163.com/position",
+      "source": "自动提取"
+    },
+    {
+      "name": "美团",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhaopin.meituan.com/web/campus",
+      "source": "自动提取"
+    },
+    {
+      "name": "美团 LongCat基座大模型团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/ijFNxQlCUz9iECujwWZ9ZQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "美国西北大学Ruohan Zhang老师组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/0_vFYUopFMq2PMd6r82lrw",
+      "source": "自动提取"
+    },
+    {
+      "name": "美的研究院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/7Qj-jYdRP44KpiRb-uepvg?scene=1&click_id=48",
+      "source": "自动提取"
+    },
+    {
+      "name": "聆动通用",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/E_pzqNZ-jimU3z83R1FdIw",
+      "source": "自动提取"
+    },
+    {
+      "name": "聆动通用机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/2570AMz6HzggS-AOLxAU-w?scene=1&click_id=5",
+      "source": "自动提取"
+    },
+    {
+      "name": "联想",
+      "recruit_system": "beisen",
+      "org": "lenovo",
+      "url": "https://talent.lenovo.com.cn/position?projectType=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "肯尼索州立大学 (美国亚特兰大)",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://instant.1point3acres.cn/thread/1158000",
+      "source": "自动提取"
+    },
+    {
+      "name": "腾讯",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://join.qq.com/post.html?query=p_1",
+      "source": "自动提取"
+    },
+    {
+      "name": "腾讯Robotics X",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/ZqdYhIoE8CL7yrjuP-yN_Q",
+      "source": "自动提取"
+    },
+    {
+      "name": "腾讯RoboticsX实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.xiaohongshu.com/explore/689981a20000000005005eb1?note_flow_source=wechat&xsec_token=ABHCM5cemUQ0M6aqXqVjJ8mm8Ihg1V1jsoTze1yuRlCP0=",
+      "source": "自动提取"
+    },
+    {
+      "name": "腾讯云智",
+      "recruit_system": "moka",
+      "org": "csig",
+      "url": "https://app-tc.mokahr.com/campus-recruitment/csig/20001#/",
+      "source": "自动提取"
+    },
+    {
+      "name": "腾讯游戏",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://join.qq.com/post.html?query=p_2",
+      "source": "自动提取"
+    },
+    {
+      "name": "自动驾驶之心",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/0EUfIGNzFaQLVfZilW4rmg",
+      "source": "自动提取"
+    },
+    {
+      "name": "自动驾驶独角兽Momenta招募",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/u4TuYO9Nqm61_6tVGtyg2Q",
+      "source": "自动提取"
+    },
+    {
+      "name": "自变量机器人",
+      "recruit_system": "feishu",
+      "org": "x2-robot",
+      "url": "https://x2-robot.jobs.feishu.cn/index/position/list?keywords=&category=&location=&project=&functionCategory=&job_hot_flag=&tag=&store=&storeFrontListString=&type=&spread=8YA7P59&sessionid=",
+      "source": "自动提取"
+    },
+    {
+      "name": "舞肌科技",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/_6_TJS2smzLWG5-GV9WicQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "节卡机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/cSbM-fPwSeAFGm-PTc79dQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "苏州一星机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/XjDDivRdbe9f36MOUwTWXQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "苏州博世XC事业部",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/0NA5mmqQX7suWxYFbpdGCw?scene=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "苏州灵猴机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/nS7-LwBgBu8Hn6kDZ1LKVg",
+      "source": "自动提取"
+    },
+    {
+      "name": "苏度科技",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/a3Kyii6hvqW_OVO1-rIaTQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "英伟达",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/C8UpYZBdaHoAnPP43CDw7w",
+      "source": "自动提取"
+    },
+    {
+      "name": "英特尔",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://chinacampus.jobs.intel.cn/",
+      "source": "自动提取"
+    },
+    {
+      "name": "英达视",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/K5MbnS7NqvBQf7yBh-5M7w?scene=1&click_id=6",
+      "source": "自动提取"
+    },
+    {
+      "name": "苹果",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://jobs.apple.com/zh-cn/search?location=china-mainland",
+      "source": "自动提取"
+    },
+    {
+      "name": "荣耀机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/K0n72lCayTTAVV3QxbGtFA",
+      "source": "自动提取"
+    },
+    {
+      "name": "蔚来",
+      "recruit_system": "feishu",
+      "org": "nio",
+      "url": "https://nio.jobs.feishu.cn/campus/position/",
+      "source": "自动提取"
+    },
+    {
+      "name": "虹软科技",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/THDTY2wcGNECwuSAoYjoPg",
+      "source": "自动提取"
+    },
+    {
+      "name": "蚂蚁天玑实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/1RndRCJioGKlbnRzMv6q9w?scene=1&click_id=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "蚂蚁灵波科技",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/xDC-u4cDFGNPBTJnlSZCmA",
+      "source": "自动提取"
+    },
+    {
+      "name": "蚂蚁集团",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/5asR0NEK-fhhNPGkEHUhqA",
+      "source": "自动提取"
+    },
+    {
+      "name": "融云创新",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/S4VsE4XtPfGpBlFJS2tFqQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "西安交大",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/ktzJ-cXry_hvzmHqLyixeQ?scene=1&click_id=17",
+      "source": "自动提取"
+    },
+    {
+      "name": "西安交通大学",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/__wF_QnTmhUS8gozxZyk-A",
+      "source": "自动提取"
+    },
+    {
+      "name": "西湖大学TGAI实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Xuw6F1fk6BCVOripLXQKPQ?scene=1&click_id=31",
+      "source": "自动提取"
+    },
+    {
+      "name": "西湖大学可信及通用人工智能实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/YJCM2-Mxwpo71GjX0dCIpg?scene=1&click_id=10",
+      "source": "自动提取"
+    },
+    {
+      "name": "西湖大学机器智能实验室（MiLAB）",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/o17fgyyLeK1J0gyJNV8TtQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "西湖机器人科技(杭州)有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/mg0Or_9rZPDksJncRb3DMw?scene=1&click_id=42",
+      "source": "自动提取"
+    },
+    {
+      "name": "诺亦腾机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Z805VuYiz6kVcFAU-HSoTA?scene=1&click_id=41",
+      "source": "自动提取"
+    },
+    {
+      "name": "诺亦腾机器人Noitom Robotics",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/d-peh_NPGgrbQJlgQbpaTg",
+      "source": "自动提取"
+    },
+    {
+      "name": "赛力斯凤凰技术",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/7jOVc3nm9uHEu4lbX8pj1A",
+      "source": "自动提取"
+    },
+    {
+      "name": "越疆机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/5bmvDEJOcQxL03BtTxb_0g?scene=1&click_id=26",
+      "source": "自动提取"
+    },
+    {
+      "name": "达闼",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "运动控制算法",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/g77akW_DlWuppMxuOMil8g",
+      "source": "自动提取"
+    },
+    {
+      "name": "追觅",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "追觅科技",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/uRIIhOcmgVHw6DjanS467Q",
+      "source": "自动提取"
+    },
+    {
+      "name": "逐际动力",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "通义实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/2026012542141482942",
+      "source": "自动提取"
+    },
+    {
+      "name": "金山软件",
+      "recruit_system": "moka",
+      "org": "wps",
+      "url": "https://app.mokahr.com/campus-recruitment/wps/41436#/jobs?project%5B0%5D=100074177&page=1&anchorName=jobsList",
+      "source": "自动提取"
+    },
+    {
+      "name": "钛虎",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "钛虎机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/5o32e0II0Qgow56_da4aiw",
+      "source": "自动提取"
+    },
+    {
+      "name": "银河通用",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/0n2CkLOF-f05ivpHSli5jg",
+      "source": "自动提取"
+    },
+    {
+      "name": "银河通用机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/p-W5ZSxoVCvkpFZkk8xpOw",
+      "source": "自动提取"
+    },
+    {
+      "name": "长三角国创中心智慧农业机器人研究所",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/1952923846165377037?utm_id=595638774930837&utm_source=wechat_session&utm_divsion=zhihu_pc_share&utm_campaign=pc_sharescan_app&utm_content=share_app&utm_medium=social&s_r=0",
+      "source": "自动提取"
+    },
+    {
+      "name": "长智具身智能（海南）科技有限公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/tNROcwWW27qoLK-SFmMTQg?scene=1&click_id=44",
+      "source": "自动提取"
+    },
+    {
+      "name": "长虹智能机器人公司",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/IclhGyIjBeMdfMcd0Y8Z9Q?scene=1&click_id=9",
+      "source": "自动提取"
+    },
+    {
+      "name": "阿米奥机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/Ul4sJuGl1uOBdnCkvPtjHw",
+      "source": "自动提取"
+    },
+    {
+      "name": "阿里云",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/qFHLUAZNNjLVfAqQM51vFA?scene=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "阿里巴巴",
+      "recruit_system": "beisen",
+      "org": "alibaba",
+      "url": "https://talent.alibaba.com/campus/position-list?campusType=graduate",
+      "source": "自动提取"
+    },
+    {
+      "name": "阿里达摩院",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.xiaohongshu.com/explore/68b6efb6000000001d03ba86?xsec_token=AB3NBM9MKhrzKDJ0rsxzlORCZhEf4XpPGPexT-r0DIGHU=&xsec_source=pc_search&source=web_explore_feed",
+      "source": "自动提取"
+    },
+    {
+      "name": "阿里达摩院具身智能",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/OvJnBTyATAwvKudaz7DxTg?scene=1",
+      "source": "自动提取"
+    },
+    {
+      "name": "阿里达摩院具身智能大模型团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.xiaohongshu.com/explore/68a44b88000000001d028977?note_flow_source=wechat&xsec_token=CBwmHvNbEsX06ZbCVDC6CWSPg1iJraSFaIWr7Ukziju_8=",
+      "source": "自动提取"
+    },
+    {
+      "name": "阿里达摩院具身智能实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/lS8AKo3Z9ReJpZRDT9pNEA?scene=1&click_id=11",
+      "source": "自动提取"
+    },
+    {
+      "name": "阿里通义实验室",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/JRWORhIZtX9VpdZWBErZqw",
+      "source": "自动提取"
+    },
+    {
+      "name": "零次方机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/2awDAQv7ZvYyAn61SkSkiw?scene=1&click_id=9",
+      "source": "自动提取"
+    },
+    {
+      "name": "非夕科技",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/1944348802971578761#showWechatShareTip",
+      "source": "自动提取"
+    },
+    {
+      "name": "韩国科学技术院KAIST黄荷叶组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/O8kx-PUUwUUkRz4e9-7ctw?scene=1&click_id=31",
+      "source": "自动提取"
+    },
+    {
+      "name": "韩国科学技术院黄荷叶博士",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/O8kx-PUUwUUkRz4e9-7ctw?scene=1&click_id=8",
+      "source": "自动提取"
+    },
+    {
+      "name": "香港中文大学",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://zhuanlan.zhihu.com/p/1972786651731343222",
+      "source": "自动提取"
+    },
+    {
+      "name": "香港中文大学 (深圳)林天麟组",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.cuhk.edu.cn/zh-hans/recruitment/7966",
+      "source": "自动提取"
+    },
+    {
+      "name": "香港大学",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/5-vvauxczRcfDfenqz5mnQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "香港理工IEEE Fellow周立培教授团队",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/9DqnW3kBLVBkpuULino-hw",
+      "source": "自动提取"
+    },
+    {
+      "name": "香港理工大学",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/ukpcDrvCeHCYAsC7YXFoEg",
+      "source": "自动提取"
+    },
+    {
+      "name": "香港科技大学高揚教授招募",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/wSdeN-NrICrH1DSdYao0dQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "香港科技大学（广州）具身智能研究所",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/-jDFhiogkHma3dhlb8aFsQ?scene=1&click_id=5",
+      "source": "自动提取"
+    },
+    {
+      "name": "香港科技大学（广州）钟秉灼老师",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/3LVri5HomdBA2-qVAZIBZA",
+      "source": "自动提取"
+    },
+    {
+      "name": "高工人形机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/HB_j5uHcdlH22_fAyDmTIQ",
+      "source": "自动提取"
+    },
+    {
+      "name": "高德",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/kN1PzH_YvBRbM54Wlm3b-g",
+      "source": "自动提取"
+    },
+    {
+      "name": "高通",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://www.qualcomm.cn/company/careers",
+      "source": "自动提取"
+    },
+    {
+      "name": "魔法原子",
+      "recruit_system": "unknown",
+      "org": "",
+      "url": "",
+      "source": "关注名单"
+    },
+    {
+      "name": "鹿明机器人",
+      "recruit_system": "website",
+      "org": "",
+      "url": "https://mp.weixin.qq.com/s/269Z2BVzlX0X158FJk8vBg",
+      "source": "自动提取"
+    },
+    {
+      "name": "智元机器人",
+      "recruit_system": "feishu",
+      "org": "agirobot",
+      "url": "https://agirobot.jobs.feishu.cn/",
+      "source": "手动确认"
+    },
+    {
+      "name": "银河通用机器人",
+      "recruit_system": "feishu",
+      "org": "owm6ymi5v9b",
+      "url": "https://owm6ymi5v9b.jobs.feishu.cn/",
+      "source": "手动确认"
+    },
+    {
+      "name": "松灵机器人",
+      "recruit_system": "feishu",
+      "org": "mammotion",
+      "url": "https://mammotion.jobs.feishu.cn/",
+      "source": "手动确认"
+    }
+  ]
+}

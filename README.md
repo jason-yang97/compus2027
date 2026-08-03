@@ -50,8 +50,31 @@ docs/
 # 从配置的信息源（GitHub 汇总仓库）抓取候选招聘信息
 python3 tools/scraper/scrape_github.py
 
+# 构建企业招聘入口库（从候选文件与汇总源自动提取企业并按系统分类）
+python3 tools/scraper/build_company_db.py
+
+# 飞书招聘系统岗位批量抓取（需先安装依赖，见下）
+tools/.venv/bin/python tools/scraper/scrape_feishu.py
+
 # 审核 recruit/inbox/ 下生成的候选文件（每源一个文件），筛选与具身智能方向相关的岗位
 ```
+
+## 飞书招聘适配器（结构化岗位数据）
+
+飞书招聘系统（`*.jobs.feishu.cn`）被智元、小鹏、星动纪元、银河通用、松灵等众多 AI/机器人公司使用。适配器通过 Playwright 驱动系统 Chrome 获取浏览器指纹，在页面同源调用岗位接口（无需逆向签名），批量抓取各企业岗位并按方向关键词过滤：
+
+```bash
+# 首次安装依赖（系统需已安装 Google Chrome）
+python3 -m venv tools/.venv && tools/.venv/bin/pip install playwright
+
+# 抓取全部飞书系企业（企业清单见 recruit/data/companies.json）
+tools/.venv/bin/python tools/scraper/scrape_feishu.py
+
+# 只抓取指定企业 / 调整单企业抓取上限
+tools/.venv/bin/python tools/scraper/scrape_feishu.py --orgs agirobot,xiaopeng --limit 100
+```
+
+企业招聘入口库 `recruit/data/companies.json` 由 `build_company_db.py` 自动生成（387+ 企业，按飞书/Moka/智联/北森/官网分类），飞书系企业可手动增补（`"recruit_system": "feishu", "org": "企业域名"`）。
 
 ### 2. 录入投递
 
@@ -81,4 +104,5 @@ python3 tools/scraper/scrape_github.py
 - 数据模型与命令规范见 [docs/DESIGN.md](docs/DESIGN.md)
 - 工具仅依赖 Python 标准库，Python 3.8+
 - 信息源配置见 `tools/scraper/sources.json`（默认含：互联网校招汇总 Campus2026、Xbotics 具身智能社区内推清单、具身智能招贤榜）
+- 飞书招聘适配器依赖 `tools/.venv`（playwright）+ 系统 Chrome，企业清单见 `recruit/data/companies.json`
 - 半自动搜集的抓取脚本容错设计：网络异常、仓库格式变化均不影响已入库数据

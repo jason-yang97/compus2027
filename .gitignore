@@ -3,6 +3,9 @@ __pycache__/
 *.pyc
 *.pyo
 
+# 虚拟环境（飞书适配器用 Playwright）
+tools/.venv/
+
 # macOS
 .DS_Store
 
