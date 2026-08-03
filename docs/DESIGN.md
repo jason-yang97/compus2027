@@ -65,10 +65,10 @@ docs/
 
 ## 4. 半自动搜集流程
 
-1. `sources.json` 声明 GitHub 汇总仓库等信息源
-2. `scrape_github.py` 抓取 README，按具身智能关键词过滤，产出候选
-3. 候选写入 `recruit/inbox/<日期>_candidates.md`，标注待审核
-4. 人工审核后用 `recruit.py add` 入库
+1. `sources.json` 声明 GitHub 汇总仓库等信息源（默认：Campus2026 互联网校招汇总、Xbotics 具身智能社区内推清单、具身智能招贤榜）
+2. `scrape_github.py` 抓取 README（支持表格与链接行两种格式），按方向关键词与关注公司名单过滤，产出候选
+3. 候选写入 `recruit/inbox/<日期>_<信息源>_candidates.md`，标注命中原因与已入库状态
+4. 人工审核后用 `recruit.py add` 入库，审核完毕删除候选文件
 
 ## 5. 扩展预留
 

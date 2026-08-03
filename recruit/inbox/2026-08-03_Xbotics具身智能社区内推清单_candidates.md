@@ -7,12 +7,6 @@
 
 | 公司 | 岗位/链接 | 更新日期 | 备注 | 命中 | 状态 |
 |---|---|---|---|---|---|
-| Awesome | [Awesome-Robotics-Manipulation](https://github.com/BaiShuanghao/Awesome-Robotics-Manipulation) |  | Robotics / Manipulation | 关键词「Robotics」 | 待审核 |
-| Awesome | [Awesome-LLM-Robotics](https://github.com/GT-RIPL/Awesome-LLM-Robotics) |  | LLM / Robotics | 关键词「Robotics」 | 待审核 |
-| Awesome | [Awesome-Robotics-Diffusion](https://github.com/showlab/Awesome-Robotics-Diffusion) |  | Robotics / Diffusion | 关键词「Robotics」 | 待审核 |
-| Awesome | [Awesome-Robotics-3D](https://github.com/zubair-irshad/Awesome-Robotics-3D) |  | Robotics / 3D | 关键词「Robotics」 | 待审核 |
-| Awesome | [Awesome-Machine-Learning-for-Robotics](https://github.com/Phylliade/awesome-machine-learning-robotics) |  | Machine / Learning / for / Robotics | 关键词「Robotics」 | 待审核 |
-| Awesome | [Awesome-Robotics-Foundation-Models](https://github.com/robotics-survey/Awesome-Robotics-Foundation-Models) |  | Robotics / Foundation / Models | 关键词「Robotics」 | 待审核 |
 | DIJ 大疆 | [DIJ 大疆](https://we.dji.com/index_en.html) |  | — | 关注公司「大疆」 | 待审核 |
 | 星动纪元 | [星动纪元 - 社会招聘](https://k0fqxcszc9.jobs.feishu.cn/index) |  | 社会招聘 | 关注公司「星动纪元」 | 待审核 |
 | 智元机器人 | [智元机器人 - 长期招聘链接](https://www.zhiyuan-robot.com/recruitment/166.html) |  | 长期招聘链接 | 关键词「机器人」 | 待审核 |

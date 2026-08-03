@@ -34,6 +34,8 @@ LINK_RE = re.compile(r'\[([^\]]+)\]\(([^)\s]+)\)')
 LINK_LINE_RE = re.compile(r'^\[(.+?)\]\((https?://[^)\s]+)\)\s*$')
 DATE_HEAD_RE = re.compile(r'^\*\*\[?(\d{4}[./-]\d{1,2}[./-]\d{1,2})\]?\*\*')
 SEP_RE = re.compile(r'\s*-\s*')
+# 论文/资料仓库链接（Awesome-* 系列等），非招聘信息，排除
+RESOURCE_LINK_RE = re.compile(r'^Awesome-', re.IGNORECASE)
 
 
 def load_config(path):
@@ -85,6 +87,9 @@ def parse_entries(content):
         m = LINK_LINE_RE.match(line)
         if m:
             title, link = m.group(1), m.group(2)
+            # 排除论文/资料仓库等非招聘链接
+            if RESOURCE_LINK_RE.match(title):
+                continue
             parts = SEP_RE.split(title)
             company = parts[0].strip()
             note = ' / '.join(p.strip() for p in parts[1:] if p.strip())
