@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
+
+# 半自动搜集的临时产物（待审核候选）
+recruit/inbox/*.tmp
+
+# 编辑器/IDE
+.idea/
+.vscode/
+*.swp
