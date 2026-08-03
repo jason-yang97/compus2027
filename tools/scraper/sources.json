@@ -1,0 +1,36 @@
+{
+  "github_sources": [
+    {
+      "name": "Campus2026",
+      "repo": "namewyf/Campus2026",
+      "branch": "master",
+      "readme": "README.md",
+      "homepage": "https://github.com/namewyf/Campus2026"
+    },
+    {
+      "name": "Xbotics具身智能社区内推清单",
+      "repo": "Xbotics-Embodied-AI-club/Xbotics-Embodied-AI-Job",
+      "branch": "main",
+      "readme": "README.md",
+      "homepage": "https://github.com/Xbotics-Embodied-AI-club/Xbotics-Embodied-AI-Job"
+    },
+    {
+      "name": "具身智能招贤榜",
+      "repo": "StarCycle/Awesome-Embodied-AI-Job",
+      "branch": "main",
+      "readme": "README.md",
+      "homepage": "https://github.com/StarCycle/Awesome-Embodied-AI-Job"
+    }
+  ],
+  "direction_keywords": [
+    "具身智能", "具身", "机器人", "Robotics", "人形", "四足",
+    "机械臂", "灵巧手", "运动控制", "SLAM", "导航", "抓取",
+    "强化学习", "模仿学习", "自动驾驶", "智能驾驶"
+  ],
+  "watch_companies": [
+    "宇树", "智元", "星动纪元", "银河通用", "逐际动力", "傅利叶",
+    "优必选", "云深处", "众擎", "大疆", "松灵", "达闼", "开普勒",
+    "加速进化", "钛虎", "魔法原子", "千寻智能", "星尘智能", "擎朗",
+    "普渡", "猎户星空", "追觅", "小鹏", "石头", "云鲸"
+  ]
+}

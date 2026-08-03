@@ -47,10 +47,10 @@ docs/
 ### 1. 搜集信息（半自动）
 
 ```bash
-# 从配置的 GitHub 汇总源抓取候选招聘信息
+# 从配置的信息源（GitHub 汇总仓库）抓取候选招聘信息
 python3 tools/scraper/scrape_github.py
 
-# 审核 recruit/inbox/ 下生成的候选文件，筛选与具身智能方向相关的岗位
+# 审核 recruit/inbox/ 下生成的候选文件（每源一个文件），筛选与具身智能方向相关的岗位
 ```
 
 ### 2. 录入投递
@@ -80,4 +80,5 @@ python3 tools/scraper/scrape_github.py
 
 - 数据模型与命令规范见 [docs/DESIGN.md](docs/DESIGN.md)
 - 工具仅依赖 Python 标准库，Python 3.8+
+- 信息源配置见 `tools/scraper/sources.json`（默认含：互联网校招汇总 Campus2026、Xbotics 具身智能社区内推清单、具身智能招贤榜）
 - 半自动搜集的抓取脚本容错设计：网络异常、仓库格式变化均不影响已入库数据
