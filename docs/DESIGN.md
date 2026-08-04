@@ -93,6 +93,12 @@ docs/
 - 当前状态：8 家飞书系企业（智元/小鹏/星动纪元/自变量/蔚来/上海AI实验室/银河通用/松灵），
   接口返回以社招岗位为主，校招岗位开放后同接口可获取
 
+## 4.3 飞书汇总表适配器（scrape_feishu_base.py）
+
+- 数据源：公开分享的飞书多维表格（`feishu_base_sources` 配置），默认「朱迪学姐 27 届汇总表」（7211 条）
+- 流程：Playwright 打开分享链接（游客会话）→ clientvars 获取字段/选项映射 → records 分页拉取（gzip+base64 解码）→ 按字段名自适应提取 → 方向关键词 + 2027 届过滤 → 输出候选
+- 入口：`tools/scrape_all.py` 一键运行全部搜集源（github / feishu / feishu_base）
+
 ## 5. 扩展预留
 
 - `recruit/interviews/`：面试复盘知识库（后续）

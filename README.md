@@ -2,6 +2,32 @@
 
 具身智能方向秋招准备与投递追踪的权威仓库。数据以 Markdown 为主，配合命令行工具实现投递状态管理，并通过半自动搜集 + 人工审核的方式获取招聘信息。
 
+## 两大功能入口
+
+### 入口一：秋招信息汇总（搜集招聘信息 → 待审核候选）
+
+```bash
+# 一键运行全部搜集源（GitHub 汇总源 + 飞书招聘系统 + 飞书27届汇总表）
+python3 tools/scrape_all.py
+
+# 或单独运行某个源
+python3 tools/scrape_all.py --source github       # 互联网大厂 + 具身智能社区
+python3 tools/scrape_all.py --source feishu       # 8 家头部公司结构化岗位
+python3 tools/scrape_all.py --source feishu_base  # 朱迪学姐 27 届全行业汇总表（7211 条）
+
+# 汇总结果在 recruit/inbox/ 目录，审核后入库：
+python3 tools/recruit.py add <公司名>
+```
+
+### 入口二：投递状态管理（追踪进度 + 看板）
+
+```bash
+python3 tools/recruit.py list                     # 全部投递记录
+python3 tools/recruit.py status 宇树科技 二面      # 更新状态（自动记时间线）
+python3 tools/recruit.py dashboard --open         # HTML 交互看板（排序/筛选/岗位下拉）
+python3 tools/recruit.py stats                    # 阶段统计
+```
+
 ## 快速上手
 
 ```bash
@@ -78,6 +104,18 @@ tools/.venv/bin/python tools/scraper/scrape_feishu.py --orgs agirobot,xiaopeng -
 ```
 
 企业招聘入口库 `recruit/data/companies.json` 由 `build_company_db.py` 自动生成（387+ 企业，按飞书/Moka/智联/北森/官网分类），飞书系企业可手动增补（`"recruit_system": "feishu", "org": "企业域名"`）。
+
+## 飞书汇总表适配器（全行业秋招汇总）
+
+`scrape_feishu_base.py` 拉取分享的飞书多维表格（默认配置「朱迪学姐 27 届校招/实习/春招汇总表」，7211 条招聘记录），按方向关键词 + 2027 届过滤后输出候选：
+
+```bash
+tools/.venv/bin/python tools/scraper/scrape_feishu_base.py            # 默认（27届 + 方向过滤）
+tools/.venv/bin/python tools/scraper/scrape_feishu_base.py --all-rounds  # 不过滤届次
+```
+
+- 表格源配置：`tools/scraper/sources.json` 的 `feishu_base_sources`（新增分享表只需加 URL）
+- 字段自适应：按字段名（公司/招聘岗位/工作地点/招聘届次/截止时间等）自动匹配，不同表结构通用
 
 ### 2. 录入投递
 

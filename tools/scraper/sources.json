@@ -32,5 +32,11 @@
     "优必选", "云深处", "众擎", "大疆", "松灵", "达闼", "开普勒",
     "加速进化", "钛虎", "魔法原子", "千寻智能", "星尘智能", "擎朗",
     "普渡", "猎户星空", "追觅", "小鹏", "石头", "云鲸"
+  ],
+  "feishu_base_sources": [
+    {
+      "name": "朱迪学姐27届汇总表",
+      "url": "https://acnr1ayjzqxf.feishu.cn/base/ISNobVuXAagJBFssvszcYeqQnfb?table=tblh7J5ONBOMBEK8&view=vewFArTk4K"
+    }
   ]
 }
