@@ -24,17 +24,20 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 COMPANIES_DIR = os.path.join(ROOT, 'recruit', 'companies')
 TEMPLATE_FILE = os.path.join(COMPANIES_DIR, '_template.md')
 
-STATUSES = ['待投递', '已投递', '笔试', '面试', 'Offer', '已拒']
+STATUSES = ['待投递', '已投递', '笔试', '一面', '二面', '三面', 'HR面', 'Offer', '已拒']
 TERMINAL_STATUSES = ['Offer', '已拒']
 VALID_PRIORITIES = ['高', '中', '低']
 VALID_SOURCES = ['官网', '牛客', '内推', '其他']
 
-# 状态流转：旧状态 -> 允许的新状态集合（None 表示任意合法状态）
+# 状态流转：旧状态 -> 允许的新状态（面试轮次可跳过，如一面直接到 HR面/Offer）
 STATUS_FLOW = {
     '待投递': ['已投递'],
-    '已投递': ['笔试', '面试', '已拒'],
-    '笔试': ['面试', '已拒'],
-    '面试': ['Offer', '已拒'],
+    '已投递': ['笔试', '一面', '已拒'],
+    '笔试': ['一面', '已拒'],
+    '一面': ['二面', '三面', 'HR面', 'Offer', '已拒'],
+    '二面': ['三面', 'HR面', 'Offer', '已拒'],
+    '三面': ['HR面', 'Offer', '已拒'],
+    'HR面': ['Offer', '已拒'],
     'Offer': [],
     '已拒': [],
 }
@@ -331,12 +334,8 @@ def cmd_stats(args):
             applied += 1
     print(f'公司总数：{total}    已投递（含后续阶段）：{applied}    高意向：{high_priority}')
     print('-' * 40)
-    print(f'  待投递：{counter["待投递"]}')
-    print(f'  已投递：{counter["已投递"]}')
-    print(f'  笔试：  {counter["笔试"]}')
-    print(f'  面试：  {counter["面试"]}')
-    print(f'  Offer： {counter["Offer"]}')
-    print(f'  已拒：  {counter["已拒"]}')
+    for s in STATUSES:
+        print(f'  {s}：{counter[s]}')
 
 
 # ---------- dashboard ----------
@@ -347,6 +346,36 @@ def parse_timeline_last_update(content):
     return max(dates) if dates else None
 
 
+def parse_roles(body):
+    """从正文「## 岗位」段落提取岗位列表 [{name, city, link, applied}]。"""
+    roles = []
+    in_section = False
+    for line in body.split('\n'):
+        s = line.strip()
+        if s == '## 岗位':
+            in_section = True
+            continue
+        if in_section and s.startswith('## '):
+            break
+        if in_section and s.startswith('- ['):
+            m = re.match(r'-\s*\[( |x|X)\]\s*(.+)', s)
+            if m:
+                applied = m.group(1).lower() == 'x'
+                rest = m.group(2).strip()
+                link = ''
+                lm = re.search(r'[—–-]\s*(https?://\S+)', rest)
+                if lm:
+                    link = lm.group(1)
+                    rest = rest[:lm.start()].strip()
+                city = ''
+                cm = re.search(r'（([^）]*)）|\(([^)]*)\)', rest)
+                if cm:
+                    city = cm.group(1) or cm.group(2) or ''
+                    rest = rest[:cm.start()].strip()
+                roles.append({'name': rest, 'city': city, 'link': link, 'applied': applied})
+    return roles
+
+
 def collect_dashboard_data():
     """扫描全部公司记录，返回看板所需数据。"""
     companies = []
@@ -354,7 +383,7 @@ def collect_dashboard_data():
     for _, path in list_companies():
         with open(path, 'r', encoding='utf-8') as f:
             content = f.read()
-        fields, _ = parse_frontmatter(content)
+        fields, body = parse_frontmatter(content)
         last_update = parse_timeline_last_update(content) or fields.get('apply_date') or ''
         stay_days = None
         if last_update:
@@ -372,6 +401,7 @@ def collect_dashboard_data():
             'tags': fields.get('tags', ''),
             'last_update': last_update,
             'stay_days': stay_days,
+            'roles': parse_roles(body),
         })
     return {'companies': companies,
             'generated_at': datetime.now().strftime('%Y-%m-%d %H:%M')}
@@ -413,6 +443,13 @@ DASHBOARD_HTML = '''<!DOCTYPE html>
   .stay-warn { color:#e8930c; font-weight:600; }
   .footer { color:var(--muted); font-size:12px; margin-top:14px; }
   .empty { text-align:center; color:var(--muted); padding:40px; }
+  .roletd { position:relative; }
+  .rolebtn { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:3px 10px; font-size:13px; cursor:pointer; color:var(--text); }
+  .rolebtn:hover { background:#f0f2f5; }
+  .roles-drop { position:absolute; left:0; top:100%; z-index:10; background:var(--card); border:1px solid var(--border); border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,.08); padding:8px; min-width:280px; max-height:280px; overflow:auto; }
+  .role-item { font-size:13px; padding:4px 6px; white-space:normal; }
+  .role-city { color:var(--muted); font-size:12px; }
+  .role-item a { color:#1565c0; text-decoration:none; font-size:12px; }
 </style>
 </head>
 <body>
@@ -440,13 +477,15 @@ const STATUSES = __STATUSES__;
 const TODAY = new Date('__TODAY__');
 const GENERATED = '__GENERATED__';
 const COLS = [
-  {key:'company', label:'公司'}, {key:'status', label:'状态'}, {key:'city', label:'城市'},
+  {key:'company', label:'公司'}, {key:'status', label:'状态'}, {key:'roles', label:'岗位'}, {key:'city', label:'城市'},
   {key:'priority', label:'意向'}, {key:'apply_date', label:'投递日期'}, {key:'deadline', label:'截止日期'},
   {key:'stay_days', label:'停留天数'}, {key:'last_update', label:'最后更新'},
 ];
 const STATUS_STYLE = {
   '待投递':{bg:'#eceff1',fg:'#546e7a'}, '已投递':{bg:'#e3f2fd',fg:'#1565c0'},
-  '笔试':{bg:'#ede7f6',fg:'#5e35b1'}, '面试':{bg:'#fff3e0',fg:'#ef6c00'},
+  '笔试':{bg:'#ede7f6',fg:'#5e35b1'}, '一面':{bg:'#fff3e0',fg:'#ef6c00'},
+  '二面':{bg:'#ffe0b2',fg:'#e65100'}, '三面':{bg:'#ffccbc',fg:'#d84315'},
+  'HR面':{bg:'#f3e5f5',fg:'#8e24aa'},
   'Offer':{bg:'#e8f5e9',fg:'#2e7d32'}, '已拒':{bg:'#ffebee',fg:'#c62828'},
 };
 let sortKey = 'deadline', sortDir = 1;
@@ -508,6 +547,7 @@ function render(){
   rows.sort((a,b)=>{
     let va=a[sortKey], vb=b[sortKey];
     if(sortKey==='stay_days'){ va=(va==null?-1:va); vb=(vb==null?-1:vb); }
+    else if(sortKey==='roles'){ va=(va||[]).length; vb=(vb||[]).length; }
     else { va=va||''; vb=vb||''; }
     if(va<vb) return -sortDir; if(va>vb) return sortDir; return 0;
   });
@@ -522,8 +562,18 @@ function render(){
       const st=STATUS_STYLE[d.status]||{bg:'#eeeeee',fg:'#616161'};
       const dl=deadlineInfo(d);
       const stay=(d.stay_days==null)?'—':(d.stay_days>14?'<span class="stay-warn">'+d.stay_days+' 天</span>':d.stay_days+' 天');
+      const roles=d.roles||[];
+      let roleCell;
+      if(!roles.length){ roleCell='<td class="dl-gray">—</td>'; }
+      else {
+        const list=roles.map(r=>'<div class="role-item">'+(r.applied?'☑':'☐')+' '+esc(r.name)+
+          (r.city?' <span class="role-city">'+esc(r.city)+'</span>':'')+
+          (r.link?' <a href="'+esc(r.link)+'" target="_blank" rel="noopener">链接</a>':'')+'</div>').join('');
+        roleCell='<td class="roletd"><button class="rolebtn">'+roles.length+' 个岗位 ▾</button><div class="roles-drop" hidden>'+list+'</div></td>';
+      }
       return '<tr><td>'+esc(d.company)+'</td>'+
         '<td><span class="badge" style="background:'+st.bg+';color:'+st.fg+'">'+esc(d.status)+'</span></td>'+
+        roleCell+
         '<td>'+esc(d.city||'—')+'</td><td>'+esc(d.priority||'—')+'</td>'+
         '<td>'+esc(d.apply_date||'—')+'</td><td class="'+dl.cls+'">'+dl.text+'</td>'+
         '<td>'+stay+'</td><td>'+esc(d.last_update||'—')+'</td></tr>';
@@ -532,6 +582,18 @@ function render(){
   document.getElementById('footer').textContent='显示 '+rows.length+' / '+DATA.length+' 家';
 }
 
+document.addEventListener('click', e=>{
+  const btn=e.target.closest('.rolebtn');
+  if(btn){
+    const drop=btn.nextElementSibling;
+    const wasHidden=drop.hidden;
+    document.querySelectorAll('.roles-drop').forEach(x=>x.hidden=true);
+    drop.hidden=!wasHidden;
+    e.stopPropagation();
+    return;
+  }
+  if(!e.target.closest('.roles-drop')) document.querySelectorAll('.roles-drop').forEach(x=>x.hidden=true);
+});
 renderStats(); buildFilters(); buildHead(); render();
 document.getElementById('meta').textContent='生成时间：'+GENERATED+' · 数据来自 recruit/companies/';
 </script>

@@ -98,7 +98,8 @@ tools/.venv/bin/python tools/scraper/scrape_feishu.py --orgs agirobot,xiaopeng -
 | 待投递 | 有意向但未投递 |
 | 已投递 | 简历已提交 |
 | 笔试 | 笔试环节 |
-| 面试 | 面试环节（一面/二面/HR 面） |
+| 一面 / 二面 / 三面 | 各轮技术/业务面试（轮次可跳过） |
+| HR面 | HR 面试环节 |
 | Offer | 已拿到 offer（终态） |
 | 已拒 | 流程终止/被拒（终态） |
 
@@ -108,6 +109,8 @@ tools/.venv/bin/python tools/scraper/scrape_feishu.py --orgs agirobot,xiaopeng -
 
 - 顶部统计卡片：总数 / 各状态数量 / 高意向
 - 多维状态表：点击列头排序、状态/城市/意向筛选、实时搜索
+- 岗位列可下拉：展示该公司投递的多个岗位（名称/城市/链接/已投标记）
+- 状态细化到面试轮次：笔试/一面/二面/三面/HR面，各有独立徽章色
 - 截止日期红黄绿标注（3 天内红 / 7 天内黄 / 其他绿 / 已过期深红）
 - 状态徽章、停留天数（超 14 天橙色提醒）
 - 数据完全复用 `recruit/companies/*.md` 的 frontmatter 与时间线，无需新增字段
