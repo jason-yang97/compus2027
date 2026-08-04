@@ -12,6 +12,9 @@ tools/.venv/
 # 半自动搜集的临时产物（待审核候选）
 recruit/inbox/*.tmp
 
+# 生成的看板（不入库，每次运行重新生成）
+recruit/dashboard.html
+
 # 编辑器/IDE
 .idea/
 .vscode/

@@ -67,6 +67,7 @@ docs/
 | `recruit.py show <公司名>` | 展示完整记录 |
 | `recruit.py search <关键词>` | 全文搜索 |
 | `recruit.py stats` | 阶段统计 |
+| `recruit.py dashboard [--open]` | 生成 HTML 状态看板（排序/筛选/搜索/截止日期标注，不入库） |
 
 ## 4. 半自动搜集流程
 

@@ -14,10 +14,11 @@
 """
 
 import argparse
+import json
 import os
 import re
 import sys
-from datetime import date
+from datetime import date, datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 COMPANIES_DIR = os.path.join(ROOT, 'recruit', 'companies')
@@ -338,6 +339,223 @@ def cmd_stats(args):
     print(f'  已拒：  {counter["已拒"]}')
 
 
+# ---------- dashboard ----------
+
+def parse_timeline_last_update(content):
+    """从时间线提取最新日期（YYYY-MM-DD），无则返回 None。"""
+    dates = re.findall(r'^- (\d{4}-\d{2}-\d{2})', content, re.M)
+    return max(dates) if dates else None
+
+
+def collect_dashboard_data():
+    """扫描全部公司记录，返回看板所需数据。"""
+    companies = []
+    today = date.today()
+    for _, path in list_companies():
+        with open(path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        fields, _ = parse_frontmatter(content)
+        last_update = parse_timeline_last_update(content) or fields.get('apply_date') or ''
+        stay_days = None
+        if last_update:
+            try:
+                stay_days = (today - date.fromisoformat(last_update)).days
+            except ValueError:
+                stay_days = None
+        companies.append({
+            'company': fields.get('company', os.path.basename(path)[:-3]),
+            'status': fields.get('status', '未知'),
+            'city': fields.get('city', ''),
+            'priority': fields.get('priority', ''),
+            'apply_date': fields.get('apply_date', ''),
+            'deadline': fields.get('deadline', ''),
+            'tags': fields.get('tags', ''),
+            'last_update': last_update,
+            'stay_days': stay_days,
+        })
+    return {'companies': companies,
+            'generated_at': datetime.now().strftime('%Y-%m-%d %H:%M')}
+
+
+DASHBOARD_HTML = '''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>秋招状态看板</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --border:#e3e6ea; --text:#1f2329; --muted:#8a9099; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); padding:24px; }
+  .wrap { max-width:1120px; margin:0 auto; }
+  h1 { font-size:22px; margin-bottom:4px; }
+  .meta { color:var(--muted); font-size:13px; margin-bottom:20px; }
+  .stats { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
+  .stat { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:12px 18px; min-width:92px; }
+  .stat .num { font-size:24px; font-weight:600; }
+  .stat .lbl { font-size:12px; color:var(--muted); margin-top:2px; }
+  .filters { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px; align-items:center; }
+  .filters select, .filters input { padding:7px 10px; border:1px solid var(--border); border-radius:8px; font-size:14px; background:var(--card); color:var(--text); }
+  .filters input { flex:1; min-width:170px; }
+  .tblwrap { overflow-x:auto; border:1px solid var(--border); border-radius:10px; background:var(--card); }
+  table { width:100%; border-collapse:collapse; }
+  th, td { padding:10px 12px; text-align:left; font-size:14px; border-bottom:1px solid var(--border); white-space:nowrap; }
+  th { background:#fafbfc; cursor:pointer; user-select:none; color:#555; font-weight:600; position:sticky; top:0; }
+  th:hover { background:#f0f2f5; }
+  tr:last-child td { border-bottom:none; }
+  tbody tr:hover td { background:#fafbfc; }
+  .badge { display:inline-block; padding:2px 10px; border-radius:12px; font-size:12px; font-weight:500; }
+  .dl-red { color:#d93025; font-weight:600; }
+  .dl-yellow { color:#e8930c; font-weight:600; }
+  .dl-green { color:#188038; }
+  .dl-gray { color:var(--muted); }
+  .dl-over { color:#a50e0e; font-weight:700; }
+  .stay-warn { color:#e8930c; font-weight:600; }
+  .footer { color:var(--muted); font-size:12px; margin-top:14px; }
+  .empty { text-align:center; color:var(--muted); padding:40px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>秋招状态看板</h1>
+  <div class="meta" id="meta"></div>
+  <div class="stats" id="stats"></div>
+  <div class="filters">
+    <select id="f-status"><option value="">全部状态</option></select>
+    <select id="f-city"><option value="">全部城市</option></select>
+    <select id="f-priority"><option value="">全部意向</option></select>
+    <input id="f-search" placeholder="搜索公司 / 标签 / 城市…">
+  </div>
+  <div class="tblwrap">
+    <table>
+      <thead><tr id="thead"></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+  <div class="footer" id="footer"></div>
+</div>
+<script>
+const DATA = __DATA__;
+const STATUSES = __STATUSES__;
+const TODAY = new Date('__TODAY__');
+const GENERATED = '__GENERATED__';
+const COLS = [
+  {key:'company', label:'公司'}, {key:'status', label:'状态'}, {key:'city', label:'城市'},
+  {key:'priority', label:'意向'}, {key:'apply_date', label:'投递日期'}, {key:'deadline', label:'截止日期'},
+  {key:'stay_days', label:'停留天数'}, {key:'last_update', label:'最后更新'},
+];
+const STATUS_STYLE = {
+  '待投递':{bg:'#eceff1',fg:'#546e7a'}, '已投递':{bg:'#e3f2fd',fg:'#1565c0'},
+  '笔试':{bg:'#ede7f6',fg:'#5e35b1'}, '面试':{bg:'#fff3e0',fg:'#ef6c00'},
+  'Offer':{bg:'#e8f5e9',fg:'#2e7d32'}, '已拒':{bg:'#ffebee',fg:'#c62828'},
+};
+let sortKey = 'deadline', sortDir = 1;
+let filters = {status:'', city:'', priority:'', search:''};
+
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function renderStats(){
+  const stats = {}; STATUSES.forEach(s=>stats[s]=0); let high=0;
+  DATA.forEach(d=>{ if(stats[d.status]!==undefined) stats[d.status]++; if(d.priority==='高') high++; });
+  const items = [['总数', DATA.length]].concat(STATUSES.map(s=>[s, stats[s]])).concat([['高意向', high]]);
+  document.getElementById('stats').innerHTML = items.map(([l,v])=>
+    '<div class="stat"><div class="num">'+v+'</div><div class="lbl">'+l+'</div></div>').join('');
+}
+
+function buildFilters(){
+  const fill = (id, values)=>{ const sel=document.getElementById(id);
+    values.forEach(v=>{ const o=document.createElement('option'); o.value=v; o.textContent=v; sel.appendChild(o); }); };
+  fill('f-status', STATUSES);
+  fill('f-city', Array.from(new Set(DATA.map(d=>d.city).filter(Boolean))).sort());
+  fill('f-priority', ['高','中','低']);
+  ['status','city','priority'].forEach(k=>{
+    document.getElementById('f-'+k).addEventListener('change', e=>{ filters[k]=e.target.value; render(); });
+  });
+  document.getElementById('f-search').addEventListener('input', e=>{ filters.search=e.target.value.trim().toLowerCase(); render(); });
+}
+
+function buildHead(){
+  const tr = document.getElementById('thead');
+  COLS.forEach(c=>{ const th=document.createElement('th'); th.textContent=c.label; th.dataset.key=c.key;
+    th.addEventListener('click', ()=>{ if(sortKey===c.key) sortDir=-sortDir; else {sortKey=c.key; sortDir=1;} render(); });
+    tr.appendChild(th); });
+}
+
+function deadlineInfo(d){
+  if(!d.deadline) return {cls:'dl-gray', text:'—'};
+  const diff = Math.ceil((new Date(d.deadline) - TODAY)/86400000);
+  if(diff<0) return {cls:'dl-over', text:d.deadline+' 已过期'};
+  if(diff<=3) return {cls:'dl-red', text:d.deadline+' ('+diff+'天)'};
+  if(diff<=7) return {cls:'dl-yellow', text:d.deadline+' ('+diff+'天)'};
+  return {cls:'dl-green', text:d.deadline};
+}
+
+function filtered(){
+  return DATA.filter(d=>{
+    if(filters.status && d.status!==filters.status) return false;
+    if(filters.city && d.city!==filters.city) return false;
+    if(filters.priority && d.priority!==filters.priority) return false;
+    if(filters.search){
+      const hay=(d.company+' '+(d.tags||'')+' '+(d.city||'')).toLowerCase();
+      if(!hay.includes(filters.search)) return false;
+    }
+    return true;
+  });
+}
+
+function render(){
+  let rows = filtered();
+  rows.sort((a,b)=>{
+    let va=a[sortKey], vb=b[sortKey];
+    if(sortKey==='stay_days'){ va=(va==null?-1:va); vb=(vb==null?-1:vb); }
+    else { va=va||''; vb=vb||''; }
+    if(va<vb) return -sortDir; if(va>vb) return sortDir; return 0;
+  });
+  document.querySelectorAll('#thead th').forEach(th=>{
+    const c=COLS.find(x=>x.key===th.dataset.key);
+    th.textContent = c.label + (th.dataset.key===sortKey ? (sortDir===1?' ▲':' ▼') : '');
+  });
+  const tbody=document.getElementById('tbody');
+  if(!rows.length){ tbody.innerHTML='<tr><td colspan="'+COLS.length+'" class="empty">无匹配记录</td></tr>'; }
+  else {
+    tbody.innerHTML = rows.map(d=>{
+      const st=STATUS_STYLE[d.status]||{bg:'#eeeeee',fg:'#616161'};
+      const dl=deadlineInfo(d);
+      const stay=(d.stay_days==null)?'—':(d.stay_days>14?'<span class="stay-warn">'+d.stay_days+' 天</span>':d.stay_days+' 天');
+      return '<tr><td>'+esc(d.company)+'</td>'+
+        '<td><span class="badge" style="background:'+st.bg+';color:'+st.fg+'">'+esc(d.status)+'</span></td>'+
+        '<td>'+esc(d.city||'—')+'</td><td>'+esc(d.priority||'—')+'</td>'+
+        '<td>'+esc(d.apply_date||'—')+'</td><td class="'+dl.cls+'">'+dl.text+'</td>'+
+        '<td>'+stay+'</td><td>'+esc(d.last_update||'—')+'</td></tr>';
+    }).join('');
+  }
+  document.getElementById('footer').textContent='显示 '+rows.length+' / '+DATA.length+' 家';
+}
+
+renderStats(); buildFilters(); buildHead(); render();
+document.getElementById('meta').textContent='生成时间：'+GENERATED+' · 数据来自 recruit/companies/';
+</script>
+</body>
+</html>
+'''
+
+
+def cmd_dashboard(args):
+    data = collect_dashboard_data()
+    html = (DASHBOARD_HTML
+            .replace('__DATA__', json.dumps(data['companies'], ensure_ascii=False))
+            .replace('__STATUSES__', json.dumps(STATUSES, ensure_ascii=False))
+            .replace('__TODAY__', date.today().isoformat())
+            .replace('__GENERATED__', data['generated_at']))
+    out = os.path.join(ROOT, 'recruit', 'dashboard.html')
+    with open(out, 'w', encoding='utf-8') as f:
+        f.write(html)
+    print(f'看板已生成：{out}（{len(data["companies"])} 家公司）')
+    if getattr(args, 'open', False):
+        import webbrowser
+        webbrowser.open('file://' + out)
+
+
 # ---------- 入口 ----------
 
 def main():
@@ -365,6 +583,9 @@ def main():
 
     sub.add_parser('stats', help='阶段统计')
 
+    p_dash = sub.add_parser('dashboard', help='生成 HTML 状态看板')
+    p_dash.add_argument('--open', action='store_true', help='生成后自动用浏览器打开')
+
     args = parser.parse_args()
     handlers = {
         'add': cmd_add,
@@ -373,6 +594,7 @@ def main():
         'show': cmd_show,
         'search': cmd_search,
         'stats': cmd_stats,
+        'dashboard': cmd_dashboard,
     }
     handlers[args.command](args)
 
