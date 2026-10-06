@@ -19,3 +19,8 @@ recruit/dashboard.html
 .idea/
 .vscode/
 *.swp
+
+# 网页数据构建缓存（Actions 每次重新生成）
+web/data/
+recruit/data/feishu_base_all.json
+.wrangler/

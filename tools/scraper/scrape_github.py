@@ -43,20 +43,37 @@ def load_config(path):
         return json.load(f)
 
 
+# raw.githubusercontent.com 在部分网络环境不可达，直连失败后改走镜像并记忆
+_MIRRORS = ['https://gh-proxy.com/']
+_direct_ok = True
+
+
 def fetch_raw(repo, branch, readme):
-    """抓取 GitHub raw README，master/main 分支自动回退，失败返回 None。"""
+    """抓取 GitHub raw README，master/main 分支自动回退，失败返回 None。
+
+    直连 raw.githubusercontent.com 失败时自动回退到镜像，并记住直连不可达，
+    后续源直接走镜像。
+    """
+    global _direct_ok
     branches = []
     for b in (branch, 'main', 'master'):
         if b and b not in branches:
             branches.append(b)
-    for b in branches:
-        url = f'https://raw.githubusercontent.com/{repo}/{b}/{readme}'
-        try:
-            req = urllib.request.Request(url, headers={'User-Agent': 'recruit-scraper/1.0'})
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                return resp.read().decode('utf-8', errors='replace')
-        except Exception:
-            continue
+    bases = [''] + _MIRRORS if _direct_ok else list(_MIRRORS)
+    direct_failed = _direct_ok
+    for base in bases:
+        for b in branches:
+            url = f'{base}https://raw.githubusercontent.com/{repo}/{b}/{readme}'
+            try:
+                req = urllib.request.Request(url, headers={'User-Agent': 'recruit-scraper/1.0'})
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    if not base:
+                        direct_failed = False
+                    return resp.read().decode('utf-8', errors='replace')
+            except Exception:
+                continue
+    if direct_failed:
+        _direct_ok = False
     return None
 
 

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>校招汇总 · 27秋招信息大全</title>
+<meta name="description" content="全行业校招/实习信息汇总：27秋招、免笔试秋招、央国企、外企、互联网、银行金融、26秋招补录、24-25可投，支持多维筛选">
+<link rel="stylesheet" href="style.css?v=20261005c">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <h1>校招信息汇总</h1>
+      <div class="meta" id="meta">加载中…</div>
+    </div>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="搜索公司 / 岗位 / 专业 / 备注 等关键词…" autocomplete="off">
+      <button id="search-clear" class="search-clear" title="清空搜索" hidden>×</button>
+    </div>
+  </div>
+  <nav class="tabs" id="tabs"></nav>
+</header>
+
+<main class="container">
+  <section class="filter-bar" id="filter-bar">
+    <div class="filters" id="filters"></div>
+    <div class="filter-extra">
+      <label class="sort-label">排序
+        <select id="sort">
+          <option value="upd">最近更新</option>
+          <option value="dl">截止日期最早</option>
+          <option value="c">公司名称</option>
+        </select>
+      </label>
+      <button id="full-toggle" class="btn-mode" title="取消行高限制，完整展示岗位/公司文本">完整显示</button>
+      <button id="reset" class="btn-reset" hidden>重置筛选</button>
+    </div>
+  </section>
+
+  <div class="result-meta" id="result-meta"></div>
+
+  <section class="table-wrap">
+    <table id="table">
+      <thead>
+        <tr>
+          <th class="th-c">公司</th>
+          <th class="th-r">招聘岗位</th>
+          <th class="th-loc">工作地点</th>
+          <th class="th-yrs">届次</th>
+          <th class="th-batch">批次</th>
+          <th class="th-dl">截止</th>
+          <th class="th-start">开始</th>
+          <th class="th-test">笔试</th>
+          <th class="th-ent">企业 / 行业</th>
+          <th class="th-link">链接</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden>
+      <p>没有符合条件的记录</p>
+      <button class="btn-reset" onclick="resetFilters()">清除全部筛选</button>
+    </div>
+    <div class="loading" id="loading">数据加载中…</div>
+  </section>
+
+  <div class="pager" id="pager"></div>
+
+  <footer class="footer">
+    <p>数据来源：<a id="src-link" href="#" target="_blank" rel="noopener">飞书汇总表</a>（半自动抓取 + 人工整理，投递前请以官方公告为准）</p>
+    <p>使用提示：点击行可展开学历/专业/备注详情；筛选器可叠加；链接失效属正常，以企业官网为准。</p>
+  </footer>
+</main>
+
+<script src="app.js?v=20261005i"></script>
+</body>
+</html>

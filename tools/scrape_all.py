@@ -19,7 +19,11 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PY = sys.executable
-VENV_PY = os.path.join(ROOT, 'tools', '.venv', 'bin', 'python')
+# venv 解释器位置：Windows 在 Scripts/python.exe，类 Unix 在 bin/python
+if os.name == 'nt':
+    VENV_PY = os.path.join(ROOT, 'tools', '.venv', 'Scripts', 'python.exe')
+else:
+    VENV_PY = os.path.join(ROOT, 'tools', '.venv', 'bin', 'python')
 
 SOURCES = {
     'github': ('GitHub 汇总源', [PY, os.path.join(ROOT, 'tools', 'scraper', 'scrape_github.py')]),
