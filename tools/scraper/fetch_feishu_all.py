@@ -161,9 +161,13 @@ def fetch_csrf_token(page):
 
 
 def fetch_job_detail(page, pid, token):
-    """单个岗位详情（列表摘要的 requirement 与详情页不一致，届次只在详情里）。"""
+    """单个岗位详情（列表摘要的 requirement 与详情页不一致，届次只在详情里）。
+
+    必须带 portal_type 参数：缺省上下文里 channel_online_status 恒为 1，
+    无法用于验活。
+    """
     js = """async (args) => {
-      const r = await fetch('/api/v1/job/posts/' + args.pid,
+      const r = await fetch('/api/v1/job/posts/' + args.pid + '?portal_type=6&with_recommend=false',
         {headers: {'x-csrf-token': args.token}});
       if (!r.ok) return null;
       const j = await r.json();
@@ -221,6 +225,7 @@ def feishu_job_rows(page, limit):
         print(f'  {name}({org}): {len(posts)} 岗位（关键词补捞 {kw_count}）', flush=True)
         token = None
         detail_used = 0
+        offline_dropped = 0
         fail_streak = 0
         rows_in_org = []
         for p in posts:
@@ -260,8 +265,8 @@ def feishu_job_rows(page, limit):
                 '工作地点': city,
                 '招聘届次': rounds,
                 '截止时间': '尽快投递',
-                # 岗位帖子随时可能下架，链接指向官网搜索页（岗位名预填）保证永不过期
-                '简历投递链接': f'https://{org}.jobs.feishu.cn/index/position/list?keywords={urllib.parse.quote(title)}',
+                # 直链详情页；链接是否有效由 validate_feishu_links.py 每日验活
+                '简历投递链接': f'https://{org}.jobs.feishu.cn/index/position/{p.get("id")}/detail',
                 '是否笔试': '',
                 '备注': ' / '.join(x for x in (rtype, cat) if x)[:200],
                 '学历要求': edu, '专业要求': '', '企业类型': ent, '行业类别': ind,

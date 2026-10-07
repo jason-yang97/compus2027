@@ -19,6 +19,7 @@ import argparse
 import json
 import os
 import re
+import sys
 from datetime import date, datetime, timezone, timedelta
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -161,17 +162,42 @@ def build_record(r, src):
 def main():
     parser = argparse.ArgumentParser(description='构建网页数据')
     parser.add_argument('--in', dest='src', default=os.path.join(ROOT, 'recruit', 'data', 'feishu_base_all.json'))
+    parser.add_argument('--validate', action='store_true',
+                        help='构建前验活飞书系链接，剔除已下架岗位（约 15-20 分钟）')
     args = parser.parse_args()
+
+    # 链接验活：调 validate_feishu_links.py 逐个打开详情页检测下架横幅
+    if args.validate:
+        import subprocess
+        validator = os.path.join(ROOT, 'tools', 'validate_feishu_links.py')
+        print('=== 验活飞书系岗位链接 ===', flush=True)
+        try:
+            subprocess.run([sys.executable, validator, '--in', args.src],
+                           timeout=2700, check=False)
+        except subprocess.TimeoutExpired:
+            print('验活超时，未验活部分保留', flush=True)
+        except Exception as e:
+            print(f'验活失败（不阻断构建）：{type(e).__name__}: {e}', flush=True)
+
+    link_check = {}
+    check_path = os.path.join(OUT_DIR, 'link_check.json')
+    if os.path.exists(check_path):
+        with open(check_path, encoding='utf-8') as f:
+            link_check = json.load(f)
 
     with open(args.src, encoding='utf-8') as f:
         sources = json.load(f)
 
-    records, dropped = [], 0
+    records, dropped, dead = [], 0, 0
     for src in sources:
         for r in src['rows']:
             rec = build_record(r, src['name'])
             if rec is None:
                 dropped += 1
+                continue
+            # 已确认下架（验活 False）的岗位从数据里移除
+            if rec['url'] and link_check.get(rec['url']) is False:
+                dead += 1
                 continue
             records.append(rec)
 
@@ -196,7 +222,7 @@ def main():
     n_yangqi = sum(1 for x in records if '央国企' in x['ent'])
     from collections import Counter
     by_src = Counter(x['src'] for x in records)
-    print(f'有效记录 {len(records)} 条（丢弃空行 {dropped}），输出 {out_path}（{size_mb:.1f} MB）')
+    print(f'有效记录 {len(records)} 条（丢弃空行 {dropped}，验活剔除下架 {dead}），输出 {out_path}（{size_mb:.1f} MB）')
     print('来源分布:', dict(by_src))
     print(f'免笔试 {n_free} / 含2027届 {n_2027} / 含24-25届 {n_2425} / 央国企 {n_yangqi}')
 
