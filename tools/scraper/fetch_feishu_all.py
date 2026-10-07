@@ -16,7 +16,7 @@ import argparse
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import date
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from scrape_feishu_base import (  # noqa: E402
@@ -89,14 +89,29 @@ def github_sources():
     return sources
 
 
+# 飞书招聘系统企业的基础属性（企业类型, 行业类别）——表中仅此 8 家，直接标注
+FEISHU_ORG_META = {
+    'aicarrier': ('事业单位', '人工智能'),
+    'xiaopeng': ('民企', '汽车制造/维修/零配件'),
+    'k0fqxcszc9': ('民企', '机器人/智能制造'),
+    'x2-robot': ('民企', '机器人/智能制造'),
+    'nio': ('民企', '汽车制造/维修/零配件'),
+    'agirobot': ('民企', '机器人/智能制造'),
+    'owm6ymi5v9b': ('民企', '机器人/智能制造'),
+    'mammotion': ('民企', '机器人/智能制造'),
+}
+
+
 def feishu_job_rows(page, limit):
     """飞书招聘系统企业全量岗位 -> 统一行格式。"""
     with open(COMPANIES_JSON, encoding='utf-8') as f:
         companies = [c for c in json.load(f)['companies']
                      if c.get('recruit_system') == 'feishu' and c.get('org')]
     rows = []
+    today = date.today().isoformat()
     for c in companies:
         org, name = c['org'], c['name']
+        ent, ind = FEISHU_ORG_META.get(org, ('民企', ''))
         try:
             page.goto(f'https://{org}.jobs.feishu.cn/', timeout=30000, wait_until='domcontentloaded')
             page.wait_for_timeout(4000)
@@ -111,18 +126,21 @@ def feishu_job_rows(page, limit):
             cat = (p.get('job_category') or {}).get('name', '')
             city = ' / '.join(
                 (ct or {}).get('name', '') for ct in (p.get('city_list') or []) if (ct or {}).get('name'))
+            # 批次按岗位类型归类：实习 > 校招 > 社招
+            rt_all = f'{rtype} {cat}'
+            batch = '实习' if '实习' in rt_all else ('校招' if '校招' in rt_all else ('社招' if '社招' in rt_all else ''))
             rows.append({
                 '公司': name,
                 '招聘岗位': (p.get('title') or '')[:200],
                 '工作地点': city,
                 '招聘届次': '',
-                '截止时间': '',
+                '截止时间': '尽快投递',
                 '简历投递链接': f'https://{org}.jobs.feishu.cn/',
                 '是否笔试': '',
                 '备注': ' / '.join(x for x in (rtype, cat) if x)[:200],
-                '学历要求': '', '专业要求': '', '企业类型': '', '行业类别': '',
-                '批次': '实习' if '实习' in f'{rtype} {cat}' else '',
-                '开始时间': '',
+                '学历要求': '', '专业要求': '', '企业类型': ent, '行业类别': ind,
+                '批次': batch,
+                '开始时间': today,
                 '更新时间': fmt_time(p.get('publish_time')),
             })
     return rows

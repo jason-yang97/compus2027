@@ -46,6 +46,8 @@ BATCH_TAGS = [
     ('秋招', '秋招'),
     ('春招', '春招'),
     ('实习', '实习'),
+    ('社招', '社招'),
+    ('校招', '校招'),
     ('补录', '补录'),
     ('补招', '补录'),
     ('提前批', '提前批'),
@@ -116,6 +118,9 @@ def build_record(r, src):
     free = 1 if FREE_TEST_RE.search(written) else 0
     forced = 1 if written == '有笔试' else 0
     years, specials = parse_rounds(r.get('招聘届次'))
+    # 无任何届次信息时显式标注「未标注」（届次筛选里也会出现该选项）
+    if not years and not specials:
+        specials = ['未标注']
     deadline_raw = (r.get('截止时间') or '').strip()
     major_c = clean_boiler(r.get('专业要求'))
     note_c = clean_boiler(r.get('备注'))

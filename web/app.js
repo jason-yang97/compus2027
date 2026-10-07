@@ -44,7 +44,7 @@ const DL_OPTIONS = [
 ];
 
 const PAGE_SIZE = 50;
-const BATCH_BADGE = { '秋招': 'b-qiu', '春招': 'b-chun', '实习': 'b-sx', '寒假实习': 'b-hj', '暑假实习': 'b-hj', '补录': 'b-bl', '提前批': 'b-tq', '未标注': 'b-unk' };
+const BATCH_BADGE = { '秋招': 'b-qiu', '春招': 'b-chun', '实习': 'b-sx', '寒假实习': 'b-hj', '暑假实习': 'b-hj', '社招': 'b-she', '校招': 'b-qiu', '补录': 'b-bl', '提前批': 'b-tq', '未标注': 'b-unk' };
 
 /* 列宽（Excel 式拖拽调整，localStorage 持久化） */
 const COL_DEFAULTS = [170, 380, 180, 110, 110, 110, 110, 110, 190, 150];

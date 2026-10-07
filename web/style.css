@@ -225,6 +225,7 @@ td.td-ent { min-width: 150px; max-width: 200px; color: var(--muted); font-size: 
 .b-bl { background: var(--orange-weak); color: var(--orange); }
 .b-tq { background: #ecfeff; color: #0e7490; }
 .b-unk { background: #f3f4f6; color: var(--muted); }
+.b-she { background: #f1f5f9; color: #475569; }
 .b-free { background: var(--green-weak); color: var(--green); }
 .b-test { background: var(--orange-weak); color: var(--orange); }
 .b-na { background: #f3f4f6; color: var(--muted); }
