@@ -1,9 +1,11 @@
 name: daily-update
 
-# 每天北京时间 8:00（UTC 0:00）自动更新，也可在 Actions 页面手动触发
+# 每天北京时间 8:00（UTC 0:00）自动更新；推送代码后也会跑一次；可在 Actions 页面手动触发
 on:
   schedule:
     - cron: '0 0 * * *'
+  push:
+    branches: [main]
   workflow_dispatch: {}
 
 jobs:
