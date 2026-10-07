@@ -17,6 +17,7 @@ import json
 import os
 import re
 import sys
+import urllib.parse
 from datetime import date
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -259,7 +260,8 @@ def feishu_job_rows(page, limit):
                 '工作地点': city,
                 '招聘届次': rounds,
                 '截止时间': '尽快投递',
-                '简历投递链接': f'https://{org}.jobs.feishu.cn/index/position/{p.get("id")}/detail',
+                # 岗位帖子随时可能下架，链接指向官网搜索页（岗位名预填）保证永不过期
+                '简历投递链接': f'https://{org}.jobs.feishu.cn/index/position/list?keywords={urllib.parse.quote(title)}',
                 '是否笔试': '',
                 '备注': ' / '.join(x for x in (rtype, cat) if x)[:200],
                 '学历要求': edu, '专业要求': '', '企业类型': ent, '行业类别': ind,
