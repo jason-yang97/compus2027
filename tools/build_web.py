@@ -19,10 +19,13 @@ import argparse
 import json
 import os
 import re
-from datetime import date, datetime
+from datetime import date, datetime, timezone, timedelta
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, 'web', 'data')
+
+# 飞书日期字段按北京时间（东八区）存取，转换时固定时区，避免依赖运行机器的时区
+CST = timezone(timedelta(hours=8))
 
 YEAR_RE = re.compile(r'20\d{2}')
 DATE_RES = [
@@ -76,7 +79,7 @@ def norm_date(text):
     t = (text or '').strip()
     if re.fullmatch(r'1\d{12}', t):
         try:
-            return datetime.fromtimestamp(int(t) / 1000).strftime('%Y-%m-%d')
+            return datetime.fromtimestamp(int(t) / 1000, tz=CST).strftime('%Y-%m-%d')
         except (ValueError, OSError):
             return ''
     for rex in DATE_RES:
