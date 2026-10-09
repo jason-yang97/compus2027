@@ -189,6 +189,8 @@ function filteredRecords() {
 function sortRecords(list) {
   if (state.sort === 'dl') {
     list.sort((a, b) => (a.dl || '9999') < (b.dl || '9999') ? -1 : (a.dl || '9999') > (b.dl || '9999') ? 1 : 0);
+  } else if (state.sort === 'start') {
+    list.sort((a, b) => (a.start || '0000') < (b.start || '0000') ? 1 : (a.start || '0000') > (b.start || '0000') ? -1 : 0);
   } else if (state.sort === 'c') {
     list.sort((a, b) => a.c.localeCompare(b.c, 'zh-Hans-CN'));
   } else {

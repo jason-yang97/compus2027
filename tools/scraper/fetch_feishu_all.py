@@ -74,6 +74,26 @@ GITHUB_CONFIG = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'source
 COMPANIES_JSON = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     'recruit', 'data', 'companies.json')
+# 已见岗位记录：url -> 首次收录日期（随仓库同步，保证跨天不重置日期）
+SEEN_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    'recruit', 'data', 'feishu_seen.json')
+
+
+def load_seen():
+    if os.path.exists(SEEN_PATH):
+        try:
+            with open(SEEN_PATH, encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            return {}
+    return {}
+
+
+def save_seen(seen):
+    os.makedirs(os.path.dirname(SEEN_PATH), exist_ok=True)
+    with open(SEEN_PATH, 'w', encoding='utf-8') as f:
+        json.dump(seen, f, ensure_ascii=False)
 
 
 def github_sources():
@@ -204,6 +224,7 @@ def feishu_job_rows(page, limit):
                      if c.get('recruit_system') == 'feishu' and c.get('org')]
     rows = []
     today = date.today().isoformat()
+    seen = load_seen()
     for c in companies:
         org, name = c['org'], c['name']
         ent, ind = FEISHU_ORG_META.get(org, ('民企', ''))
@@ -244,6 +265,8 @@ def feishu_job_rows(page, limit):
         rows_in_org = []
         for p in posts:
             title = (p.get('title') or '')[:200]
+            post_url = f'https://{org}.jobs.feishu.cn/index/position/{p.get("id")}/detail'
+            first_seen = seen.setdefault(post_url, today)   # 老岗位保留首次收录日，新岗位记今天
             rtype = fmt_recruit_type(p)
             cat = (p.get('job_category') or {}).get('name', '')
             city = ' / '.join(
@@ -280,17 +303,18 @@ def feishu_job_rows(page, limit):
                 '招聘届次': rounds,
                 '截止时间': '尽快投递',
                 # 直链详情页；链接是否有效由 validate_feishu_links.py 每日验活
-                '简历投递链接': f'https://{org}.jobs.feishu.cn/index/position/{p.get("id")}/detail',
+                '简历投递链接': post_url,
                 '是否笔试': '',
                 '备注': ' / '.join(x for x in (rtype, cat) if x)[:200],
                 '学历要求': edu, '专业要求': '', '企业类型': ent, '行业类别': ind,
                 '批次': batch,
-                # 开始时间=岗位发布/开始招聘日期；更新时间=我们收录/刷新的日期
-                '开始时间': fmt_time(p.get('publish_time')) or today,
-                '更新时间': today,
+                # 开始时间=岗位发布/开始招聘日期；更新时间=首次收录日期（不被每天抓取覆盖）
+                '开始时间': fmt_time(p.get('publish_time')) or first_seen,
+                '更新时间': first_seen,
             })
         rows.extend(rows_in_org)
         print(f'    其中调详情接口补届次 {detail_used} 个', flush=True)
+    save_seen(seen)
     # 同公司同岗位名的兄弟帖（不同城市/批次分开挂）共享届次与学历
     groups = {}
     for r in rows:
