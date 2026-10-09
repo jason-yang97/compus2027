@@ -1,0 +1,33 @@
+name: vision-test
+
+# 手动触发：测试云端视觉模型（Gemini / OpenRouter千问）读取招聘图片城市信息的效果
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 运行视觉模型测试
+        run: python tools/vision_test.py
+        env:
+          GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
+          OPENROUTER_KEY: ${{ secrets.OPENROUTER_KEY }}
+
+      - name: 提交测试结果
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -f vision_test_result.json
+          git diff --cached --quiet || git commit -m "视觉模型测试结果 [skip ci]"
+          git push

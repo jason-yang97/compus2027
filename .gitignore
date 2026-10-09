@@ -24,3 +24,6 @@ recruit/dashboard.html
 web/data/
 recruit/data/feishu_base_all.json
 .wrangler/
+
+# 密钥文件（不入库）
+.secrets/
