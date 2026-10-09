@@ -22,6 +22,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_PATH = os.path.join(ROOT, 'web', 'data', 'link_check.json')
 CONCURRENCY = 10
 DEAD_MARK = '该职位已下线'
+# 确凿的存活信号：详情正文/投递入口出现才算有效（避免页面慢加载导致假阴性）
+ALIVE_MARKS = ['职位描述', '岗位职责', '任职要求', '职位要求', '申请职位', '立即投递', '投递简历']
 
 
 async def check_page(context, url, sem, results, deadline):
@@ -33,11 +35,24 @@ async def check_page(context, url, sem, results, deadline):
         page = await context.new_page()
         try:
             await page.goto(url, timeout=15000, wait_until='domcontentloaded')
-            await page.wait_for_timeout(1800)
-            txt = await page.evaluate('document.body.innerText')
-            results[url] = {'v': DEAD_MARK not in txt, 'ts': int(time.time())}
+            # 先等下线横幅，再等存活信号；两者都没等到 → 未验证（不误判为有效）
+            verdict = None
+            try:
+                await page.wait_for_selector(f'text={DEAD_MARK}', timeout=10000)
+                verdict = False
+            except Exception:
+                try:
+                    marks = ','.join(f"'{m}'" for m in ALIVE_MARKS)
+                    await page.wait_for_function(
+                        "() => { const t = document.body.innerText;"
+                        f" return [{marks}].some(k => t.includes(k)); }}",
+                        timeout=10000)
+                    verdict = True
+                except Exception:
+                    verdict = None
+            results[url] = {'v': verdict, 'ts': int(time.time())}
         except Exception:
-            results[url] = {'v': None, 'ts': int(time.time())}   # 加载失败按未验证处理
+            results[url] = {'v': None, 'ts': int(time.time())}
         finally:
             await page.close()
 
@@ -46,8 +61,10 @@ async def run(urls, deadline):
     results = {}
     sem = asyncio.Semaphore(CONCURRENCY)
     from playwright.async_api import async_playwright
+    # 飞书站点国内直连最快：给浏览器进程剔除代理环境变量
+    clean_env = {k: v for k, v in os.environ.items() if not k.lower().endswith('_proxy')}
     async with async_playwright() as pw:
-        browser = await pw.chromium.launch(channel='chrome', headless=True)
+        browser = await pw.chromium.launch(channel='chrome', headless=True, env=clean_env)
         context = await browser.new_context(viewport={'width': 1280, 'height': 800})
         tasks = [check_page(context, url, sem, results, deadline) for url in urls]
         await asyncio.gather(*tasks)
@@ -99,6 +116,13 @@ def main():
 
     deadline = time.time() + args.timeout_min * 60
     results = asyncio.run(run(urls, deadline))
+
+    # 粘性下架标记：本次未能确认存活（None）但历史确认下架 → 维持下架，防止下架岗位被反复抓回来
+    for url, res in results.items():
+        if res.get('v') is None:
+            pe = prev.get(url)
+            if isinstance(pe, dict) and pe.get('v') is False:
+                res['v'] = False
 
     valid = sum(1 for v in results.values() if v.get('v') is True)
     dead = sum(1 for v in results.values() if v.get('v') is False)

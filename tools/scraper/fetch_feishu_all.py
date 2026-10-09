@@ -354,7 +354,9 @@ def main():
         sys.exit('缺少 playwright：请执行 tools/.venv/Scripts/pip install playwright')
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(channel='chrome', headless=True)
+        # 飞书站点国内直连最快：给浏览器进程剔除代理环境变量
+        clean_env = {k: v for k, v in os.environ.items() if not k.lower().endswith('_proxy')}
+        browser = p.chromium.launch(channel='chrome', headless=True, env=clean_env)
         page = browser.new_page(viewport={'width': 1280, 'height': 800})
 
         if not args.no_base:
