@@ -108,17 +108,24 @@ def github_sources():
         entries = parse_entries(content)
         rows = []
         for company, title, link, update, note, _kind in entries:
+            # 届次/批次从标题与备注文本提取（备注里常写「27届校招」「实习」等）
+            rounds, _edu = extract_rounds_degrees(f'{title} {note}')
+            rt = f'{title} {note}'
+            batch = '实习' if '实习' in rt else ('校招' if '校招' in rt else ('社招' if '社招' in rt else ''))
             rows.append({
                 '公司': company[:80],
                 '招聘岗位': title[:200],
                 '工作地点': '',
-                '招聘届次': '',
+                '招聘届次': rounds,
                 '截止时间': '',
                 '简历投递链接': link if link.startswith('http') else '',
                 '是否笔试': '',
                 '备注': note[:200],
                 '学历要求': '', '专业要求': '', '企业类型': '', '行业类别': '',
-                '批次': '', '开始时间': '', '更新时间': update,
+                '批次': batch,
+                # 汇总源没有岗位发布日，文章日期即起点：开始时间 = 更新时间
+                '开始时间': update,
+                '更新时间': update,
             })
         print(f'  解析 {len(rows)} 条')
         sources.append({'name': f'GitHub·{src["name"]}', 'url': src.get('homepage', ''), 'rows': rows})
