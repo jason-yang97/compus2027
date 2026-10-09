@@ -15,7 +15,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 120
     env:
       TZ: Asia/Shanghai
     concurrency:
@@ -39,8 +39,11 @@ jobs:
       - name: 全量抓取
         run: python tools/scraper/fetch_feishu_all.py
 
-      - name: 链接验活（校招/实习范围，约 15 分钟）
-        run: python tools/validate_feishu_links.py --scope campus --timeout-min 30
+      - name: 链接验活·第一遍（校招/实习范围）
+        run: python tools/validate_feishu_links.py --scope campus --timeout-min 25
+
+      - name: 链接验活·第二遍（社招范围）
+        run: python tools/validate_feishu_links.py --scope social --timeout-min 35
 
       - name: 构建网页数据（读取验活结果剔除已下架岗位）
         run: python tools/build_web.py

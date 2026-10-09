@@ -195,8 +195,9 @@ def main():
             if rec is None:
                 dropped += 1
                 continue
-            # 已确认下架（验活 False）的岗位从数据里移除
-            if rec['url'] and link_check.get(rec['url']) is False:
+            # 已确认下架（验活 false）的岗位从数据里移除
+            entry = link_check.get(rec['url'])
+            if entry is False or (isinstance(entry, dict) and entry.get('v') is False):
                 dead += 1
                 continue
             records.append(rec)
