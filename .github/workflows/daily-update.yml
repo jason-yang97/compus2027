@@ -11,9 +11,12 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 90
     env:
       TZ: Asia/Shanghai   # 运行器默认 UTC，统一到北京时间
+    concurrency:
+      group: daily-update
+      cancel-in-progress: true   # 新运行开始时取消仍在跑的旧运行
     steps:
       - uses: actions/checkout@v4
 
