@@ -127,6 +127,24 @@ def github_sources():
 
 DEGREE_ORDER = ['大专', '本科', '硕士', '博士']
 DEGREE_RE = re.compile(r'(大专|专科|本科|学士|硕士|研究生|博士)')
+# 接口配置 degree_required 代码 -> 可投递学历（"X及以上"展开为 X 及更高）
+DEGREE_REQ_MAP = {
+    20: ['大专', '本科', '硕士', '博士'],   # 不限
+    8: ['博士'],
+    7: ['硕士', '博士'],
+    6: ['本科', '硕士', '博士'],
+    5: ['大专', '本科', '硕士', '博士'],   # 大专及以上
+    4: ['大专', '本科', '硕士', '博士'],   # 高中及以上
+    3: ['大专', '本科', '硕士', '博士'],   # 专职及以上
+    2: ['大专', '本科', '硕士', '博士'],   # 初中及以上
+    1: ['大专', '本科', '硕士', '博士'],   # 小学及以上
+}
+
+
+def degree_from_required(code):
+    """结构化字段 required_degree -> 学历文本（找不到代码则返回空）。"""
+    lst = DEGREE_REQ_MAP.get(code)
+    return ' , '.join(lst) if lst else ''
 
 
 def extract_rounds_degrees(desc):
@@ -277,6 +295,10 @@ def feishu_job_rows(page, limit):
             # 届次/学历藏在职位描述与职位要求里（列表接口不返回结构化字段）
             full_desc = (p.get('description') or '') + '\n' + (p.get('requirement') or '')
             rounds, edu = extract_rounds_degrees(full_desc)
+            # 学历优先用结构化字段（页面头部标签「本科及以上」即此字段）
+            edu_struct = degree_from_required((p.get('job_post_info') or {}).get('required_degree'))
+            if edu_struct:
+                edu = edu_struct
             # 非社招且列表摘要没写届次的，调详情接口补全（详情页的要求文本与摘要不同）
             if batch in ('实习', '校招', '未标注', '') and not rounds and p.get('id') and fail_streak < 5:
                 if not token:
@@ -292,7 +314,7 @@ def feishu_job_rows(page, limit):
                     d_rounds, d_edu = extract_rounds_degrees(d_text)
                     if d_rounds:
                         rounds = d_rounds
-                    if d_edu:
+                    if d_edu and not edu:
                         edu = d_edu
                 else:
                     fail_streak += 1
