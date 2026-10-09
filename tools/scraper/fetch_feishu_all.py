@@ -18,6 +18,8 @@ import os
 import re
 import sys
 import urllib.parse
+import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -78,22 +80,82 @@ COMPANIES_JSON = os.path.join(
 SEEN_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     'recruit', 'data', 'feishu_seen.json')
+# 公告正文提取的城市缓存：url -> 城市文本（随仓库同步，避免每天重复抓文章）
+LOC_CACHE_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    'recruit', 'data', 'article_locations.json')
+
+# 城市/地区词表（用于从公告正文提取工作地点）
+CITY_WORDS = [
+    '北京', '上海', '广州', '深圳', '天津', '重庆', '杭州', '南京', '苏州', '无锡', '常州', '南通',
+    '徐州', '扬州', '盐城', '泰州', '镇江', '宿迁', '连云港', '淮安',
+    '宁波', '温州', '嘉兴', '绍兴', '台州', '金华', '湖州', '衢州', '丽水', '舟山',
+    '合肥', '芜湖', '蚌埠', '马鞍山', '安庆', '滁州',
+    '福州', '厦门', '泉州', '漳州', '莆田', '宁德', '龙岩', '三明', '南平',
+    '南昌', '赣州', '九江', '上饶', '宜春', '吉安',
+    '济南', '青岛', '烟台', '潍坊', '临沂', '淄博', '济宁', '泰安', '威海', '日照', '东营', '滨州', '德州', '聊城', '菏泽', '枣庄',
+    '郑州', '洛阳', '南阳', '新乡', '许昌', '焦作', '安阳', '平顶山', '信阳', '商丘', '周口', '开封', '濮阳', '漯河', '三门峡',
+    '武汉', '宜昌', '襄阳', '荆州', '黄石', '十堰', '孝感', '荆门', '黄冈', '咸宁', '随州',
+    '长沙', '株洲', '湘潭', '衡阳', '岳阳', '常德', '郴州', '邵阳', '益阳', '永州', '怀化', '娄底', '张家界',
+    '成都', '绵阳', '德阳', '宜宾', '南充', '泸州', '自贡', '乐山', '内江', '眉山', '达州', '遂宁', '广元', '攀枝花',
+    '贵阳', '遵义', '六盘水', '安顺', '毕节',
+    '昆明', '曲靖', '玉溪', '大理', '丽江',
+    '西安', '咸阳', '宝鸡', '渭南', '榆林', '延安', '汉中', '安康',
+    '兰州', '天水', '酒泉', '嘉峪关',
+    '西宁', '银川', '乌鲁木齐', '克拉玛依', '拉萨',
+    '沈阳', '大连', '鞍山', '抚顺', '本溪', '丹东', '锦州', '营口', '盘锦', '葫芦岛',
+    '长春', '吉林', '四平', '通化', '松原',
+    '哈尔滨', '齐齐哈尔', '大庆', '牡丹江', '佳木斯',
+    '石家庄', '唐山', '保定', '廊坊', '沧州', '邯郸', '邢台', '秦皇岛', '张家口', '承德', '衡水',
+    '太原', '大同', '临汾', '运城', '长治', '晋中', '阳泉', '晋城',
+    '呼和浩特', '包头', '鄂尔多斯', '赤峰',
+    '南宁', '柳州', '桂林', '北海', '玉林', '梧州',
+    '海口', '三亚', '儋州',
+    '香港', '澳门', '台湾', '台北', '新竹', '台中', '台南', '高雄',
+    '东莞', '佛山', '珠海', '中山', '惠州', '江门', '肇庆', '汕头', '湛江', '茂名', '揭阳', '潮州', '梅州', '清远', '韶关', '阳江', '河源', '云浮', '汕尾',
+    '新加坡', '东京', '首尔', '硅谷', '西雅图', '圣何塞', '纽约', '伦敦', '慕尼黑', '巴黎', '迪拜', '曼谷', '吉隆坡', '雅加达', '海外',
+    '全国', '多地',
+]
 
 
-def load_seen():
-    if os.path.exists(SEEN_PATH):
+def load_json(path, default):
+    if os.path.exists(path):
         try:
-            with open(SEEN_PATH, encoding='utf-8') as f:
+            with open(path, encoding='utf-8') as f:
                 return json.load(f)
         except Exception:
-            return {}
-    return {}
+            return default
+    return default
 
 
-def save_seen(seen):
-    os.makedirs(os.path.dirname(SEEN_PATH), exist_ok=True)
-    with open(SEEN_PATH, 'w', encoding='utf-8') as f:
-        json.dump(seen, f, ensure_ascii=False)
+def save_json(path, data):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False)
+
+
+def fetch_article_text(url):
+    """抓取公告网页正文纯文本（公众号文章等）。"""
+    try:
+        req = urllib.request.Request(url, headers={
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                          '(KHTML, like Gecko) Chrome/120.0 Safari/537.36'})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            html = resp.read().decode('utf-8', errors='replace')
+        html = re.sub(r'<(script|style)[^>]*>.*?</\1>', ' ', html, flags=re.S | re.I)
+        text = re.sub(r'<[^>]+>', ' ', html)
+        return re.sub(r'\s+', ' ', text)
+    except Exception:
+        return ''
+
+
+def extract_cities(text):
+    """从文本中提取城市名（按出现顺序去重，最多 6 个）。"""
+    hits = []
+    for c in CITY_WORDS:
+        if c in text and c not in hits:
+            hits.append(c)
+    return ' / '.join(hits[:6])
 
 
 def github_sources():
@@ -115,7 +177,8 @@ def github_sources():
             rows.append({
                 '公司': company[:80],
                 '招聘岗位': title[:200],
-                '工作地点': '',
+                # 表格里的地点常被并进备注，先从文本提取，空的话后面抓公告正文补
+                '工作地点': extract_cities(f'{title} {note}'),
                 '招聘届次': rounds,
                 '截止时间': '',
                 '简历投递链接': link if link.startswith('http') else '',
@@ -129,6 +192,24 @@ def github_sources():
             })
         print(f'  解析 {len(rows)} 条')
         sources.append({'name': f'GitHub·{src["name"]}', 'url': src.get('homepage', ''), 'rows': rows})
+    # 工作地点补全：抓公告正文提取城市（带缓存，只抓没抓过的文章）
+    loc_cache = load_json(LOC_CACHE_PATH, {})
+    todo = [r for r in (row for s in sources for row in s['rows'])
+            if not r['工作地点'] and r['简历投递链接'].startswith('http')
+            and r['简历投递链接'] not in loc_cache]
+    if todo:
+        print(f'  抓取 {len(todo)} 篇公告正文提取工作地点...', flush=True)
+        def work(row):
+            loc_cache[row['简历投递链接']] = extract_cities(fetch_article_text(row['简历投递链接']))
+        with ThreadPoolExecutor(max_workers=8) as ex:
+            list(ex.map(work, todo))
+    for s in sources:
+        for r in s['rows']:
+            if not r['工作地点']:
+                r['工作地点'] = loc_cache.get(r['简历投递链接'], '')
+    save_json(LOC_CACHE_PATH, loc_cache)
+    filled = sum(1 for s in sources for r in s['rows'] if r['工作地点'])
+    print(f'  工作地点补全：{filled} 条有地点', flush=True)
     return sources
 
 
@@ -249,7 +330,7 @@ def feishu_job_rows(page, limit):
                      if c.get('recruit_system') == 'feishu' and c.get('org')]
     rows = []
     today = date.today().isoformat()
-    seen = load_seen()
+    seen = load_json(SEEN_PATH, {})
     for c in companies:
         org, name = c['org'], c['name']
         ent, ind = FEISHU_ORG_META.get(org, ('民企', ''))
@@ -343,7 +424,7 @@ def feishu_job_rows(page, limit):
             })
         rows.extend(rows_in_org)
         print(f'    其中调详情接口补届次 {detail_used} 个', flush=True)
-    save_seen(seen)
+    save_json(SEEN_PATH, seen)
     # 同公司同岗位名的兄弟帖（不同城市/批次分开挂）共享届次与学历
     groups = {}
     for r in rows:
