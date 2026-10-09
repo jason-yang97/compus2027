@@ -1,18 +1,19 @@
 name: daily-update
 
-# 每天北京时间 8:00（UTC 0:00）自动更新；推送代码后也会跑一次；可在 Actions 页面手动触发
-# 运行在本机自托管 runner 上（国内网络，验活快）
+# 每天北京时间 8:00（UTC 0:00）云端自动更新：抓取 → 验活（校招范围）→ 构建 → 部署
+# 验活结果提交回仓库，供次日复用与人工查看
 on:
   schedule:
     - cron: '0 0 * * *'
-  push:
-    branches: [main]
   workflow_dispatch: {}
+
+permissions:
+  contents: write
 
 jobs:
   update:
-    runs-on: [self-hosted, windows]
-    timeout-minutes: 90
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
     env:
       TZ: Asia/Shanghai
     concurrency:
@@ -25,18 +26,21 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: 安装依赖
+      - name: 安装 Google Chrome
         run: |
-          python -m pip install --upgrade pip
-          pip install playwright
+          wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
 
-      - name: 全量抓取（飞书汇总表 + 飞书招聘系统 + GitHub 源）
+      - name: 安装依赖
+        run: pip install playwright
+
+      - name: 全量抓取
         run: python tools/scraper/fetch_feishu_all.py
 
-      - name: 链接验活（剔除已下架岗位）
-        run: python tools/validate_feishu_links.py
+      - name: 链接验活（校招/实习范围，约 15 分钟）
+        run: python tools/validate_feishu_links.py --scope campus --timeout-min 30
 
-      - name: 构建网页数据
+      - name: 构建网页数据（读取验活结果剔除已下架岗位）
         run: python tools/build_web.py
 
       - name: 部署到 Cloudflare Pages
@@ -44,3 +48,12 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: 回写验活结果到仓库（失败不影响部署）
+        continue-on-error: true
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -f web/data/link_check.json
+          git diff --cached --quiet || git commit -m "验活结果更新 [skip ci]"
+          git push

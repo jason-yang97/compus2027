@@ -56,6 +56,8 @@ def main():
     parser = argparse.ArgumentParser(description='飞书系岗位链接验活')
     parser.add_argument('--in', dest='src', default=os.path.join(ROOT, 'recruit', 'data', 'feishu_base_all.json'))
     parser.add_argument('--timeout-min', type=int, default=35, help='验活总时长上限（分钟）')
+    parser.add_argument('--scope', choices=['campus', 'all'], default='all',
+                        help='campus=只验校招/实习/未标注岗位（云端快速模式）；all=全部')
     args = parser.parse_args()
 
     with open(args.src, encoding='utf-8') as f:
@@ -71,7 +73,9 @@ def main():
             seen.add(u)
             (normal if '社招' in (r.get('批次') or '') else priority).append(u)
     urls = priority + normal
-    print(f'待验活链接 {len(urls)} 个（校招/实习优先 {len(priority)}，并发 {CONCURRENCY}，上限 {args.timeout_min} 分钟）', flush=True)
+    if args.scope == 'campus':
+        urls = priority   # 云端模式：只验校招范围
+    print(f'待验活链接 {len(urls)} 个（范围 {args.scope}，并发 {CONCURRENCY}，上限 {args.timeout_min} 分钟）', flush=True)
 
     deadline = time.time() + args.timeout_min * 60
     results = asyncio.run(run(urls, deadline))
