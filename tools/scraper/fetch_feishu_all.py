@@ -218,9 +218,23 @@ def feishu_job_rows(page, limit):
                 if x.get('id') not in posts_map:
                     posts_map[x.get('id')] = x
                     kw_count += 1
-        except Exception as e:
-            print(f'  [跳过] {name}({org}): {type(e).__name__}', flush=True)
-            continue
+        except Exception:
+            # 单家企业失败自动重试一次（云端偶发超时/风控）
+            try:
+                page.wait_for_timeout(3000)
+                page.goto(f'https://{org}.jobs.feishu.cn/', timeout=30000, wait_until='domcontentloaded')
+                page.wait_for_timeout(5000)
+                posts_map = {}
+                for x in (fetch_positions_csrf(page, limit).get('job_post_list') or []):
+                    posts_map[x.get('id')] = x
+                kw_count = 0
+                for x in (fetch_positions_csrf(page, limit, keyword='实习').get('job_post_list') or []):
+                    if x.get('id') not in posts_map:
+                        posts_map[x.get('id')] = x
+                        kw_count += 1
+            except Exception as e:
+                print(f'  [跳过] {name}({org}): {type(e).__name__}', flush=True)
+                continue
         posts = list(posts_map.values())
         print(f'  {name}({org}): {len(posts)} 岗位（关键词补捞 {kw_count}）', flush=True)
         token = None
