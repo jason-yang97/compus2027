@@ -1,6 +1,7 @@
 name: daily-update
 
 # 每天北京时间 8:00（UTC 0:00）自动更新；推送代码后也会跑一次；可在 Actions 页面手动触发
+# 运行在本机自托管 runner 上（国内网络，验活快）
 on:
   schedule:
     - cron: '0 0 * * *'
@@ -10,13 +11,13 @@ on:
 
 jobs:
   update:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, windows]
     timeout-minutes: 90
     env:
-      TZ: Asia/Shanghai   # 运行器默认 UTC，统一到北京时间
+      TZ: Asia/Shanghai
     concurrency:
       group: daily-update
-      cancel-in-progress: true   # 新运行开始时取消仍在跑的旧运行
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
 
@@ -24,19 +25,19 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: 安装 Google Chrome
-        run: |
-          wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
-
       - name: 安装依赖
-        run: pip install playwright
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright
 
       - name: 全量抓取（飞书汇总表 + 飞书招聘系统 + GitHub 源）
         run: python tools/scraper/fetch_feishu_all.py
 
-      - name: 构建网页数据（含链接验活）
-        run: python tools/build_web.py --validate
+      - name: 链接验活（剔除已下架岗位）
+        run: python tools/validate_feishu_links.py
+
+      - name: 构建网页数据
+        run: python tools/build_web.py
 
       - name: 部署到 Cloudflare Pages
         run: npx --yes wrangler@latest pages deploy web --project-name compus2027 --branch main --commit-dirty=true
