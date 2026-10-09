@@ -37,8 +37,12 @@ async def check_page(context, url, sem, results, deadline):
             await page.goto(url, timeout=15000, wait_until='domcontentloaded')
             # 先等下线横幅，再等存活信号；两者都没等到 → 未验证（不误判为有效）
             verdict = None
+            # 下架判定：文字「该职位已下线」或页面下架容器 class（NoLongerAvailable/noDataText）
             try:
-                await page.wait_for_selector(f'text={DEAD_MARK}', timeout=10000)
+                await page.wait_for_function(
+                    "() => document.body.innerText.includes('该职位已下线')"
+                    " || !!document.querySelector('[class*=\"NoLongerAvailable\"], [class*=\"noDataText\"]')",
+                    timeout=10000)
                 verdict = False
             except Exception:
                 try:

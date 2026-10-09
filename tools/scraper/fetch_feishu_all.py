@@ -285,8 +285,9 @@ def feishu_job_rows(page, limit):
                 '备注': ' / '.join(x for x in (rtype, cat) if x)[:200],
                 '学历要求': edu, '专业要求': '', '企业类型': ent, '行业类别': ind,
                 '批次': batch,
-                '开始时间': today,
-                '更新时间': fmt_time(p.get('publish_time')),
+                # 开始时间=岗位发布/开始招聘日期；更新时间=我们收录/刷新的日期
+                '开始时间': fmt_time(p.get('publish_time')) or today,
+                '更新时间': today,
             })
         rows.extend(rows_in_org)
         print(f'    其中调详情接口补届次 {detail_used} 个', flush=True)
