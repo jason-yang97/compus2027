@@ -42,7 +42,12 @@ jobs:
       - name: 链接验活·第一遍（校招/实习范围）
         run: python tools/validate_feishu_links.py --scope campus --timeout-min 25
 
-      - name: 链接验活·第二遍（社招范围）
+      - name: 判断今天是否验社招（隔天轮换，控制 Actions 免费额度）
+        id: socialday
+        run: echo "run=$([ $(( $(date +%j) % 2 )) -eq 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
+      - name: 链接验活·第二遍（社招范围，隔天）
+        if: steps.socialday.outputs.run == 'true'
         run: python tools/validate_feishu_links.py --scope social --timeout-min 35
 
       - name: 构建网页数据（读取验活结果剔除已下架岗位）
