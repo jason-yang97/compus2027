@@ -153,6 +153,30 @@ def fetch_article_text(url):
         return ''
 
 
+def article_images(url, limit=3):
+    """从公告网页提取图片地址（公众号文章用 data-src 懒加载）。"""
+    try:
+        req = urllib.request.Request(url, headers={
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                          '(KHTML, like Gecko) Chrome/120.0 Safari/537.36'})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            html = resp.read().decode('utf-8', errors='replace')
+    except Exception:
+        return []
+    urls = re.findall(r'data-src="(https?://[^"]+)"', html) or \
+        re.findall(r'<img[^>]+src="(https?://[^"]+)"', html)
+    seen, out = set(), []
+    for u in urls:
+        if u in seen:
+            continue
+        seen.add(u)
+        if 'qpic.cn' in u or 'weixin' in u:
+            out.append(u)
+        if len(out) >= limit:
+            break
+    return out
+
+
 def extract_cities(text):
     """从文本中提取城市名（按出现顺序去重，最多 6 个）。"""
     hits = []
