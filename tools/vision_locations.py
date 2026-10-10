@@ -25,6 +25,8 @@ from fetch_feishu_all import CITY_WORDS, LOC_CACHE_PATH, article_images, fetch_a
 
 ACCOUNT_ID = '9e89490c0b4c73e67bf6dc132792ca58'
 MODEL = '@cf/google/gemma-4-26b-a4b-it'
+# 可选：设置 CF_AI_GATEWAY=default 则经 AI Gateway 调用（可在控制台看到逐次请求日志），否则直连 Workers AI
+GATEWAY = os.environ.get('CF_AI_GATEWAY', '').strip()
 VISION_CACHE = os.path.join(ROOT, 'recruit', 'data', 'vision_locations.json')
 TOKEN_FILE = os.path.join(ROOT, '.secrets', 'cf_ai_token.txt.txt')
 PROMPT = ('这是中国公司的招聘公告图片。请快速找出图中实际印出的招聘公司名和工作城市，'
@@ -57,7 +59,9 @@ def ask_model(token, img_bytes):
         {'type': 'image_url', 'image_url': {'url': 'data:image/jpeg;base64,' + b64}}]}],
         'max_tokens': 3000}).encode()
     req = urllib.request.Request(
-        f'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/{MODEL}',
+        (f'https://gateway.ai.cloudflare.com/v1/{ACCOUNT_ID}/{GATEWAY}/workers-ai/{MODEL}'
+         if GATEWAY else
+         f'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/{MODEL}'),
         data=body, headers={'Authorization': f'Bearer {token}', 'Content-Type': 'application/json'})
     try:
         with urllib.request.urlopen(req, timeout=300) as resp:
