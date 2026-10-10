@@ -84,6 +84,10 @@ SEEN_PATH = os.path.join(
 LOC_CACHE_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     'recruit', 'data', 'article_locations.json')
+# 视觉模型读图提取的城市缓存：url -> 城市文本（由 tools/vision_locations.py 生成）
+VISION_CACHE_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    'recruit', 'data', 'vision_locations.json')
 
 # 城市/地区词表（用于从公告正文提取工作地点）
 CITY_WORDS = [
@@ -203,10 +207,13 @@ def github_sources():
             loc_cache[row['简历投递链接']] = extract_cities(fetch_article_text(row['简历投递链接']))
         with ThreadPoolExecutor(max_workers=8) as ex:
             list(ex.map(work, todo))
+    vision_cache = load_json(VISION_CACHE_PATH, {})
     for s in sources:
         for r in s['rows']:
             if not r['工作地点']:
-                r['工作地点'] = loc_cache.get(r['简历投递链接'], '')
+                link = r['简历投递链接']
+                # 优先正文提取结果，其次视觉模型读图结果
+                r['工作地点'] = loc_cache.get(link, '') or vision_cache.get(link, '')
     save_json(LOC_CACHE_PATH, loc_cache)
     filled = sum(1 for s in sources for r in s['rows'] if r['工作地点'])
     print(f'  工作地点补全：{filled} 条有地点', flush=True)

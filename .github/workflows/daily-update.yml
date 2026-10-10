@@ -36,6 +36,12 @@ jobs:
       - name: 安装依赖
         run: pip install playwright
 
+      - name: 视觉读图补工作地点（新增文章，限额）
+        run: python tools/vision_locations.py --max-articles 40
+        env:
+          CF_AI_TOKEN: ${{ secrets.CF_AI_TOKEN }}
+        continue-on-error: true
+
       - name: 全量抓取
         run: python tools/scraper/fetch_feishu_all.py
 
@@ -64,6 +70,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add -f web/data/link_check.json recruit/data/feishu_seen.json recruit/data/article_locations.json
+          git add -f web/data/link_check.json recruit/data/feishu_seen.json recruit/data/article_locations.json recruit/data/vision_locations.json
           git diff --cached --quiet || git commit -m "验活结果更新 [skip ci]"
           git push
