@@ -135,6 +135,10 @@ def main():
             done += 1
             if done % 10 == 0:
                 print(f'  已处理 {done}/{len(todo)}', flush=True)
+                # 增量落盘，避免中途失败丢失进度
+                os.makedirs(os.path.dirname(VISION_CACHE), exist_ok=True)
+                with open(VISION_CACHE, 'w', encoding='utf-8') as f:
+                    json.dump(vision_cache, f, ensure_ascii=False)
 
     os.makedirs(os.path.dirname(VISION_CACHE), exist_ok=True)
     with open(VISION_CACHE, 'w', encoding='utf-8') as f:
