@@ -187,6 +187,16 @@ def main():
         with open(check_path, encoding='utf-8') as f:
             link_check = json.load(f)
 
+    # 管理后台导出的隐藏清单（公司||岗位||来源）
+    hidden_path = os.path.join(ROOT, 'recruit', 'data', 'hidden.json')
+    hidden = set()
+    if os.path.exists(hidden_path):
+        try:
+            with open(hidden_path, encoding='utf-8') as f:
+                hidden = set(json.load(f))
+        except Exception:
+            hidden = set()
+
     # 工作地点补全：抓取阶段没填上的，从公告正文/视觉读图缓存补齐（按链接匹配）
     loc_caches = []
     for p in (os.path.join(ROOT, 'recruit', 'data', 'article_locations.json'),
@@ -211,6 +221,9 @@ def main():
                         r['工作地点'] = cache[link]
                         break
             rec = build_record(r, src['name'])
+            if rec and hidden and f"{rec['c']}||{rec['r']}||{rec['src']}" in hidden:
+                dropped += 1
+                continue
             if rec is None:
                 dropped += 1
                 continue

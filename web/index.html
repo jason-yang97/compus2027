@@ -46,6 +46,7 @@
           <option value="c">公司名称</option>
         </select>
       </label>
+      <button id="past-toggle" class="btn-mode active" title="隐藏只有 2026 届及以前的往届记录">隐藏往届</button>
       <button id="split-toggle" class="btn-mode active" title="把一行里的多个岗位展开成独立行显示">岗位拆分</button>
       <button id="full-toggle" class="btn-mode" title="取消行高限制，完整展示岗位/公司文本">完整显示</button>
       <button id="reset" class="btn-reset" hidden>重置筛选</button>
@@ -83,10 +84,11 @@
 
   <footer class="footer">
     <p class="foot-line">数据来源：公开招聘信息汇总（多源聚合）· 每日自动更新 · 仅供求职参考，投递前请以官方公告为准</p>
-    <p class="foot-line muted">使用提示：点击行可展开学历/专业/备注详情；筛选器可叠加；表头与格线可拖动调整；链接失效属正常，以企业官网为准。</p>
+    <p class="foot-line muted">使用提示：点击行可展开学历/专业/备注/岗位描述详情；筛选器可叠加；表头与格线可拖动调整；链接每日验活、失效自动下架。
+      ｜ <a href="#" id="admin-link">管理后台</a></p>
   </footer>
 </main>
 
-<script src="app.js?v=20261012d"></script>
+<script src="app.js?v=20261012e"></script>
 </body>
 </html>

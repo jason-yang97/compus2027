@@ -62,9 +62,11 @@ let state = {
   sort: 'upd',
   full: false,
   split: true,     // 岗位拆分显示（把一行里的多个岗位展开成独立行）
+  hidePast: true,  // 隐藏往届（只保留含 2027 及以后届次或无届次标注的记录）
   cityKw: '',      // 工作地点关键词（空格分隔，任一包含）
   page: 1,
 };
+let HIDDEN = new Set();   // 隐藏清单（管理后台导出，存于 recruit/data/hidden.json）
 const expanded = new Set();
 let suppressRowClick = false;
 let viewList = [];   // 当前筛选+排序后的视图列表，展开详情按此定位
@@ -111,10 +113,20 @@ function splitRole(text) {
   return parts.length > 1 ? parts.slice(0, 60) : [];
 }
 
+/* 隐藏清单键：公司||岗位||来源（管理后台导出，构建时过滤） */
+const hideKey = r => `${r.c}||${r.r}||${r.src}`;
+
+/* 隐藏往届：有届次但都不含 2027 及以后 → 视为往届 */
+function isPastCohort(r) {
+  const years = r.yrs.filter(y => typeof y === 'number');
+  return years.length > 0 && !years.some(y => y >= 2027);
+}
+
 function buildWork(records) {
-  if (!state.split) return records;
+  const src = records.filter(r => !(state.hidePast && isPastCohort(r)) && !HIDDEN.has(hideKey(r)));
+  if (!state.split) return src;
   const out = [];
-  for (const r of records) {
+  for (const r of src) {
     // 官网岗位：逐岗位结构化数据（自带地点/类型/事业群/岗位链接）
     if (r.roles && r.roles.length) {
       const extra = (r.batch || '').includes('提前批') ? ['提前批'] : [];
@@ -632,6 +644,22 @@ function bindEvents() {
     refresh();
   });
 
+  // 隐藏往届开关
+  $('past-toggle').addEventListener('click', () => {
+    state.hidePast = !state.hidePast;
+    $('past-toggle').classList.toggle('active', state.hidePast);
+    WORK = buildWork(DATA.records);
+    expanded.clear();
+    buildFacets(WORK);
+    computeTabCounts();
+    renderTabs();
+    renderFilters();
+    refresh();
+  });
+
+  // 管理后台
+  $('admin-link').addEventListener('click', e => { e.preventDefault(); openAdmin(); });
+
   // 下拉开合（互斥）
   $('filters').addEventListener('click', e => {
     const btn = e.target.closest('.dd-btn');
@@ -714,6 +742,82 @@ function resetFilters() {
   refresh();
 }
 
+/* ---------- 管理后台：重复项审查 ---------- */
+function duplicateGroups() {
+  const map = new Map();
+  for (const r of DATA.records) {
+    const k = `${r.c}||${r.r}`;
+    if (!map.has(k)) map.set(k, []);
+    map.get(k).push(r);
+  }
+  return [...map.entries()].filter(([, v]) => v.length > 1)
+    .sort((a, b) => b[1].length - a[1].length);
+}
+
+function openAdmin() {
+  const groups = duplicateGroups();
+  const total = groups.reduce((n, [, v]) => n + v.length, 0);
+  const box = document.createElement('div');
+  box.className = 'admin-mask';
+  box.innerHTML = `
+    <div class="admin-panel">
+      <div class="admin-head">
+        <h2>重复项审查</h2>
+        <button class="btn-mode" id="admin-close">关闭</button>
+      </div>
+      <p class="admin-tip">共 <b>${groups.length}</b> 组重复（<b>${total}</b> 条记录，公司+岗位完全相同）。勾选要隐藏的记录后导出清单，
+        保存为 <code>recruit/data/hidden.json</code> 并提交即可全局生效（或发我代为提交）。</p>
+      <div class="admin-tools">
+        <button class="btn-mode" id="admin-all">全选所有重复项</button>
+        <button class="btn-mode" id="admin-none">清空选择</button>
+        <button class="btn-mode active" id="admin-export">导出隐藏清单</button>
+        <span id="admin-count" class="admin-count">已选 0 条</span>
+      </div>
+      <div class="admin-list">
+        ${groups.map(([k, rows]) => `
+          <div class="admin-group">
+            <div class="admin-group-head">
+              <label><input type="checkbox" data-group="${esc(k)}"> ${esc(rows[0].c)} — ${esc(rows[0].r).slice(0, 60)}（${rows.length} 条）</label>
+            </div>
+            ${rows.map(r => `
+              <label class="admin-row">
+                <input type="checkbox" class="admin-pick" data-key="${esc(hideKey(r))}">
+                <span class="admin-src">${esc(r.src)}</span>
+                <span>${esc(r.yrs.join('/') || '未标注')}</span>
+                <span>${esc(r.city.join('/')) || '—'}</span>
+                <span>${esc(r.upd || '—')}</span>
+                <span class="admin-dl">${esc(r.dlRaw || '—')}</span>
+              </label>`).join('')}
+          </div>`).join('')}
+      </div>
+      <textarea id="admin-out" class="admin-out" placeholder="点「导出隐藏清单」生成 JSON，保存为 recruit/data/hidden.json"></textarea>
+    </div>`;
+  document.body.appendChild(box);
+  const picks = () => [...box.querySelectorAll('.admin-pick')];
+  const refreshCount = () => {
+    box.querySelector('#admin-count').textContent = `已选 ${picks().filter(p => p.checked).length} 条`;
+  };
+  box.querySelector('#admin-close').onclick = () => box.remove();
+  box.querySelector('#admin-all').onclick = () => { picks().forEach(p => { p.checked = true; }); refreshCount(); };
+  box.querySelector('#admin-none').onclick = () => { picks().forEach(p => { p.checked = false; }); refreshCount(); };
+  box.addEventListener('change', e => {
+    const g = e.target.closest('input[data-group]');
+    if (g) {
+      const grp = g.closest('.admin-group');
+      grp.querySelectorAll('.admin-pick').forEach(p => { p.checked = g.checked; });
+      refreshCount();
+      return;
+    }
+    refreshCount();
+  });
+  box.querySelector('#admin-export').onclick = () => {
+    const keys = [...new Set(picks().filter(p => p.checked).map(p => p.dataset.key))];
+    box.querySelector('#admin-out').value = JSON.stringify(keys, null, 1);
+    box.querySelector('#admin-out').select();
+  };
+  refreshCount();
+}
+
 /* ---------- 启动 ---------- */
 async function init() {
   try {
@@ -735,10 +839,15 @@ async function init() {
   }
   $('meta').textContent = `共 ${DATA.total.toLocaleString()} 条 · 更新于 ${DATA.updated}`;
 
+  // 隐藏清单（管理后台导出）随数据目录一并加载
+  try {
+    const hr = await fetch('data/hidden.json', { cache: 'no-cache' });
+    if (hr.ok) HIDDEN = new Set(await hr.json());
+  } catch (_) { /* 无隐藏清单 */ }
+
   WORK = buildWork(DATA.records);
   buildFacets(WORK);
-  computeTabCounts();
-  renderTabs();
+  computeTabCounts();  renderTabs();
   renderFilters();
   bindEvents();
   initColResize();
