@@ -135,7 +135,7 @@ def build_record(r, src):
             edu.insert(0, '大专')
     rec = {
         'c': company or '（未标注公司）',
-        'r': role[:500],
+        'r': role[:40000] if (r.get('岗位来源') == '官网') else role[:500],
         'city': split_multi(r.get('工作地点')),
         'ind': split_multi(r.get('行业类别')),
         'ent': split_multi(r.get('企业类型')),
@@ -155,6 +155,7 @@ def build_record(r, src):
         'start': norm_date(r.get('开始时间')),
         'upd': norm_date(r.get('更新时间')),
         'src': src,
+        'pos': r.get('岗位来源') or '',
     }
     return rec
 
@@ -235,7 +236,8 @@ def main():
 
     before = len(records)
     records = [r for r in records
-               if not (r['src'].startswith('GitHub') and covered_by_primary(r['c']))]
+               if not (r['src'].startswith('GitHub') and r.get('pos') != '官网'
+                       and covered_by_primary(r['c']))]
     dedup_dropped = before - len(records)
 
     # 默认排序：更新时间倒序（无更新时间的排后），同日按公司名

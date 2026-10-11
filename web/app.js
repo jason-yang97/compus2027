@@ -52,6 +52,7 @@ const COL_STORE_KEY = 'jobboard-colw-v3';
 
 /* ---------- 全局状态 ---------- */
 let DATA = null;
+let WORK = [];     // 当前工作数据集（按「岗位拆分」开关预处理后的数组）
 let state = {
   tab: 'all',
   q: '',
@@ -60,6 +61,7 @@ let state = {
   range: { dlFrom: '', dlTo: '', stFrom: '', stTo: '' },
   sort: 'upd',
   full: false,
+  split: true,     // 岗位拆分显示（把一行里的多个岗位展开成独立行）
   page: 1,
 };
 const expanded = new Set();
@@ -99,6 +101,28 @@ function dlText(r) {
 }
 function yrsText(r) {
   return r.yrs.length ? r.yrs.map(y => (typeof y === 'number' ? y + '届' : y)).join(' / ') : '—';
+}
+
+/* 岗位拆分：把「岗位1、岗位2、岗位3」展开成独立行，其余字段沿用原行（原型继承，省内存） */
+const ROLE_SPLIT_RE = /[、,，;；]|\s{2,}|(?<=[^\s])\/(?=[^\s])/;
+function splitRole(text) {
+  const parts = String(text || '').split(ROLE_SPLIT_RE).map(s => s.trim()).filter(s => s.length >= 2);
+  return parts.length > 1 ? parts.slice(0, 60) : [];
+}
+
+function buildWork(records) {
+  if (!state.split) return records;
+  const out = [];
+  for (const r of records) {
+    const parts = splitRole(r.r);
+    if (!parts.length) { out.push(r); continue; }
+    for (const p of parts) {
+      const o = Object.create(r);   // 其余字段走原型链继承原行
+      o.r = p;
+      out.push(o);
+    }
+  }
+  return out;
 }
 
 /* ---------- 构建筛选刻面 ---------- */
@@ -179,7 +203,7 @@ function matchFilters(r) {
 
 function filteredRecords() {
   const out = [];
-  for (const r of DATA.records) {
+  for (const r of WORK) {
     if (matchTab(r) && matchFilters(r)) out.push(r);
   }
   return out;
@@ -219,7 +243,7 @@ function computeTabCounts() {
   tabCounts = {};
   for (const t of TABS) {
     let n = 0;
-    for (const r of DATA.records) if (t.match(r)) n++;
+    for (const r of WORK) if (t.match(r)) n++;
     tabCounts[t.id] = n;
   }
 }
@@ -290,7 +314,7 @@ function renderDropdownList(key, kw = '') {
 }
 function tabCountBy(fn, v) {
   let n = 0;
-  for (const r of DATA.records) if (matchTab(r) && fn(r) === v) n++;
+  for (const r of WORK) if (matchTab(r) && fn(r) === v) n++;
   return n;
 }
 
@@ -351,7 +375,7 @@ function renderPager(total) {
 }
 
 function renderMeta(total) {
-  $('result-meta').innerHTML = `当前页签命中 <b>${total.toLocaleString()}</b> 条（全部数据 ${DATA.total.toLocaleString()} 条，更新于 ${DATA.updated}）` +
+  $('result-meta').innerHTML = `当前页签命中 <b>${total.toLocaleString()}</b> 条（全部数据 ${WORK.length.toLocaleString()} 条，更新于 ${DATA.updated}）` +
     (state.q ? `｜关键词「<b>${esc(state.q)}</b>」` : '') +
     (state.major ? `｜专业「<b>${esc(state.major)}</b>」` : '');
 }
@@ -513,6 +537,19 @@ function bindEvents() {
     }
   });
 
+  // 岗位拆分开关：把一行里的多个岗位展开成独立行
+  $('split-toggle').addEventListener('click', () => {
+    state.split = !state.split;
+    $('split-toggle').classList.toggle('active', state.split);
+    WORK = buildWork(DATA.records);
+    expanded.clear();
+    buildFacets(WORK);
+    computeTabCounts();
+    renderTabs();
+    renderFilters();
+    refresh();
+  });
+
   // 下拉开合（互斥）
   $('filters').addEventListener('click', e => {
     const btn = e.target.closest('.dd-btn');
@@ -608,7 +645,8 @@ async function init() {
   srcLink.textContent = DATA.sources[0]?.name || '飞书汇总表';
   $('meta').textContent = `共 ${DATA.total.toLocaleString()} 条 · 更新于 ${DATA.updated}`;
 
-  buildFacets(DATA.records);
+  WORK = buildWork(DATA.records);
+  buildFacets(WORK);
   computeTabCounts();
   renderTabs();
   renderFilters();

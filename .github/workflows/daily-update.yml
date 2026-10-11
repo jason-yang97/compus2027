@@ -36,6 +36,10 @@ jobs:
       - name: 安装依赖
         run: pip install playwright
 
+      - name: 官网岗位抓取（腾讯等，按公司适配器）
+        run: python tools/scrape_campus_positions.py
+        continue-on-error: true
+
       - name: 全量抓取
         run: python tools/scraper/fetch_feishu_all.py
 
@@ -72,6 +76,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add -f web/data/link_check.json recruit/data/feishu_seen.json recruit/data/article_locations.json recruit/data/vision_locations.json recruit/data/vision_meta.json
+          git add -f web/data/link_check.json recruit/data/feishu_seen.json recruit/data/article_locations.json recruit/data/vision_locations.json recruit/data/vision_meta.json recruit/data/campus_positions.json
           git diff --cached --quiet || git commit -m "验活结果更新 [skip ci]"
           git push

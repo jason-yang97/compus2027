@@ -88,6 +88,10 @@ LOC_CACHE_PATH = os.path.join(
 VISION_CACHE_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     'recruit', 'data', 'vision_locations.json')
+# 官网岗位缓存：公司 -> {titles, updated}（由 tools/scrape_campus_positions.py 生成）
+CAMPUS_POS_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    'recruit', 'data', 'campus_positions.json')
 
 # 城市/地区词表（用于从公告正文提取工作地点）
 CITY_WORDS = [
@@ -235,12 +239,21 @@ def github_sources():
         with ThreadPoolExecutor(max_workers=8) as ex:
             list(ex.map(work, todo))
     vision_cache = load_json(VISION_CACHE_PATH, {})
+    pos_cache = load_json(CAMPUS_POS_PATH, {})
+    pos_applied = set()   # 同一公司的官网岗位只应用一次，避免多行重复
     for s in sources:
         for r in s['rows']:
             if not r['工作地点']:
                 link = r['简历投递链接']
                 # 优先正文提取结果，其次视觉模型读图结果
                 r['工作地点'] = loc_cache.get(link, '') or vision_cache.get(link, '')
+            # 官网岗位（如腾讯）替换公司级标题（每家公司只应用一次）
+            entry = pos_cache.get(r['公司']) or {}
+            titles = entry.get('titles') or []
+            if titles and r['公司'] not in pos_applied:
+                pos_applied.add(r['公司'])
+                r['招聘岗位'] = ' / '.join(titles)[:40000]
+                r['岗位来源'] = '官网'
     save_json(LOC_CACHE_PATH, loc_cache)
     filled = sum(1 for s in sources for r in s['rows'] if r['工作地点'])
     print(f'  工作地点补全：{filled} 条有地点', flush=True)
