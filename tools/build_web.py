@@ -294,8 +294,18 @@ def main():
     def ann_core(key):
         return ANN_SUFFIX.sub('', key)
 
-    def ann_for(company):
-        key = norm_company(company)
+    # 公司别名：源里叫法与学姐表不同（金山软件 → 金山办公）
+    alias_path = os.path.join(ROOT, 'recruit', 'data', 'company_aliases.json')
+    aliases = {}
+    if os.path.exists(alias_path):
+        try:
+            with open(alias_path, encoding='utf-8') as f:
+                aliases = {norm_company(k): norm_company(v)
+                           for k, v in json.load(f).items() if not k.startswith('_')}
+        except Exception:
+            aliases = {}
+
+    def ann_lookup(key):
         if not key:
             return ''
         if key in ann_map:
@@ -310,6 +320,13 @@ def main():
                 if ann_core(k) == core:
                     return ann_map[k]
         return ''
+
+    def ann_for(company):
+        key = norm_company(company)
+        if not key:
+            return ''
+        # 先按原名找，找不到再按别名指向的学姐表公司名找
+        return ann_lookup(key) or ann_lookup(aliases.get(key, ''))
 
     ann_filled = 0
     for rec in records:
