@@ -20,6 +20,7 @@ import json
 import os
 import re
 import sys
+from collections import Counter
 from datetime import date, datetime, timezone, timedelta
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -336,6 +337,92 @@ def main():
                 rec['ann'] = a
                 ann_filled += 1
 
+    # 结构化字段补全：官网/GitHub/飞书等源常缺 企业类型/行业/学历/届次/专业/截止/笔试/批次，
+    # 按公司名从学姐表聚合补齐（只补空值；截止时间占位值仅对非学姐源覆盖，且只认未来日期）
+    today_iso = date.today().isoformat()
+    meta = {}
+    for s in sources:
+        if not s['name'].startswith('校招汇总'):
+            continue
+        for row in s['rows']:
+            k = norm_company(row.get('公司'))
+            if not k:
+                continue
+            m = meta.setdefault(k, {'ent': Counter(), 'ind': Counter(), 'edu': [], 'yrs': [],
+                                    'major': '', 'dl': Counter(), 'wt': Counter(), 'batch': Counter()})
+            for v in split_multi(row.get('企业类型')):
+                m['ent'][v] += 1
+            for v in split_multi(row.get('行业类别')):
+                m['ind'][v] += 1
+            for v in split_edu(row.get('学历要求')):
+                if v not in m['edu']:
+                    m['edu'].append(v)
+            yrs_, specs_ = parse_rounds(row.get('招聘届次'))
+            for v in yrs_ + specs_:
+                if v not in m['yrs']:
+                    m['yrs'].append(v)
+            if not m['major']:
+                m['major'] = clean_boiler(row.get('专业要求'))
+            dr = (row.get('截止时间') or '').strip()
+            if dr:
+                m['dl'][dr] += 1
+            wt = (row.get('是否笔试') or '').strip()
+            if wt and wt not in ('/', '-', '—'):
+                m['wt'][wt] += 1
+            b = (row.get('批次') or '').strip()
+            if b:
+                m['batch'][b] += 1
+
+    def best_deadline(m):
+        # 只认未来日期，避免把过期批次的截止日安到别的岗位上
+        cands = [(v, c) for v, c in m['dl'].items()
+                 if norm_date(v) and norm_date(v) >= today_iso]
+        return max(cands, key=lambda x: x[1])[0] if cands else ''
+
+    meta_filled = 0
+    for rec in records:
+        key = norm_company(rec['c'])
+        m = meta.get(key) or meta.get(aliases.get(key, ''))
+        if not m:
+            continue
+        from_summary = rec['src'].startswith('校招汇总')
+        touched = False
+        if not rec['ent'] and m['ent']:
+            rec['ent'] = [m['ent'].most_common(1)[0][0]]
+            touched = True
+        if not rec['ind'] and m['ind']:
+            rec['ind'] = [m['ind'].most_common(1)[0][0]]
+            touched = True
+        if not rec['edu'] and m['edu']:
+            rec['edu'] = list(m['edu'])
+            touched = True
+        if (not rec['yrs'] or rec['yrs'] == ['未标注']) and m['yrs']:
+            rec['yrs'] = list(m['yrs'])
+            touched = True
+        if not rec['major'] and m['major']:
+            rec['major'] = m['major'][:500]
+            touched = True
+        if not rec['batch'] and m['batch']:
+            rec['batch'] = m['batch'].most_common(1)[0][0]
+            touched = True
+        if (not rec['written'] or rec['written'] in ('/', '-', '—')) and m['wt']:
+            wmode = m['wt'].most_common(1)[0][0]
+            rec['written'] = wmode[:60]
+            if FREE_TEST_RE.search(wmode):
+                rec['free'] = 1
+            if wmode == '有笔试':
+                rec['test'] = 1
+            touched = True
+        # 截止时间：空值必补；占位（尽快投递/招满为止）仅对非学姐源覆盖
+        if (not rec['dlRaw']) or (not from_summary and rec['dlRaw'] in ('尽快投递', '招满为止')):
+            bd = best_deadline(m)
+            if bd:
+                rec['dlRaw'] = bd[:30]
+                rec['dl'] = norm_date(bd)
+                touched = True
+        if touched:
+            meta_filled += 1
+
     # 默认排序：更新时间倒序（无更新时间的排后），同日按公司名
     records.sort(key=lambda x: (x['upd'] or '0000', x['c']), reverse=True)
 
@@ -363,11 +450,11 @@ def main():
     n_2027 = sum(1 for x in records if 2027 in x['yrs'])
     n_2425 = sum(1 for x in records if {2024, 2025} & set(x['yrs']))
     n_yangqi = sum(1 for x in records if '央国企' in x['ent'])
-    from collections import Counter
     by_src = Counter(x['src'] for x in records)
     print(f'有效记录 {len(records)} 条（丢弃空行 {dropped}，验活剔除下架 {dead}，去重剔除 {dedup_dropped}），输出 {out_path}（{size_mb:.1f} MB）')
     print('来源分布:', dict(by_src))
     print(f'公告补全 {ann_filled} 条（原本无公告链接，按公司名从学姐表补齐）')
+    print(f'字段补全 {meta_filled} 条（企业类型/行业/学历/届次/专业/截止/笔试/批次，按公司名从学姐表补）')
     print(f'免笔试 {n_free} / 含2027届 {n_2027} / 含24-25届 {n_2425} / 央国企 {n_yangqi}')
 
 
