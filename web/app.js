@@ -5,7 +5,7 @@
 const TABS = [
   { id: 'all',    name: '校招汇总',     match: () => true },
   { id: 'new',    name: '今日新增',     match: r => isNew(r) },
-  { id: 'ref',    name: '内推码',       match: r => (r.codes && r.codes.length > 0) },
+  { id: 'ref',    name: '内推码',       match: r => codesFor(r).length > 0 },
   { id: 'q27',    name: '27秋招',       match: r => r.yrs.includes(2027) && r.tags.includes('秋招') },
   { id: 's27',    name: '27实习汇总',   match: r => r.yrs.includes(2027) && r.tags.includes('实习') },
   { id: 'q26',    name: '26秋招+补录',  match: r => r.yrs.includes(2026) && (r.tags.includes('秋招') || r.tags.includes('补录')) },
@@ -69,6 +69,7 @@ let state = {
   page: 1,
 };
 let HIDDEN = new Set();   // 隐藏清单（管理后台导出，存于 recruit/data/hidden.json）
+let CODES = {};           // 内推码：公司 -> [{code, note}]（KV 优先，其次数据文件）
 const expanded = new Set();
 let suppressRowClick = false;
 let viewList = [];   // 当前筛选+排序后的视图列表，展开详情按此定位
@@ -113,6 +114,19 @@ const ROLE_SPLIT_RE = /[、,，;；]|\s{2,}|(?<=[^\s])\/(?=[^\s])/;
 function splitRole(text) {
   const parts = String(text || '').split(ROLE_SPLIT_RE).map(s => s.trim()).filter(s => s.length >= 2);
   return parts.length > 1 ? parts.slice(0, 60) : [];
+}
+
+/* 内推码查询：优先记录自带的 codes（构建时挂载），其次全局 CODES（KV/数据文件，后台可编辑）
+   匹配：精确公司名，其次包含匹配（如「腾讯」匹配「腾讯CSIG」） */
+function codesFor(rec) {
+  const company = (rec && typeof rec === 'object') ? rec.c : rec;
+  if (typeof rec === 'object' && rec && Array.isArray(rec.codes) && rec.codes.length) return rec.codes;
+  if (!company) return [];
+  if (CODES[company]) return CODES[company];
+  for (const k in CODES) {
+    if (k.length >= 2 && company.includes(k)) return CODES[k];
+  }
+  return [];
 }
 
 /* 今日新增：收录日期（飞书系=首次抓取日；官网岗位=首次出现日）等于本次构建日期 */
@@ -452,7 +466,7 @@ function detailHtml(idx) {
     <dt>备注</dt><dd>${esc(r.note) || '—'}</dd>
     <dt>原始批次</dt><dd>${esc(r.batch) || '—'}｜笔试说明：${esc(r.written) || '—'}</dd>
     ${r._bg ? `<dt>事业群</dt><dd>${esc(r._bg)}</dd>` : ''}
-    ${(r.codes && r.codes.length) ? `<dt>内推码</dt><dd>${r.codes.map(c => `${esc(c.code)}${c.note ? '（' + esc(c.note) + '）' : ''}`).join('；')}</dd>` : ''}
+    ${(codesFor(r).length) ? `<dt>内推码</dt><dd>${codesFor(r).map(c => `${esc(c.code)}${c.note ? '（' + esc(c.note) + '）' : ''}`).join('；')}</dd>` : ''}
     <dt>时间</dt><dd>开始 ${esc(r.start || '—')}｜更新 ${esc(r.upd || '—')}｜截止 ${esc(r.dlRaw || '—')}</dd>
     <dt>来源</dt><dd>${esc(r.src)}</dd>
   </dl></td></tr>`;
@@ -800,7 +814,15 @@ function openAdmin() {
               </label>`).join('')}
           </div>`).join('')}
       </div>
-      <textarea id="admin-out" class="admin-out" placeholder="点「导出隐藏清单」生成 JSON，保存为 recruit/data/hidden.json"></textarea>
+      <textarea id="admin-out" class="admin-out" placeholder="点「导出 JSON」生成隐藏清单"></textarea>
+
+      <div class="admin-head" style="margin-top:6px">
+        <h2 style="font-size:16px">内推码管理</h2>
+        <button class="btn-mode active" id="codes-save">保存内推码到云端</button>
+      </div>
+      <p class="admin-tip">格式（每行一条）：<code>公司名 = 内推码</code> 或 <code>公司名 = 内推码 | 备注</code>。
+        保存后「内推码」页签与对应公司岗位详情即时生效。</p>
+      <textarea id="codes-text" class="admin-out" placeholder="腾讯 = ABC123&#10;宇树科技 = XYZ888 | 内推人：某某"></textarea>
     </div>`;
   document.body.appendChild(box);
   const picks = () => [...box.querySelectorAll('.admin-pick')];
@@ -850,6 +872,48 @@ function openAdmin() {
     }
   };
   refreshCount();
+
+  // 内推码管理：文本 <-> JSON
+  const codesText = box.querySelector('#codes-text');
+  codesText.value = Object.entries(CODES).filter(([k]) => !k.startsWith('_') && k !== '示例公司')
+    .map(([k, arr]) => {
+      const c = (arr || [])[0] || {};
+      return `${k} = ${c.code || ''}${c.note ? ' | ' + c.note : ''}`;
+    }).join('\n');
+  box.querySelector('#codes-save').onclick = async () => {
+    const btn = box.querySelector('#codes-save');
+    const out = {};
+    for (const line of codesText.value.split('\n')) {
+      const t = line.trim();
+      if (!t || t.startsWith('#')) continue;
+      const m = t.split('=');
+      if (m.length < 2) continue;
+      const company = m[0].trim();
+      const rest = m.slice(1).join('=').split('|');
+      const code = (rest[0] || '').trim();
+      const note = (rest[1] || '').trim();
+      if (company && code) out[company] = [{ code, note }];
+    }
+    btn.textContent = '保存中…';
+    try {
+      const r = await fetch('/api/codes', {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ codes: out }),
+      });
+      const j = await r.json();
+      if (j.ok) {
+        CODES = out;
+        WORK = buildWork(DATA.records);
+        expanded.clear();
+        buildFacets(WORK); computeTabCounts(); renderTabs(); renderFilters(); refresh();
+        btn.textContent = `已保存 ${j.companies} 家 ✓`;
+      } else {
+        btn.textContent = '保存失败：未登录';
+      }
+    } catch (e) {
+      btn.textContent = '保存失败（本地预览无接口）';
+    }
+  };
 }
 
 /* ---------- 启动 ---------- */
@@ -888,6 +952,22 @@ async function init() {
       if (Array.isArray(arr)) arr.forEach(k => HIDDEN.add(k));
     }
   } catch (_) { /* 无隐藏清单 */ }
+
+  // 内推码：优先云端 KV（管理后台维护），其次数据文件
+  try {
+    const cr = await fetch('/api/codes', { cache: 'no-cache' });
+    if (cr.ok) {
+      const obj = await cr.json();
+      if (obj && typeof obj === 'object' && !obj.error) CODES = obj;
+    }
+  } catch (_) { /* 本地预览无接口 */ }
+  try {
+    const fr = await fetch('data/referral_codes.json', { cache: 'no-cache' });
+    if (fr.ok) {
+      const obj = await fr.json();
+      if (obj && typeof obj === 'object') CODES = Object.assign({}, obj, CODES);
+    }
+  } catch (_) { /* 无内推码文件 */ }
 
   WORK = buildWork(DATA.records);
   buildFacets(WORK);

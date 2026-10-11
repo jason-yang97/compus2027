@@ -84,6 +84,29 @@ export default {
       return json({ error: 'method not allowed' }, 405);
     }
 
+    // ---- 内推码 API（管理后台维护：公司 -> [{code, note}]）----
+    if (url.pathname === '/api/codes') {
+      const json = (obj, status = 200) => new Response(JSON.stringify(obj), {
+        status, headers: { 'content-type': 'application/json; charset=utf-8' },
+      });
+      if (request.method === 'GET') {
+        if (!authed) return json({ error: 'unauthorized' }, 401);
+        const v = await env.HIDE_KV.get('codes');
+        return new Response(v || '{}', {
+          headers: { 'content-type': 'application/json; charset=utf-8' },
+        });
+      }
+      if (request.method === 'POST') {
+        const body = await request.json().catch(() => null);
+        const pw = (body && body.pw) || request.headers.get('x-admin-pw') || '';
+        if (!authed && pw !== PASSWORD) return json({ error: 'unauthorized' }, 401);
+        const codes = (body && typeof body.codes === 'object' && body.codes) ? body.codes : {};
+        await env.HIDE_KV.put('codes', JSON.stringify(codes));
+        return json({ ok: true, companies: Object.keys(codes).length });
+      }
+      return json({ error: 'method not allowed' }, 405);
+    }
+
     if (authed) {
       return env.ASSETS.fetch(request);
     }
