@@ -229,10 +229,13 @@ def main():
         norm_company(r['c']) for r in records
         if not r['src'].startswith('GitHub') and 2027 in r['yrs'])
 
+    # 表头残留/通用词，不参与去重匹配
+    GENERIC_NAMES = {'公司', '企业', '岗位', '招聘', '集团', '有限', '科技', '中国', '大学', '学院'}
+
     def covered_by_primary(name):
         n = norm_company(name)
-        # 至少 3 字，避免「公司」这类表头残留误匹配
-        return bool(n) and len(n) >= 3 and n in primary_blob
+        # 排除表头残留/通用词；2 字公司名（腾讯/百度等）正常参与匹配
+        return bool(n) and n not in GENERIC_NAMES and len(n) >= 2 and n in primary_blob
 
     before = len(records)
     records = [r for r in records
