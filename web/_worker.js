@@ -42,8 +42,8 @@ function loginPage(error) {
 </head>
 <body>
   <form class="card" method="POST" action="/__auth">
-    <h1>🎓 校招信息汇总</h1>
-    <p class="tip">本站为私人看板，请输入访问密码</p>
+    <h1>📡 秋招雷达</h1>
+    <p class="tip">请输入访问密码</p>
     <input type="password" name="pw" placeholder="访问密码" autofocus required>
     <button type="submit">进入</button>
     <div class="err">${error ? '密码错误，请重试' : ''}</div>
