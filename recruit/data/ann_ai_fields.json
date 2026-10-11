@@ -1,0 +1,24 @@
+{
+ "_说明": "公告正文 AI 抽取：链接 -> {major, deadline, edu}；_skip 表示抓不到/无字段",
+ "https://careers.pddglobalhr.com/campus/intern?t=zbhpJXjIVW": {
+  "_skip": "thin"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202603/dfb9ddff9de04d498515e35f64fc830a.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202603/30675e1e3ee7427abb9ca1a3544cdf62.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/zpgg/202602/t20260211_567128.html": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202603/d858034e3a3940e59abc0c9943ac50e4.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info_del.html?parentId=397&jmetazpxxid=10954": {
+  "_skip": "thin"
+ },
+ "https://www.snhrm.com/gwysydwzl/8064627.jhtml": {
+  "_skip": "fetch-fail"
+ }
+}
