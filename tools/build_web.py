@@ -423,6 +423,30 @@ def main():
         if touched:
             meta_filled += 1
 
+    # AI 推断补全：学姐表未收录的公司（初创/实验室），用 company_ai_meta.json 补 企业类型/行业类别
+    ai_path = os.path.join(ROOT, 'recruit', 'data', 'company_ai_meta.json')
+    ai_meta = {}
+    if os.path.exists(ai_path):
+        try:
+            with open(ai_path, encoding='utf-8') as f:
+                ai_meta = {norm_company(k): v for k, v in json.load(f).items() if not k.startswith('_')}
+        except Exception:
+            ai_meta = {}
+    ai_filled = 0
+    for rec in records:
+        a = ai_meta.get(norm_company(rec['c']))
+        if not a:
+            continue
+        t = False
+        if not rec['ent'] and a.get('ent'):
+            rec['ent'] = [a['ent']]
+            t = True
+        if not rec['ind'] and a.get('ind'):
+            rec['ind'] = [a['ind']]
+            t = True
+        if t:
+            ai_filled += 1
+
     # 默认排序：更新时间倒序（无更新时间的排后），同日按公司名
     records.sort(key=lambda x: (x['upd'] or '0000', x['c']), reverse=True)
 
@@ -455,6 +479,7 @@ def main():
     print('来源分布:', dict(by_src))
     print(f'公告补全 {ann_filled} 条（原本无公告链接，按公司名从学姐表补齐）')
     print(f'字段补全 {meta_filled} 条（企业类型/行业/学历/届次/专业/截止/笔试/批次，按公司名从学姐表补）')
+    print(f'AI 推断补全 {ai_filled} 条（学姐表未收录公司，模型判定的企业类型/行业）')
     print(f'免笔试 {n_free} / 含2027届 {n_2027} / 含24-25届 {n_2425} / 央国企 {n_yangqi}')
 
 

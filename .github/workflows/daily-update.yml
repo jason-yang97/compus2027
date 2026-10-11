@@ -62,6 +62,14 @@ jobs:
         if: steps.socialday.outputs.run == 'true'
         run: python tools/validate_feishu_links.py --scope social --timeout-min 35
 
+      - name: AI 推断未收录公司的企业类型/行业（新增公司，走 AI Gateway）
+        run: python tools/classify_companies.py --max 400
+        env:
+          CF_AI_TOKEN: ${{ secrets.CF_AI_TOKEN }}
+          CF_AIG_TOKEN: ${{ secrets.CF_AIG_TOKEN }}
+          CF_AI_GATEWAY: default
+        continue-on-error: true
+
       - name: 构建网页数据（读取验活结果剔除已下架岗位）
         run: python tools/build_web.py
 
@@ -76,6 +84,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add -f web/data/link_check.json recruit/data/feishu_seen.json recruit/data/article_locations.json recruit/data/vision_locations.json recruit/data/vision_meta.json recruit/data/campus_positions.json recruit/data/campus_seen.json recruit/data/referral_codes.json
+          git add -f web/data/link_check.json recruit/data/feishu_seen.json recruit/data/article_locations.json recruit/data/vision_locations.json recruit/data/vision_meta.json recruit/data/campus_positions.json recruit/data/campus_seen.json recruit/data/referral_codes.json recruit/data/company_ai_meta.json
           git diff --cached --quiet || git commit -m "验活结果更新 [skip ci]"
           git push
