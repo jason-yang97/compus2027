@@ -314,3 +314,5 @@ tr.row.resized .role, tr.row.resized .cname, tr.row.resized .loc {
 .admin-row:hover { background: var(--bg); }
 .admin-src { color: var(--brand); }
 .admin-out { height: 110px; font: 12px/1.4 ui-monospace, Consolas, monospace; border: 1px solid var(--border); border-radius: 8px; padding: 8px; resize: vertical; }
+
+.b-new { background: #fee2e2; color: #b91c1c; font-weight: 600; }

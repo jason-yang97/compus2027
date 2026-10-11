@@ -364,7 +364,7 @@ def fetch_job_detail(page, pid, token):
 
 # 飞书招聘系统企业的基础属性（企业类型, 行业类别）——表中仅此 8 家，直接标注
 FEISHU_ORG_META = {
-    'aicarrier': ('事业单位', '人工智能'),
+    'aicarrier': ('事业单位', '互联网/人工智能'),
     'xiaopeng': ('民企', '汽车制造/维修/零配件'),
     'k0fqxcszc9': ('民企', '机器人/智能制造'),
     'x2-robot': ('民企', '机器人/智能制造'),

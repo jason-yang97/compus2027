@@ -19,6 +19,7 @@ sys.path.insert(0, os.path.join(ROOT, 'tools', 'scraper'))
 from fetch_feishu_all import load_json, save_json  # noqa: E402
 
 CACHE_PATH = os.path.join(ROOT, 'recruit', 'data', 'campus_positions.json')
+SEEN_PATH = os.path.join(ROOT, 'recruit', 'data', 'campus_seen.json')
 MAX_TITLES = 1000   # 每家公司最多保留岗位数
 
 
@@ -103,6 +104,7 @@ def main():
         sys.exit('缺少 playwright')
 
     cache = load_json(CACHE_PATH, {})
+    seen = load_json(SEEN_PATH, {})
     today = date.today().isoformat()
     todo = [c for c in ADAPTERS if args.force or (cache.get(c) or {}).get('updated') != today]
     if not todo:
@@ -123,12 +125,15 @@ def main():
             for p in positions:
                 if p.get('t') and p['t'] not in seen_titles:
                     seen_titles.add(p['t'])
+                    key = f"{company}||{p.get('p') or p['t']}"
+                    p['s'] = seen.setdefault(key, today)   # 首次出现日期（用于「今日新增」标记）
                     dedup.append(p)
             cache[company] = {'positions': dedup[:MAX_TITLES], 'updated': today}
             print(f'  {company}: {len(dedup[:MAX_TITLES])} 个岗位（含地点/类型/事业群）', flush=True)
         browser.close()
 
     save_json(CACHE_PATH, cache)
+    save_json(SEEN_PATH, seen)
     print(f'完成：缓存 {len(cache)} 家公司 -> {CACHE_PATH}')
 
 

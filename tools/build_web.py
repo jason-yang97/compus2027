@@ -187,6 +187,24 @@ def main():
         with open(check_path, encoding='utf-8') as f:
             link_check = json.load(f)
 
+    # 内推码（人工维护：公司 -> [{code, note}]）
+    codes_path = os.path.join(ROOT, 'recruit', 'data', 'referral_codes.json')
+    codes_map = {}
+    if os.path.exists(codes_path):
+        try:
+            with open(codes_path, encoding='utf-8') as f:
+                codes_map = json.load(f)
+        except Exception:
+            codes_map = {}
+
+    def codes_for(company):
+        if company in codes_map:
+            return codes_map[company]
+        for k, v in codes_map.items():
+            if len(k) >= 2 and k in company:
+                return v
+        return []
+
     # 管理后台导出的隐藏清单（公司||岗位||来源）
     hidden_path = os.path.join(ROOT, 'recruit', 'data', 'hidden.json')
     hidden = set()
@@ -221,6 +239,10 @@ def main():
                         r['工作地点'] = cache[link]
                         break
             rec = build_record(r, src['name'])
+            if rec and codes_map:
+                c = codes_for(rec['c'])
+                if c:
+                    rec['codes'] = c
             if rec and hidden and f"{rec['c']}||{rec['r']}||{rec['src']}" in hidden:
                 dropped += 1
                 continue

@@ -4,6 +4,8 @@
 /* ---------- 配置：分类页签（客户端过滤预设） ---------- */
 const TABS = [
   { id: 'all',    name: '校招汇总',     match: () => true },
+  { id: 'new',    name: '今日新增',     match: r => isNew(r) },
+  { id: 'ref',    name: '内推码',       match: r => (r.codes && r.codes.length > 0) },
   { id: 'q27',    name: '27秋招',       match: r => r.yrs.includes(2027) && r.tags.includes('秋招') },
   { id: 's27',    name: '27实习汇总',   match: r => r.yrs.includes(2027) && r.tags.includes('实习') },
   { id: 'q26',    name: '26秋招+补录',  match: r => r.yrs.includes(2026) && (r.tags.includes('秋招') || r.tags.includes('补录')) },
@@ -113,6 +115,11 @@ function splitRole(text) {
   return parts.length > 1 ? parts.slice(0, 60) : [];
 }
 
+/* 今日新增：收录日期（飞书系=首次抓取日；官网岗位=首次出现日）等于本次构建日期 */
+function isNew(r) {
+  return (!!r.upd && r.upd === DATA.updated) || (!!r._s && r._s === DATA.updated);
+}
+
 /* 隐藏清单键：公司||岗位||来源（管理后台导出，构建时过滤） */
 const hideKey = r => `${r.c}||${r.r}||${r.src}`;
 
@@ -138,6 +145,7 @@ function buildWork(records) {
         o._bg = role.b || '';
         o._d = role.d || '';    // 官方岗位描述
         o._q = role.q || '';    // 官方岗位要求
+        o._s = role.s || '';    // 首次出现日期（今日新增标记）
         if (role.u) o.url = role.u;
         o.dl = '';
         o.dlRaw = '尽快投递';
@@ -417,7 +425,7 @@ function renderTable(list) {
     const applyBtn = r.url ? `<a class="link-btn link-apply" href="${esc(r.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">投递 ↗</a>` : '';
     const annBtn = r.ann ? `<a class="link-btn link-ann" href="${esc(r.ann)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">公告</a>` : '';
     const main = `<tr class="row${exp ? ' expanded' : ''}" data-idx="${idx}">
-      <td class="td-c"><div class="cname">${esc(r.c)}</div></td>
+      <td class="td-c"><div class="cname">${isNew(r) ? '<span class="badge b-new">NEW</span> ' : ''}${esc(r.c)}</div></td>
       <td class="td-r"><div class="role">${esc(r.r) || '—'}</div></td>
       <td class="td-loc"><div class="loc">${esc(r.city.join(' / ')) || '—'}</div></td>
       <td class="td-yrs">${esc(yrsText(r))}</td>
@@ -444,6 +452,7 @@ function detailHtml(idx) {
     <dt>备注</dt><dd>${esc(r.note) || '—'}</dd>
     <dt>原始批次</dt><dd>${esc(r.batch) || '—'}｜笔试说明：${esc(r.written) || '—'}</dd>
     ${r._bg ? `<dt>事业群</dt><dd>${esc(r._bg)}</dd>` : ''}
+    ${(r.codes && r.codes.length) ? `<dt>内推码</dt><dd>${r.codes.map(c => `${esc(c.code)}${c.note ? '（' + esc(c.note) + '）' : ''}`).join('；')}</dd>` : ''}
     <dt>时间</dt><dd>开始 ${esc(r.start || '—')}｜更新 ${esc(r.upd || '—')}｜截止 ${esc(r.dlRaw || '—')}</dd>
     <dt>来源</dt><dd>${esc(r.src)}</dd>
   </dl></td></tr>`;
