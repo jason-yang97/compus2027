@@ -447,6 +447,36 @@ def main():
         if t:
             ai_filled += 1
 
+    # 公告正文 AI 抽取补全：专业要求/学历/截止时间（仅对抓得到正文的公告，链接匹配）
+    af_path = os.path.join(ROOT, 'recruit', 'data', 'ann_ai_fields.json')
+    ann_fields = {}
+    if os.path.exists(af_path):
+        try:
+            with open(af_path, encoding='utf-8') as f:
+                ann_fields = json.load(f)
+        except Exception:
+            ann_fields = {}
+    af_filled = 0
+    for rec in records:
+        f = ann_fields.get(rec.get('ann'))
+        if not f or f.get('_skip'):
+            continue
+        t = False
+        if not rec['major'] and f.get('major'):
+            rec['major'] = f['major'][:500]
+            t = True
+        if not rec['edu'] and f.get('edu'):
+            rec['edu'] = split_edu(f['edu'])
+            t = True
+        if f.get('deadline') and (not rec['dlRaw'] or rec['dlRaw'] in ('尽快投递', '招满为止')):
+            iso = norm_date(f['deadline'])
+            if iso and iso >= today_iso:
+                rec['dlRaw'] = iso
+                rec['dl'] = iso
+                t = True
+        if t:
+            af_filled += 1
+
     # 默认排序：更新时间倒序（无更新时间的排后），同日按公司名
     records.sort(key=lambda x: (x['upd'] or '0000', x['c']), reverse=True)
 
@@ -480,6 +510,7 @@ def main():
     print(f'公告补全 {ann_filled} 条（原本无公告链接，按公司名从学姐表补齐）')
     print(f'字段补全 {meta_filled} 条（企业类型/行业/学历/届次/专业/截止/笔试/批次，按公司名从学姐表补）')
     print(f'AI 推断补全 {ai_filled} 条（学姐表未收录公司，模型判定的企业类型/行业）')
+    print(f'公告抽取补全 {af_filled} 条（政府/企业官网公告正文抽取的专业/学历/截止）')
     print(f'免笔试 {n_free} / 含2027届 {n_2027} / 含24-25届 {n_2425} / 央国企 {n_yangqi}')
 
 

@@ -70,6 +70,14 @@ jobs:
           CF_AI_GATEWAY: default
         continue-on-error: true
 
+      - name: AI 抽取公告正文字段（政府/企业官网，新增链接，走 AI Gateway）
+        run: python tools/extract_announcements.py --max 300
+        env:
+          CF_AI_TOKEN: ${{ secrets.CF_AI_TOKEN }}
+          CF_AIG_TOKEN: ${{ secrets.CF_AIG_TOKEN }}
+          CF_AI_GATEWAY: default
+        continue-on-error: true
+
       - name: 构建网页数据（读取验活结果剔除已下架岗位）
         run: python tools/build_web.py
 
@@ -84,6 +92,11 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add -f web/data/link_check.json recruit/data/feishu_seen.json recruit/data/article_locations.json recruit/data/vision_locations.json recruit/data/vision_meta.json recruit/data/campus_positions.json recruit/data/campus_seen.json recruit/data/referral_codes.json recruit/data/company_ai_meta.json
+          for f in web/data/link_check.json recruit/data/feishu_seen.json recruit/data/article_locations.json \
+                   recruit/data/vision_locations.json recruit/data/vision_meta.json recruit/data/campus_positions.json \
+                   recruit/data/campus_seen.json recruit/data/referral_codes.json \
+                   recruit/data/company_ai_meta.json recruit/data/ann_ai_fields.json; do
+            [ -f "$f" ] && git add -f "$f"
+          done
           git diff --cached --quiet || git commit -m "验活结果更新 [skip ci]"
           git push
