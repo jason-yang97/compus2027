@@ -255,8 +255,15 @@ def github_sources():
                 pos_applied.add(r['公司'])
                 r['招聘岗位'] = ' / '.join(titles)[:40000]
                 r['岗位来源'] = '官网'
+                # 官网岗位无截止日期：统一标「尽快投递」
+                if not (r.get('截止时间') or '').strip():
+                    r['截止时间'] = '尽快投递'
+                # 批次：公告提到提前批则标注（秋招提前批）
+                note_txt = f"{r.get('备注') or ''} {r.get('招聘岗位') or ''}"
+                if '提前批' in note_txt:
+                    r['批次'] = '秋招提前批'
                 if positions:
-                    r['官网岗位'] = positions   # 逐岗位的结构化信息（地点/类型/事业群）
+                    r['官网岗位'] = positions   # 逐岗位的结构化信息（地点/类型/事业群/链接）
     save_json(LOC_CACHE_PATH, loc_cache)
     filled = sum(1 for s in sources for r in s['rows'] if r['工作地点'])
     print(f'  工作地点补全：{filled} 条有地点', flush=True)

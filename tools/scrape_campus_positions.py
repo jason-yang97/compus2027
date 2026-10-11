@@ -42,7 +42,9 @@ def fetch_tencent(page):
             t: x.positionTitle,
             c: (x.workCities || '').trim().split(/\\s+/).filter(Boolean).join(' / '),
             k: x.recruitLabelName || x.projectName || '',
-            b: (x.bgs || '').trim().split(/\\s+/).filter(Boolean).join(' ')
+            b: (x.bgs || '').trim().split(/\\s+/).filter(Boolean).join(' '),
+            // 岗位链接：腾讯无单岗位 URL，用关键词直达（点击后只显示该岗位）
+            u: 'https://join.qq.com/post.html?keyword=' + encodeURIComponent(x.positionTitle)
           });
         }
         if (lst.length < 200) break;

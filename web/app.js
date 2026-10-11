@@ -62,6 +62,7 @@ let state = {
   sort: 'upd',
   full: false,
   split: true,     // 岗位拆分显示（把一行里的多个岗位展开成独立行）
+  cityKw: '',      // 工作地点关键词（空格分隔，任一包含）
   page: 1,
 };
 const expanded = new Set();
@@ -114,14 +115,18 @@ function buildWork(records) {
   if (!state.split) return records;
   const out = [];
   for (const r of records) {
-    // 官网岗位：逐岗位结构化数据（自带地点/类型/事业群）
+    // 官网岗位：逐岗位结构化数据（自带地点/类型/事业群/岗位链接）
     if (r.roles && r.roles.length) {
+      const extra = (r.batch || '').includes('提前批') ? ['提前批'] : [];
       for (const role of r.roles) {
         const o = Object.create(r);
         o.r = role.t || '';
         if (role.c) o.city = role.c.split(' / ').filter(Boolean);
-        o.tags = [(role.k || '').includes('实习') ? '实习' : '校招'];
+        o.tags = [(role.k || '').includes('实习') ? '实习' : '秋招'].concat(extra);
         o._bg = role.b || '';
+        if (role.u) o.url = role.u;
+        o.dl = '';
+        o.dlRaw = '尽快投递';
         out.push(o);
       }
       continue;
@@ -191,6 +196,7 @@ function matchFilters(r) {
   if (s.ent.size && !r.ent.some(v => s.ent.has(v))) return false;
   if (s.ind.size && !r.ind.some(v => s.ind.has(v))) return false;
   if (s.city.size && !r.city.some(v => s.city.has(v))) return false;
+  if (!matchCityKw(r)) return false;
   if (s.yrs.size && !r.yrs.some(y => s.yrs.has(String(y)))) return false;
   if (s.tags.size && !r.tags.some(t => s.tags.has(t))) return false;
   if (s.edu.size && !r.edu.some(v => s.edu.has(v))) return false;
@@ -198,6 +204,31 @@ function matchFilters(r) {
   if (s.dl.size && !s.dl.has(dlBucket(r))) return false;
   if (!inRange(r.dl, state.range.dlFrom, state.range.dlTo)) return false;
   if (!matchStartRange(r)) return false;
+  if (state.major) {
+    const hay = `${r.major} ${r.r} ${r.note}`.toLowerCase();
+    for (const kw of state.major.toLowerCase().split(/\s+/)) {
+      if (kw && !hay.includes(kw)) return false;
+    }
+  }
+  if (state.q) {
+    const hay = `${r.c} ${r.r} ${r.note} ${r.major} ${r.ind.join(' ')} ${r.ent.join(' ')} ${r.edu.join(' ')} ${r.batch} ${r.written} ${r.src}`.toLowerCase();
+    for (const kw of state.q.toLowerCase().split(/\s+/)) {
+      if (kw && !hay.includes(kw)) return false;
+    }
+  }
+  return true;
+}
+
+/* 工作地点关键词：多个关键词用空格分隔，任一包含即可 */
+function matchCityKw(r) {
+  if (!state.cityKw) return true;
+  const hay = r.city.join(' ');
+  return state.cityKw.split(/\s+/).some(kw => kw && hay.includes(kw));
+}
+
+/* 关键词/搜索条件（用于筛选器计数，反映当前搜索结果） */
+function matchSearchOnly(r) {
+  if (!matchCityKw(r)) return false;
   if (state.major) {
     const hay = `${r.major} ${r.r} ${r.note}`.toLowerCase();
     for (const kw of state.major.toLowerCase().split(/\s+/)) {
@@ -296,22 +327,49 @@ function panelExtra(f) {
     </div>
     <div class="dd-note">按记录「开始时间」筛选；未标注开始时间的记录不会被排除，会排在结果最后</div>`;
   }
+  if (f.key === 'city') {
+    return `<div class="dd-dates">
+      <label>关键词 <input type="search" data-citykw placeholder="如：深圳 北京" value="${esc(state.cityKw)}"></label>
+    </div>
+    <div class="dd-note">按包含匹配，空格分隔多个关键词（任一包含即命中），与上方勾选叠加</div>`;
+  }
   return '';
+}
+
+/* 当前搜索结果下的各筛选维度计数（随搜索/页签/关键词变化，反映真实可选数量） */
+let countsNow = {};
+function computeCountsNow() {
+  countsNow = {};
+  for (const f of FILTER_KEYS) if (!f.special) countsNow[f.key] = new Map();
+  countsNow.test = new Map();
+  countsNow.dl = new Map();
+  const bump = (m, v) => m.set(v, (m.get(v) || 0) + 1);
+  for (const r of WORK) {
+    if (!matchTab(r) || !matchSearchOnly(r)) continue;
+    for (const f of FILTER_KEYS) {
+      if (f.special) continue;
+      const vals = Array.isArray(r[f.key]) ? r[f.key] : [r[f.key]];
+      for (const v of vals) bump(countsNow[f.key], String(v));
+    }
+    bump(countsNow.test, testBucket(r));
+    bump(countsNow.dl, dlBucket(r));
+  }
 }
 
 function renderDropdownList(key, kw = '') {
   const listEl = document.querySelector(`[data-dlist="${key}"]`);
   if (!listEl) return;
   const sel = state.sel[key];
+  const cnt = v => (countsNow[key] || new Map()).get(v) || 0;
   let items;
   if (key === 'test') {
-    items = TEST_OPTIONS.map(o => ({ v: o.v, name: o.name, n: tabCountBy(testBucket, o.v) }));
+    items = TEST_OPTIONS.map(o => ({ v: o.v, name: o.name, n: cnt(o.v) }));
   } else if (key === 'dl') {
-    items = DL_OPTIONS.map(o => ({ v: o.v, name: o.name, n: tabCountBy(dlBucket, o.v) }));
+    items = DL_OPTIONS.map(o => ({ v: o.v, name: o.name, n: cnt(o.v) }));
   } else {
     items = (FACETS[key] || []).map(o => {
       const isYear = /^\d{4}$/.test(o.v);
-      return { v: o.v, name: key === 'yrs' && isYear ? o.v + '届' : o.v, n: o.n };
+      return { v: o.v, name: key === 'yrs' && isYear ? o.v + '届' : o.v, n: cnt(o.v) };
     });
   }
   if (kw) items = items.filter(i => i.name.toLowerCase().includes(kw.toLowerCase()));
@@ -401,6 +459,13 @@ function refresh(resetPage = true) {
   const list = filteredRecords();
   sortRecords(list);
   viewList = list;
+  computeCountsNow();
+  // 下拉里的计数随当前搜索结果更新
+  for (const f of FILTER_KEYS) {
+    if (f.special === 'start') continue;
+    const inp = document.querySelector(`[data-dsearch="${f.key}"]`);
+    renderDropdownList(f.key, inp ? inp.value.trim() : '');
+  }
   renderMeta(list.length);
   renderTable(list);
   renderPager(list.length);
@@ -582,10 +647,15 @@ function bindEvents() {
   });
   document.addEventListener('click', () => document.querySelectorAll('.dd.open').forEach(d => d.classList.remove('open')));
 
-  // 下拉内搜索
+  // 下拉内搜索 / 日期范围 / 地点关键词
   $('filters').addEventListener('input', e => {
-    if (e.target.closest('.dd-search')) {
+    if (e.target.closest('.dd-search') && e.target.dataset.dsearch) {
       renderDropdownList(e.target.dataset.dsearch, e.target.value.trim());
+      return;
+    }
+    if (e.target.dataset.citykw !== undefined) {
+      state.cityKw = e.target.value.trim();
+      refresh();
       return;
     }
     if (e.target.dataset.range !== undefined) {
@@ -632,6 +702,7 @@ function bindEvents() {
 function resetFilters() {
   state.q = '';
   state.major = '';
+  state.cityKw = '';
   $('search').value = '';
   for (const k in state.sel) state.sel[k].clear();
   for (const k in state.range) state.range[k] = '';
