@@ -128,3 +128,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# 触发网关连通性探测
