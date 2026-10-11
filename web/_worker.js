@@ -23,7 +23,7 @@ function loginPage(error) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>访问验证 · 校招信息汇总</title>
+<title>访问验证 · 秋招雷达</title>
 <style>
   body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
          background:#f5f7fa; font:14px/1.6 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif; }
