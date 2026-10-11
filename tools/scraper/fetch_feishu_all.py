@@ -198,6 +198,9 @@ def github_sources():
         entries = parse_entries(content)
         rows = []
         for company, title, link, update, note, _kind in entries:
+            # 跳过表格表头残留行（公司列是「公司/企业」这类词）
+            if company.strip() in ('公司', '企业', '招聘公司', '岗位', '招聘岗位') or not title.strip():
+                continue
             # 届次/批次从标题与备注文本提取（备注里常写「27届校招」「实习」等）
             rounds, _edu = extract_rounds_degrees(f'{title} {note}')
             rt = f'{title} {note}'

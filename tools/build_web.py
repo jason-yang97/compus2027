@@ -230,7 +230,8 @@ def main():
 
     def covered_by_primary(name):
         n = norm_company(name)
-        return bool(n) and len(n) >= 2 and n in primary_blob
+        # 至少 3 字，避免「公司」这类表头残留误匹配
+        return bool(n) and len(n) >= 3 and n in primary_blob
 
     before = len(records)
     records = [r for r in records
