@@ -71,44 +71,42 @@ def download(url):
 
 
 def ask_model(token, img_bytes):
-    """返回模型输出的全部文本（含思考内容），失败返回 ''。
+    """调用视觉模型，返回输出文本（含思考内容）；失败返回 ''。
 
-    设置 CF_AI_GATEWAY（如 default）时经 AI Gateway 调用，便于按项目统计与缓存；
-    网关不可用时自动回退直连 Workers AI。
+    设置 CF_AI_GATEWAY（如 default）时经 AI Gateway 调用（便于按项目统计）；
+    额度耗尽会抛出 RuntimeError 让上层优雅停止。
     """
     b64 = base64.b64encode(img_bytes).decode()
     body = json.dumps({'messages': [{'role': 'user', 'content': [
         {'type': 'text', 'text': PROMPT},
         {'type': 'image_url', 'image_url': {'url': 'data:image/jpeg;base64,' + b64}}]}],
         'max_tokens': 3000}).encode()
-    direct = f'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/{MODEL}'
-    urls = [direct]
+    url = (f'https://gateway.ai.cloudflare.com/v1/{ACCOUNT_ID}/{GATEWAY}/workers-ai/{MODEL}'
+           if GATEWAY else
+           f'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/{MODEL}')
+    headers = {'Authorization': f'Bearer {token}', 'Content-Type': 'application/json',
+               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36'}
     if GATEWAY:
-        urls = [f'https://gateway.ai.cloudflare.com/v1/{ACCOUNT_ID}/{GATEWAY}/workers-ai/{MODEL}', direct]
-    for url in urls:
-        headers = {'Authorization': f'Bearer {token}', 'Content-Type': 'application/json',
-                   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36'}
-        if GATEWAY and 'gateway.ai.cloudflare.com' in url:
-            # 项目归属标签（AI Gateway 日志里可按 app 区分）
-            headers['cf-aig-metadata'] = json.dumps({'app': 'compus2027'})
-            if GW_TOKEN:
-                headers['cf-aig-authorization'] = f'Bearer {GW_TOKEN}'
-        req = urllib.request.Request(url, data=body, headers=headers)
-        try:
-            with urllib.request.urlopen(req, timeout=300) as resp:
-                j = json.loads(resp.read().decode('utf-8', errors='replace'))
-            if GATEWAY and 'gateway.ai.cloudflare.com' in url:
-                GATEWAY_USED['count'] += 1
-            m = ((j.get('result') or {}).get('choices') or [{}])[0].get('message', {})
-            return (m.get('content') or '') + ' ' + (m.get('reasoning_content') or '')
-        except urllib.error.HTTPError as e:
-            detail = e.read()[:300]
-            if e.code in (429, 400) and b'neurons' in detail.lower():
-                raise RuntimeError('免费额度用尽')
-            continue   # 换下一个地址（网关失败回退直连）
-        except Exception:
-            continue
-    return ''
+        headers['cf-aig-metadata'] = json.dumps({'app': 'compus2027'})
+        if GW_TOKEN:
+            headers['cf-aig-authorization'] = f'Bearer {GW_TOKEN}'
+    req = urllib.request.Request(url, data=body, headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=300) as resp:
+            j = json.loads(resp.read().decode('utf-8', errors='replace'))
+        if GATEWAY:
+            GATEWAY_USED['count'] += 1
+        m = ((j.get('result') or {}).get('choices') or [{}])[0].get('message', {})
+        return (m.get('content') or '') + ' ' + (m.get('reasoning_content') or '')
+    except urllib.error.HTTPError as e:
+        detail = e.read()[:300]
+        if b'neurons' in detail.lower() or b'quota' in detail.lower():
+            raise RuntimeError('免费额度用尽')
+        if e.code in (401, 403) and not GW_TOKEN:
+            print('  提示：网关返回 401/403，可能需要在仓库加 CF_AIG_TOKEN 网关令牌', flush=True)
+        return ''
+    except Exception:
+        return ''
 
 
 def cities_from_text(text):
