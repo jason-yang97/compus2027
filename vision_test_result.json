@@ -9,6 +9,6 @@
  "openrouter": {},
  "gateway_probe": {
   "ok": false,
-  "error": "HTTP 403: error code: 1010\n"
+  "error": "HTTP 401: {\"success\":false,\"result\":[],\"messages\":[],\"error\":[{\"code\":2009,\"message\":\"Unauthorized\"}],\"name\":\"AiGatewayError\",\"httpCode\":401,\"internalCode\":2009,\"message\":\"Unauthorized\",\"description\":\"Unauthorized\"}"
  }
 }
