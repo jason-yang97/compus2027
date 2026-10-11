@@ -28,6 +28,8 @@ MODEL = '@cf/google/gemma-4-26b-a4b-it'
 # 可选：设置 CF_AI_GATEWAY=default 则经 AI Gateway 调用（可在控制台看到逐次请求日志），否则直连 Workers AI
 GATEWAY = os.environ.get('CF_AI_GATEWAY', '').strip()
 VISION_CACHE = os.path.join(ROOT, 'recruit', 'data', 'vision_locations.json')
+VISION_META = os.path.join(ROOT, 'recruit', 'data', 'vision_meta.json')
+GATEWAY_USED = {'count': 0}   # 记录经网关成功的调用数（用于确认路由生效）
 TOKEN_FILE = os.path.join(ROOT, '.secrets', 'cf_ai_token.txt.txt')
 PROMPT = ('这是中国公司的招聘公告图片。请快速找出图中实际印出的招聘公司名和工作城市，'
           '一句话给出结论（城市用顿号分隔）；没有城市就写"无城市信息"。不要长篇分析。')
@@ -52,28 +54,41 @@ def download(url):
 
 
 def ask_model(token, img_bytes):
-    """返回模型输出的全部文本（含思考内容），失败返回 ''。"""
+    """返回模型输出的全部文本（含思考内容），失败返回 ''。
+
+    设置 CF_AI_GATEWAY（如 default）时经 AI Gateway 调用，便于按项目统计与缓存；
+    网关不可用时自动回退直连 Workers AI。
+    """
     b64 = base64.b64encode(img_bytes).decode()
     body = json.dumps({'messages': [{'role': 'user', 'content': [
         {'type': 'text', 'text': PROMPT},
         {'type': 'image_url', 'image_url': {'url': 'data:image/jpeg;base64,' + b64}}]}],
         'max_tokens': 3000}).encode()
-    req = urllib.request.Request(
-        (f'https://gateway.ai.cloudflare.com/v1/{ACCOUNT_ID}/{GATEWAY}/workers-ai/{MODEL}'
-         if GATEWAY else
-         f'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/{MODEL}'),
-        data=body, headers={'Authorization': f'Bearer {token}', 'Content-Type': 'application/json'})
-    try:
-        with urllib.request.urlopen(req, timeout=300) as resp:
-            j = json.loads(resp.read().decode('utf-8', errors='replace'))
-        m = ((j.get('result') or {}).get('choices') or [{}])[0].get('message', {})
-        return (m.get('content') or '') + ' ' + (m.get('reasoning_content') or '')
-    except urllib.error.HTTPError as e:
-        if e.code in (429, 400) and b'neurons' in e.read()[:300].lower():
-            raise RuntimeError('免费额度用尽')
-        return ''
-    except Exception:
-        return ''
+    direct = f'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/{MODEL}'
+    urls = [direct]
+    if GATEWAY:
+        urls = [f'https://gateway.ai.cloudflare.com/v1/{ACCOUNT_ID}/{GATEWAY}/workers-ai/{MODEL}', direct]
+    for url in urls:
+        headers = {'Authorization': f'Bearer {token}', 'Content-Type': 'application/json'}
+        if GATEWAY and 'gateway.ai.cloudflare.com' in url:
+            # 项目归属标签（AI Gateway 日志里可按 app 区分）
+            headers['cf-aig-metadata'] = json.dumps({'app': 'compus2027'})
+        req = urllib.request.Request(url, data=body, headers=headers)
+        try:
+            with urllib.request.urlopen(req, timeout=300) as resp:
+                j = json.loads(resp.read().decode('utf-8', errors='replace'))
+            if GATEWAY and 'gateway.ai.cloudflare.com' in url:
+                GATEWAY_USED['count'] += 1
+            m = ((j.get('result') or {}).get('choices') or [{}])[0].get('message', {})
+            return (m.get('content') or '') + ' ' + (m.get('reasoning_content') or '')
+        except urllib.error.HTTPError as e:
+            detail = e.read()[:300]
+            if e.code in (429, 400) and b'neurons' in detail.lower():
+                raise RuntimeError('免费额度用尽')
+            continue   # 换下一个地址（网关失败回退直连）
+        except Exception:
+            continue
+    return ''
 
 
 def cities_from_text(text):
@@ -148,7 +163,20 @@ def main():
     with open(VISION_CACHE, 'w', encoding='utf-8') as f:
         json.dump(vision_cache, f, ensure_ascii=False)
     hit = sum(1 for v in vision_cache.values() if v)
-    print(f'完成：本次 {done} 篇，缓存累计 {len(vision_cache)} 篇，其中有地点 {hit} 篇')
+    # 记录本次运行的调用路径（网关是否生效），随仓库同步便于核对
+    try:
+        import datetime
+        with open(VISION_META, 'w', encoding='utf-8') as f:
+            json.dump({'gateway': GATEWAY or '(直连)',
+                       'gateway_calls': GATEWAY_USED['count'],
+                       'articles_processed': done,
+                       'cache_total': len(vision_cache),
+                       'cache_with_location': hit,
+                       'last_run': datetime.datetime.now().isoformat(timespec='seconds')},
+                      f, ensure_ascii=False, indent=1)
+    except Exception:
+        pass
+    print(f'完成：本次 {done} 篇（经网关调用 {GATEWAY_USED["count"]} 次），缓存累计 {len(vision_cache)} 篇，其中有地点 {hit} 篇')
 
 
 if __name__ == '__main__':
