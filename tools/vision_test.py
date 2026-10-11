@@ -83,6 +83,7 @@ def probe_gateway(key):
                        'max_tokens': 200}).encode()
     req = urllib.request.Request(url, data=body, headers={
         'Authorization': f'Bearer {key}', 'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36',
         'cf-aig-metadata': json.dumps({'app': 'compus2027'})})
     try:
         with urllib.request.urlopen(req, timeout=90) as resp:

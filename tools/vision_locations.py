@@ -69,7 +69,8 @@ def ask_model(token, img_bytes):
     if GATEWAY:
         urls = [f'https://gateway.ai.cloudflare.com/v1/{ACCOUNT_ID}/{GATEWAY}/workers-ai/{MODEL}', direct]
     for url in urls:
-        headers = {'Authorization': f'Bearer {token}', 'Content-Type': 'application/json'}
+        headers = {'Authorization': f'Bearer {token}', 'Content-Type': 'application/json',
+                   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36'}
         if GATEWAY and 'gateway.ai.cloudflare.com' in url:
             # 项目归属标签（AI Gateway 日志里可按 app 区分）
             headers['cf-aig-metadata'] = json.dumps({'app': 'compus2027'})
