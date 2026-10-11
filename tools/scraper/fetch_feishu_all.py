@@ -249,11 +249,14 @@ def github_sources():
                 r['工作地点'] = loc_cache.get(link, '') or vision_cache.get(link, '')
             # 官网岗位（如腾讯）替换公司级标题（每家公司只应用一次）
             entry = pos_cache.get(r['公司']) or {}
-            titles = entry.get('titles') or []
+            positions = entry.get('positions') or []
+            titles = [p.get('t') for p in positions if p.get('t')] if positions else (entry.get('titles') or [])
             if titles and r['公司'] not in pos_applied:
                 pos_applied.add(r['公司'])
                 r['招聘岗位'] = ' / '.join(titles)[:40000]
                 r['岗位来源'] = '官网'
+                if positions:
+                    r['官网岗位'] = positions   # 逐岗位的结构化信息（地点/类型/事业群）
     save_json(LOC_CACHE_PATH, loc_cache)
     filled = sum(1 for s in sources for r in s['rows'] if r['工作地点'])
     print(f'  工作地点补全：{filled} 条有地点', flush=True)

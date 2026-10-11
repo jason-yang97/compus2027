@@ -156,6 +156,7 @@ def build_record(r, src):
         'upd': norm_date(r.get('更新时间')),
         'src': src,
         'pos': r.get('岗位来源') or '',
+        'roles': r.get('官网岗位') or [],
     }
     return rec
 

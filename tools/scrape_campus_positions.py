@@ -36,7 +36,15 @@ def fetch_tencent(page):
             positionFidList: [], pageIndex: pageIndex, pageSize: 200})});
         const j = await r.json();
         const lst = ((j.data || {}).positionList) || [];
-        for (const x of lst) if (x.positionTitle) out.push(x.positionTitle);
+        for (const x of lst) {
+          if (!x.positionTitle) continue;
+          out.push({
+            t: x.positionTitle,
+            c: (x.workCities || '').trim().split(/\\s+/).filter(Boolean).join(' / '),
+            k: x.recruitLabelName || x.projectName || '',
+            b: (x.bgs || '').trim().split(/\\s+/).filter(Boolean).join(' ')
+          });
+        }
         if (lst.length < 200) break;
       }
       return out;
@@ -72,13 +80,17 @@ def main():
         page = browser.new_page(viewport={'width': 1600, 'height': 1000})
         for company in todo:
             try:
-                titles = ADAPTERS[company](page)
+                positions = ADAPTERS[company](page)
             except Exception as e:
                 print(f'  [跳过] {company}: {type(e).__name__}: {e}', flush=True)
                 continue
-            titles = list(dict.fromkeys(t for t in titles if t))[:MAX_TITLES]
-            cache[company] = {'titles': titles, 'updated': today}
-            print(f'  {company}: {len(titles)} 个岗位', flush=True)
+            seen_titles, dedup = set(), []
+            for p in positions:
+                if p.get('t') and p['t'] not in seen_titles:
+                    seen_titles.add(p['t'])
+                    dedup.append(p)
+            cache[company] = {'positions': dedup[:MAX_TITLES], 'updated': today}
+            print(f'  {company}: {len(dedup[:MAX_TITLES])} 个岗位（含地点/类型/事业群）', flush=True)
         browser.close()
 
     save_json(CACHE_PATH, cache)

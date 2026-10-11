@@ -114,6 +114,18 @@ function buildWork(records) {
   if (!state.split) return records;
   const out = [];
   for (const r of records) {
+    // 官网岗位：逐岗位结构化数据（自带地点/类型/事业群）
+    if (r.roles && r.roles.length) {
+      for (const role of r.roles) {
+        const o = Object.create(r);
+        o.r = role.t || '';
+        if (role.c) o.city = role.c.split(' / ').filter(Boolean);
+        o.tags = [(role.k || '').includes('实习') ? '实习' : '校招'];
+        o._bg = role.b || '';
+        out.push(o);
+      }
+      continue;
+    }
     const parts = splitRole(r.r);
     if (!parts.length) { out.push(r); continue; }
     for (const p of parts) {
@@ -357,6 +369,7 @@ function detailHtml(idx) {
     <dt>专业要求</dt><dd>${esc(r.major) || '（表内未填写具体专业，可参考岗位描述）'}</dd>
     <dt>备注</dt><dd>${esc(r.note) || '—'}</dd>
     <dt>原始批次</dt><dd>${esc(r.batch) || '—'}｜笔试说明：${esc(r.written) || '—'}</dd>
+    ${r._bg ? `<dt>事业群</dt><dd>${esc(r._bg)}</dd>` : ''}
     <dt>时间</dt><dd>开始 ${esc(r.start || '—')}｜更新 ${esc(r.upd || '—')}｜截止 ${esc(r.dlRaw || '—')}</dd>
     <dt>来源</dt><dd>${esc(r.src)}</dd>
   </dl></td></tr>`;
