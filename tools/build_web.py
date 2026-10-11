@@ -219,6 +219,24 @@ def main():
                 continue
             records.append(rec)
 
+    # 去重：GitHub 汇总源的记录，若该公司已被其他源以 2027 届收录则跳过（避免重复）
+    def norm_company(name):
+        t = re.sub(r'[（(【\[].*?[）)】\]]', '', name or '')
+        return re.sub(r'\s+', '', t)
+
+    primary_blob = '|'.join(
+        norm_company(r['c']) for r in records
+        if not r['src'].startswith('GitHub') and 2027 in r['yrs'])
+
+    def covered_by_primary(name):
+        n = norm_company(name)
+        return bool(n) and len(n) >= 2 and n in primary_blob
+
+    before = len(records)
+    records = [r for r in records
+               if not (r['src'].startswith('GitHub') and covered_by_primary(r['c']))]
+    dedup_dropped = before - len(records)
+
     # 默认排序：更新时间倒序（无更新时间的排后），同日按公司名
     records.sort(key=lambda x: (x['upd'] or '0000', x['c']), reverse=True)
 
@@ -240,7 +258,7 @@ def main():
     n_yangqi = sum(1 for x in records if '央国企' in x['ent'])
     from collections import Counter
     by_src = Counter(x['src'] for x in records)
-    print(f'有效记录 {len(records)} 条（丢弃空行 {dropped}，验活剔除下架 {dead}），输出 {out_path}（{size_mb:.1f} MB）')
+    print(f'有效记录 {len(records)} 条（丢弃空行 {dropped}，验活剔除下架 {dead}，去重剔除 {dedup_dropped}），输出 {out_path}（{size_mb:.1f} MB）')
     print('来源分布:', dict(by_src))
     print(f'免笔试 {n_free} / 含2027届 {n_2027} / 含24-25届 {n_2425} / 央国企 {n_yangqi}')
 
