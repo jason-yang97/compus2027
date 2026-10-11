@@ -259,7 +259,7 @@ def main():
     # 去重：GitHub 汇总源的记录，若该公司已被其他源以 2027 届收录则跳过（避免重复）
     def norm_company(name):
         t = re.sub(r'[（(【\[].*?[）)】\]]', '', name or '')
-        return re.sub(r'\s+', '', t)
+        return re.sub(r'\s+', '', t).lower()
 
     primary_blob = '|'.join(
         norm_company(r['c']) for r in records
@@ -278,6 +278,46 @@ def main():
                if not (r['src'].startswith('GitHub') and r.get('pos') != '官网'
                        and covered_by_primary(r['c']))]
     dedup_dropped = before - len(records)
+
+    # 公告补全：GitHub 等源本身没有公告链接，按公司名从学姐表（几乎每行都有公告）补上
+    ann_map = {}
+    for s in sources:
+        for row in s['rows']:
+            a = (row.get('公告链接') or '').strip()
+            k = norm_company(row.get('公司'))
+            if a and k and k not in ann_map:
+                ann_map[k] = a
+
+    # 公司名实体后缀，匹配公告时剥掉（携程旅行 ↔ 携程集团）
+    ANN_SUFFIX = re.compile(r'(集团|公司|有限|股份|控股|旅行网|旅行|旅游)+$')
+
+    def ann_core(key):
+        return ANN_SUFFIX.sub('', key)
+
+    def ann_for(company):
+        key = norm_company(company)
+        if not key:
+            return ''
+        if key in ann_map:
+            return ann_map[key]
+        # 剥掉实体后缀后相等（携程旅行 → 携程集团、宇树科技股份有限公司 → 宇树科技）。
+        # 不做包含式模糊匹配：避免把 A 公司的公告安到同名的子团队上。
+        core = ann_core(key)
+        if core and core != key:
+            if core in ann_map:
+                return ann_map[core]
+            for k in ann_map:
+                if ann_core(k) == core:
+                    return ann_map[k]
+        return ''
+
+    ann_filled = 0
+    for rec in records:
+        if not rec.get('ann'):
+            a = ann_for(rec['c'])
+            if a:
+                rec['ann'] = a
+                ann_filled += 1
 
     # 默认排序：更新时间倒序（无更新时间的排后），同日按公司名
     records.sort(key=lambda x: (x['upd'] or '0000', x['c']), reverse=True)
@@ -310,6 +350,7 @@ def main():
     by_src = Counter(x['src'] for x in records)
     print(f'有效记录 {len(records)} 条（丢弃空行 {dropped}，验活剔除下架 {dead}，去重剔除 {dedup_dropped}），输出 {out_path}（{size_mb:.1f} MB）')
     print('来源分布:', dict(by_src))
+    print(f'公告补全 {ann_filled} 条（原本无公告链接，按公司名从学姐表补齐）')
     print(f'免笔试 {n_free} / 含2027届 {n_2027} / 含24-25届 {n_2425} / 央国企 {n_yangqi}')
 
 
