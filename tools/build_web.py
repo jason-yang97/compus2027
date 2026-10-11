@@ -282,10 +282,18 @@ def main():
     # 默认排序：更新时间倒序（无更新时间的排后），同日按公司名
     records.sort(key=lambda x: (x['upd'] or '0000', x['c']), reverse=True)
 
+    # 「今日新增」基准日：以「开始时间」为准，取数据中最新的一天（不超过构建日）。
+    # 学姐表发布与云端构建时间异步，若只认构建当天会漏掉当天稍晚发布的批次，
+    # 因此用数据里最新的开始时间作为基准日；官网岗位另用首次抓取日单独判定。
+    build_day = date.today().isoformat()
+    starts = [r['start'] for r in records if r.get('start') and r['start'] <= build_day]
+    new_ref = max(starts) if starts else build_day
+
     os.makedirs(OUT_DIR, exist_ok=True)
     out_path = os.path.join(OUT_DIR, 'records.json')
     payload = {
-        'updated': date.today().isoformat(),
+        'updated': build_day,
+        'newRef': new_ref,
         'total': len(records),
         'sources': [{'name': s['name'], 'url': s['url']} for s in sources],
         'records': records,

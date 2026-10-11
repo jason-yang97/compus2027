@@ -129,9 +129,11 @@ function codesFor(rec) {
   return [];
 }
 
-/* 今日新增：收录日期（飞书系=首次抓取日；官网岗位=首次出现日）等于本次构建日期 */
+/* 今日新增：开始时间等于基准日 newRef（=数据中最新开始时间）才算新增；
+   官网岗位没有开始时间，用其首次抓取日 _s 对比构建当天 updated */
 function isNew(r) {
-  return (!!r.upd && r.upd === DATA.updated) || (!!r._s && r._s === DATA.updated);
+  const ref = DATA.newRef || DATA.updated;
+  return (!!r.start && r.start === ref) || (!!r._s && r._s === DATA.updated);
 }
 
 /* 隐藏清单键：公司||岗位||来源（管理后台导出，构建时过滤） */
@@ -311,10 +313,16 @@ function sortRecords(list) {
 }
 
 /* ---------- 渲染：页签 ---------- */
+function newTabName() {
+  const ref = DATA.newRef || DATA.updated;
+  return ref === DATA.updated ? '今日新增' : `新增·${ref.slice(5)}`;
+}
+
 function renderTabs() {
   $('tabs').innerHTML = TABS.map(t => {
     const n = tabCounts[t.id] ?? 0;
-    return `<button class="tab${t.id === state.tab ? ' active' : ''}" data-tab="${t.id}">${t.name}<span class="n">${n >= 10000 ? (n / 10000).toFixed(1) + 'w' : n}</span></button>`;
+    const name = t.id === 'new' ? newTabName() : t.name;
+    return `<button class="tab${t.id === state.tab ? ' active' : ''}" data-tab="${t.id}">${name}<span class="n">${n >= 10000 ? (n / 10000).toFixed(1) + 'w' : n}</span></button>`;
   }).join('');
 }
 
