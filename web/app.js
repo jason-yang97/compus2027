@@ -641,8 +641,10 @@ async function init() {
   if (hash && TABS.some(t => t.id === hash)) state.tab = hash;
 
   const srcLink = $('src-link');
-  srcLink.href = DATA.sources[0]?.url || '#';
-  srcLink.textContent = DATA.sources[0]?.name || '飞书汇总表';
+  if (srcLink) {
+    srcLink.href = DATA.sources[0]?.url || '#';
+    srcLink.textContent = DATA.sources[0]?.name || '汇总表';
+  }
   $('meta').textContent = `共 ${DATA.total.toLocaleString()} 条 · 更新于 ${DATA.updated}`;
 
   WORK = buildWork(DATA.records);

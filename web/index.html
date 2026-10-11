@@ -3,23 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>校招汇总 · 27秋招信息大全</title>
-<meta name="description" content="全行业校招/实习信息汇总：27秋招、免笔试秋招、央国企、外企、互联网、银行金融、26秋招补录、24-25可投，支持多维筛选">
-<link rel="stylesheet" href="style.css?v=20261008a">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<title>秋招雷达 · 27届校招与实习信息看板</title>
+<meta name="description" content="27届秋招/实习信息看板：多源公开信息聚合，支持企业类型、行业、城市、届次、批次、学历、截止日期等多维筛选，每日自动更新">
+<link rel="stylesheet" href="style.css?v=20261012a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
 </head>
 <body>
-<header class="topbar">
-  <div class="topbar-inner">
+<header class="hero">
+  <div class="hero-inner">
     <div class="brand">
-      <h1>校招信息汇总</h1>
-      <div class="meta" id="meta">加载中…</div>
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="34" height="34">
+          <circle cx="24" cy="24" r="21" fill="none" stroke="rgba(255,255,255,.30)" stroke-width="2"/>
+          <circle cx="24" cy="24" r="13" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2"/>
+          <circle cx="24" cy="24" r="5" fill="#fff"/>
+          <path d="M24 24 L40 8" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>秋招雷达</h1>
+        <p class="brand-sub">27 届校招 · 实习信息看板 · 每日自动更新</p>
+      </div>
     </div>
-    <div class="search-wrap">
-      <input id="search" type="search" placeholder="搜索公司 / 岗位 / 专业 / 备注 等关键词…" autocomplete="off">
+    <div class="hero-search">
+      <input id="search" type="search" placeholder="搜索公司 / 岗位 / 专业 / 备注…" autocomplete="off">
       <button id="search-clear" class="search-clear" title="清空搜索" hidden>×</button>
     </div>
   </div>
+  <div class="hero-stats"><span id="meta" class="stat">加载中…</span></div>
   <nav class="tabs" id="tabs"></nav>
 </header>
 
@@ -71,11 +82,11 @@
   <div class="pager" id="pager"></div>
 
   <footer class="footer">
-    <p>数据来源：<a id="src-link" href="#" target="_blank" rel="noopener">飞书汇总表</a>（半自动抓取 + 人工整理，投递前请以官方公告为准）</p>
-    <p>使用提示：点击行可展开学历/专业/备注详情；筛选器可叠加；链接失效属正常，以企业官网为准。</p>
+    <p class="foot-line">数据来源：公开招聘信息汇总（多源聚合）· 每日自动更新 · 仅供求职参考，投递前请以官方公告为准</p>
+    <p class="foot-line muted">使用提示：点击行可展开学历/专业/备注详情；筛选器可叠加；表头与格线可拖动调整；链接失效属正常，以企业官网为准。</p>
   </footer>
 </main>
 
-<script src="app.js?v=20261011a"></script>
+<script src="app.js?v=20261012a"></script>
 </body>
 </html>
