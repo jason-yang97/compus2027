@@ -22,8 +22,30 @@ CACHE_PATH = os.path.join(ROOT, 'recruit', 'data', 'campus_positions.json')
 MAX_TITLES = 1000   # 每家公司最多保留岗位数
 
 
+def fetch_tencent_details(page, post_ids):
+    """逐个取岗位详情（岗位描述/岗位要求），分批执行避免单次调用过长。"""
+    out = {}
+    js = """async (ids) => {
+      const res = {};
+      for (const pid of ids) {
+        try {
+          const r = await fetch('/api/v1/jobDetails/getJobDetailsByPostId?postId=' + pid + '&timestamp=' + Date.now());
+          const j = await r.json();
+          const d = j.data || {};
+          // 普通岗位用 desc/request；青云课题类用 topicDetail/topicRequirement
+          res[pid] = {d: (d.desc || d.topicDetail || '').trim(),
+                      q: (d.request || d.topicRequirement || '').trim()};
+        } catch (e) { res[pid] = {d: '', q: ''}; }
+      }
+      return res;
+    }"""
+    for i in range(0, len(post_ids), 40):
+        out.update(page.evaluate(js, post_ids[i:i + 40]))
+    return out
+
+
 def fetch_tencent(page):
-    """腾讯校招：POST /api/v1/position/searchPosition 分页拉取。"""
+    """腾讯校招：列表接口 + 详情接口（岗位描述/要求）。"""
     page.goto('https://join.qq.com/post.html', timeout=45000, wait_until='domcontentloaded')
     page.wait_for_timeout(6000)
     js = """async () => {
@@ -43,7 +65,7 @@ def fetch_tencent(page):
             c: (x.workCities || '').trim().split(/\\s+/).filter(Boolean).join(' / '),
             k: x.recruitLabelName || x.projectName || '',
             b: (x.bgs || '').trim().split(/\\s+/).filter(Boolean).join(' '),
-            // 岗位链接：官方岗位详情页（postId）
+            p: x.postId || '',
             u: x.postId ? 'https://join.qq.com/post_detail.html?postid=' + x.postId : ''
           });
         }
@@ -51,7 +73,18 @@ def fetch_tencent(page):
       }
       return out;
     }"""
-    return page.evaluate(js)
+    positions = page.evaluate(js)
+    ids = [p['p'] for p in positions if p.get('p')]
+    if ids:
+        print(f'    抓取 {len(ids)} 个岗位的详情（描述/要求）...', flush=True)
+        details = fetch_tencent_details(page, ids)
+        for p in positions:
+            det = details.get(p.get('p')) or {}
+            if det.get('d'):
+                p['d'] = det['d'][:800]
+            if det.get('q'):
+                p['q'] = det['q'][:500]
+    return positions
 
 
 ADAPTERS = {

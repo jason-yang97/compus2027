@@ -124,6 +124,8 @@ function buildWork(records) {
         if (role.c) o.city = role.c.split(' / ').filter(Boolean);
         o.tags = [(role.k || '').includes('实习') ? '实习' : '秋招'].concat(extra);
         o._bg = role.b || '';
+        o._d = role.d || '';    // 官方岗位描述
+        o._q = role.q || '';    // 官方岗位要求
         if (role.u) o.url = role.u;
         o.dl = '';
         o.dlRaw = '尽快投递';
@@ -211,7 +213,7 @@ function matchFilters(r) {
     }
   }
   if (state.q) {
-    const hay = `${r.c} ${r.r} ${r.note} ${r.major} ${r.ind.join(' ')} ${r.ent.join(' ')} ${r.edu.join(' ')} ${r.batch} ${r.written} ${r.src}`.toLowerCase();
+    const hay = `${r.c} ${r.r} ${r.note} ${r.major} ${r._d || ''} ${r._q || ''} ${r.ind.join(' ')} ${r.ent.join(' ')} ${r.edu.join(' ')} ${r.batch} ${r.written} ${r.src}`.toLowerCase();
     for (const kw of state.q.toLowerCase().split(/\s+/)) {
       if (kw && !hay.includes(kw)) return false;
     }
@@ -425,6 +427,8 @@ function detailHtml(idx) {
   return `<tr class="detail"><td colspan="10"><dl>
     <dt>学历要求</dt><dd>${esc(r.edu.join(' / ')) || '—'}</dd>
     <dt>专业要求</dt><dd>${esc(r.major) || '（表内未填写具体专业，可参考岗位描述）'}</dd>
+    ${r._d ? `<dt>岗位描述</dt><dd>${esc(r._d)}</dd>` : ''}
+    ${r._q ? `<dt>岗位要求</dt><dd>${esc(r._q)}</dd>` : ''}
     <dt>备注</dt><dd>${esc(r.note) || '—'}</dd>
     <dt>原始批次</dt><dd>${esc(r.batch) || '—'}｜笔试说明：${esc(r.written) || '—'}</dd>
     ${r._bg ? `<dt>事业群</dt><dd>${esc(r._bg)}</dd>` : ''}
