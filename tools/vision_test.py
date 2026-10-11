@@ -75,13 +75,40 @@ def call_openrouter(key, data):
         return f'<失败 {type(e).__name__}>'
 
 
+def probe_gateway(key):
+    """验证经 AI Gateway 调用 Workers AI（gemma-4）是否可用。"""
+    acct = '9e89490c0b4c73e67bf6dc132792ca58'
+    url = f'https://gateway.ai.cloudflare.com/v1/{acct}/default/workers-ai/@cf/google/gemma-4-26b-a4b-it'
+    body = json.dumps({'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': '回答两个字：可用'}]}],
+                       'max_tokens': 200}).encode()
+    req = urllib.request.Request(url, data=body, headers={
+        'Authorization': f'Bearer {key}', 'Content-Type': 'application/json',
+        'cf-aig-metadata': json.dumps({'app': 'compus2027'})})
+    try:
+        with urllib.request.urlopen(req, timeout=90) as resp:
+            j = json.loads(resp.read().decode('utf-8', errors='replace'))
+        m = ((j.get('result') or {}).get('choices') or [{}])[0].get('message', {})
+        return {'ok': True, 'answer': (m.get('content') or m.get('reasoning_content') or '')[:80],
+                'usage': (j.get('result') or {}).get('usage')}
+    except urllib.error.HTTPError as e:
+        return {'ok': False, 'error': f'HTTP {e.code}: {e.read().decode("utf-8", errors="replace")[:220]}'}
+    except Exception as e:
+        return {'ok': False, 'error': f'{type(e).__name__}: {e}'}
+
+
 def main():
     gk = os.environ.get('GEMINI_KEY', '').strip()
     ok = os.environ.get('OPENROUTER_KEY', '').strip()
-    if not gk and not ok:
-        print('未配置 GEMINI_KEY 或 OPENROUTER_KEY')
+    cf = os.environ.get('CF_AI_TOKEN', '').strip()
+    results = {'gemini': {}, 'openrouter': {}, 'gateway_probe': None}
+    if cf:
+        results['gateway_probe'] = probe_gateway(cf)
+        print('网关探测:', json.dumps(results['gateway_probe'], ensure_ascii=False)[:200], flush=True)
+    if not gk and not ok and not cf:
+        print('未配置任何 Key（GEMINI_KEY / OPENROUTER_KEY / CF_AI_TOKEN）')
+        with open(OUT, 'w', encoding='utf-8') as f:
+            json.dump(results, f, ensure_ascii=False, indent=1)
         return
-    results = {'gemini': {}, 'openrouter': {}}
     for url in IMAGES:
         try:
             data = download(url)

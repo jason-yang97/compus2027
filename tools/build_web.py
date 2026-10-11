@@ -185,12 +185,29 @@ def main():
         with open(check_path, encoding='utf-8') as f:
             link_check = json.load(f)
 
+    # 工作地点补全：抓取阶段没填上的，从公告正文/视觉读图缓存补齐（按链接匹配）
+    loc_caches = []
+    for p in (os.path.join(ROOT, 'recruit', 'data', 'article_locations.json'),
+              os.path.join(ROOT, 'recruit', 'data', 'vision_locations.json')):
+        if os.path.exists(p):
+            try:
+                with open(p, encoding='utf-8') as f:
+                    loc_caches.append(json.load(f))
+            except Exception:
+                pass
+
     with open(args.src, encoding='utf-8') as f:
         sources = json.load(f)
 
     records, dropped, dead = [], 0, 0
     for src in sources:
         for r in src['rows']:
+            if not (r.get('工作地点') or '').strip():
+                link = (r.get('简历投递链接') or '').strip()
+                for cache in loc_caches:
+                    if cache.get(link):
+                        r['工作地点'] = cache[link]
+                        break
             rec = build_record(r, src['name'])
             if rec is None:
                 dropped += 1

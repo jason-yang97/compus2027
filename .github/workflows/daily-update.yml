@@ -36,15 +36,15 @@ jobs:
       - name: 安装依赖
         run: pip install playwright
 
+      - name: 全量抓取
+        run: python tools/scraper/fetch_feishu_all.py
+
       - name: 视觉读图补工作地点（新增文章，限额，走 AI Gateway 便于统计）
         run: python tools/vision_locations.py --max-articles 40
         env:
           CF_AI_TOKEN: ${{ secrets.CF_AI_TOKEN }}
           CF_AI_GATEWAY: default
         continue-on-error: true
-
-      - name: 全量抓取
-        run: python tools/scraper/fetch_feishu_all.py
 
       - name: 链接验活·第一遍（校招/实习范围）
         run: python tools/validate_feishu_links.py --scope campus --timeout-min 25

@@ -1,7 +1,12 @@
 name: vision-test
 
-# 手动触发：测试云端视觉模型（Gemini / OpenRouter千问）读取招聘图片城市信息的效果
+# 视觉模型与 AI Gateway 连通性测试（推送或手动触发）
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/vision_test.py'
+      - '.github/workflows/vision-test.yml'
   workflow_dispatch: {}
 
 permissions:
@@ -18,9 +23,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: 运行视觉模型测试
+      - name: 运行视觉模型与网关测试
         run: python tools/vision_test.py
         env:
+          CF_AI_TOKEN: ${{ secrets.CF_AI_TOKEN }}
           GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
           OPENROUTER_KEY: ${{ secrets.OPENROUTER_KEY }}
 
