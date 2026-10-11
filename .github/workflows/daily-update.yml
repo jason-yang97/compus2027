@@ -43,6 +43,7 @@ jobs:
         run: python tools/vision_locations.py --max-articles 40
         env:
           CF_AI_TOKEN: ${{ secrets.CF_AI_TOKEN }}
+          CF_AIG_TOKEN: ${{ secrets.CF_AIG_TOKEN }}
           CF_AI_GATEWAY: default
         continue-on-error: true
 

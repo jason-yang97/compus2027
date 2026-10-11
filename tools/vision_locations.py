@@ -27,6 +27,7 @@ ACCOUNT_ID = '9e89490c0b4c73e67bf6dc132792ca58'
 MODEL = '@cf/google/gemma-4-26b-a4b-it'
 # 可选：设置 CF_AI_GATEWAY=default 则经 AI Gateway 调用（可在控制台看到逐次请求日志），否则直连 Workers AI
 GATEWAY = os.environ.get('CF_AI_GATEWAY', '').strip()
+GW_TOKEN = ''   # 网关认证令牌（main 中从 env/文件读取）
 VISION_CACHE = os.path.join(ROOT, 'recruit', 'data', 'vision_locations.json')
 VISION_META = os.path.join(ROOT, 'recruit', 'data', 'vision_meta.json')
 GATEWAY_USED = {'count': 0}   # 记录经网关成功的调用数（用于确认路由生效）
@@ -36,12 +37,28 @@ PROMPT = ('这是中国公司的招聘公告图片。请快速找出图中实际
 
 
 def read_token():
+    """Workers AI API token（env 优先，其次本地文件，兼容 .txt / .txt.txt 两种命名）。"""
     t = os.environ.get('CF_AI_TOKEN', '').strip()
     if t:
         return t
-    if os.path.exists(TOKEN_FILE):
-        with open(TOKEN_FILE, encoding='utf-8') as f:
-            return f.read().strip()
+    for name in ('cf_ai_token.txt', 'cf_ai_token.txt.txt'):
+        p = os.path.join(ROOT, '.secrets', name)
+        if os.path.exists(p):
+            with open(p, encoding='utf-8') as f:
+                return f.read().strip()
+    return ''
+
+
+def read_gateway_token():
+    """AI Gateway 认证令牌（网关开启认证时需要）。"""
+    t = os.environ.get('CF_AIG_TOKEN', '').strip()
+    if t:
+        return t
+    for name in ('gateway_token.txt', 'gateway_token.txt.txt'):
+        p = os.path.join(ROOT, '.secrets', name)
+        if os.path.exists(p):
+            with open(p, encoding='utf-8') as f:
+                return f.read().strip()
     return ''
 
 
@@ -74,6 +91,8 @@ def ask_model(token, img_bytes):
         if GATEWAY and 'gateway.ai.cloudflare.com' in url:
             # 项目归属标签（AI Gateway 日志里可按 app 区分）
             headers['cf-aig-metadata'] = json.dumps({'app': 'compus2027'})
+            if GW_TOKEN:
+                headers['cf-aig-authorization'] = f'Bearer {GW_TOKEN}'
         req = urllib.request.Request(url, data=body, headers=headers)
         try:
             with urllib.request.urlopen(req, timeout=300) as resp:
@@ -124,8 +143,12 @@ def main():
 
     token = read_token()
     if not token:
-        print('缺少 CF_AI_TOKEN（或 .secrets/cf_ai_token.txt.txt）')
+        print('缺少 CF_AI_TOKEN（或 .secrets/cf_ai_token.txt）')
         return
+    global GW_TOKEN
+    GW_TOKEN = read_gateway_token()
+    if GATEWAY:
+        print(f'经 AI Gateway 调用（网关令牌{"已配置" if GW_TOKEN else "缺失"}）', flush=True)
 
     text_cache = {}
     if os.path.exists(LOC_CACHE_PATH):

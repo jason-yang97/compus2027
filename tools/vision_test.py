@@ -75,16 +75,18 @@ def call_openrouter(key, data):
         return f'<失败 {type(e).__name__}>'
 
 
-def probe_gateway(key):
+def probe_gateway(key, gw_token=''):
     """验证经 AI Gateway 调用 Workers AI（gemma-4）是否可用。"""
     acct = '9e89490c0b4c73e67bf6dc132792ca58'
     url = f'https://gateway.ai.cloudflare.com/v1/{acct}/default/workers-ai/@cf/google/gemma-4-26b-a4b-it'
     body = json.dumps({'messages': [{'role': 'user', 'content': [{'type': 'text', 'text': '回答两个字：可用'}]}],
                        'max_tokens': 200}).encode()
-    req = urllib.request.Request(url, data=body, headers={
-        'Authorization': f'Bearer {key}', 'Content-Type': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36',
-        'cf-aig-metadata': json.dumps({'app': 'compus2027'})})
+    headers = {'Authorization': f'Bearer {key}', 'Content-Type': 'application/json',
+               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36',
+               'cf-aig-metadata': json.dumps({'app': 'compus2027'})}
+    if gw_token:
+        headers['cf-aig-authorization'] = f'Bearer {gw_token}'
+    req = urllib.request.Request(url, data=body, headers=headers)
     try:
         with urllib.request.urlopen(req, timeout=90) as resp:
             j = json.loads(resp.read().decode('utf-8', errors='replace'))
@@ -101,9 +103,10 @@ def main():
     gk = os.environ.get('GEMINI_KEY', '').strip()
     ok = os.environ.get('OPENROUTER_KEY', '').strip()
     cf = os.environ.get('CF_AI_TOKEN', '').strip()
+    gw = os.environ.get('CF_AIG_TOKEN', '').strip()
     results = {'gemini': {}, 'openrouter': {}, 'gateway_probe': None}
     if cf:
-        results['gateway_probe'] = probe_gateway(cf)
+        results['gateway_probe'] = probe_gateway(cf, gw)
         print('网关探测:', json.dumps(results['gateway_probe'], ensure_ascii=False)[:200], flush=True)
     if not gk and not ok and not cf:
         print('未配置任何 Key（GEMINI_KEY / OPENROUTER_KEY / CF_AI_TOKEN）')

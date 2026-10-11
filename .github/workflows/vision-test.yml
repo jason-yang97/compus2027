@@ -27,6 +27,7 @@ jobs:
         run: python tools/vision_test.py
         env:
           CF_AI_TOKEN: ${{ secrets.CF_AI_TOKEN }}
+          CF_AIG_TOKEN: ${{ secrets.CF_AIG_TOKEN }}
           GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
           OPENROUTER_KEY: ${{ secrets.OPENROUTER_KEY }}
 
