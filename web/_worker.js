@@ -59,7 +59,32 @@ export default {
 
     const cookies = request.headers.get('Cookie') || '';
     const m = cookies.match(new RegExp(`(?:^|;\\s*)${COOKIE_NAME}=([a-f0-9]{64})`));
-    if (m && m[1] === expected) {
+    const authed = !!(m && m[1] === expected);
+
+    // ---- 隐藏清单 API（管理后台保存，全站生效）----
+    if (url.pathname === '/api/hide') {
+      const json = (obj, status = 200) => new Response(JSON.stringify(obj), {
+        status, headers: { 'content-type': 'application/json; charset=utf-8' },
+      });
+      if (request.method === 'GET') {
+        if (!authed) return json({ error: 'unauthorized' }, 401);
+        const v = await env.HIDE_KV.get('list');
+        return new Response(v || '[]', {
+          headers: { 'content-type': 'application/json; charset=utf-8' },
+        });
+      }
+      if (request.method === 'POST') {
+        const body = await request.json().catch(() => null);
+        const pw = (body && body.pw) || request.headers.get('x-admin-pw') || '';
+        if (!authed && pw !== PASSWORD) return json({ error: 'unauthorized' }, 401);
+        const keys = Array.isArray(body && body.keys) ? body.keys.slice(0, 20000) : [];
+        await env.HIDE_KV.put('list', JSON.stringify(keys));
+        return json({ ok: true, count: keys.length });
+      }
+      return json({ error: 'method not allowed' }, 405);
+    }
+
+    if (authed) {
       return env.ASSETS.fetch(request);
     }
 

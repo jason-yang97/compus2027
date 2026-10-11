@@ -1,0 +1,8 @@
+name = "compus2027"
+compatibility_date = "2026-10-01"
+pages_build_output_dir = "web"
+
+# 隐藏清单（管理后台保存，全站生效）
+[[kv_namespaces]]
+binding = "HIDE_KV"
+id = "57092d9aff34452eb6bfc9bdc5f7a50c"

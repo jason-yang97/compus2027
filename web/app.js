@@ -779,7 +779,8 @@ function openAdmin() {
       <div class="admin-tools">
         <button class="btn-mode" id="admin-all">全选所有重复项</button>
         <button class="btn-mode" id="admin-none">清空选择</button>
-        <button class="btn-mode active" id="admin-export">导出隐藏清单</button>
+        <button class="btn-mode active" id="admin-save">保存到云端（全站即时生效）</button>
+        <button class="btn-mode" id="admin-export">导出 JSON</button>
         <span id="admin-count" class="admin-count">已选 0 条</span>
       </div>
       <div class="admin-list">
@@ -824,6 +825,30 @@ function openAdmin() {
     box.querySelector('#admin-out').value = JSON.stringify(keys, null, 1);
     box.querySelector('#admin-out').select();
   };
+  // 保存到 Cloudflare KV：全站即时生效（无需提交文件）
+  box.querySelector('#admin-save').onclick = async () => {
+    const btn = box.querySelector('#admin-save');
+    const keys = [...new Set(picks().filter(p => p.checked).map(p => p.dataset.key))];
+    btn.textContent = '保存中…';
+    try {
+      const r = await fetch('/api/hide', {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ keys }),
+      });
+      const j = await r.json();
+      if (j.ok) {
+        HIDDEN = new Set(keys);
+        WORK = buildWork(DATA.records);
+        expanded.clear();
+        buildFacets(WORK); computeTabCounts(); renderTabs(); renderFilters(); refresh();
+        btn.textContent = `已保存 ${j.count} 条 ✓`;
+      } else {
+        btn.textContent = '保存失败：未登录';
+      }
+    } catch (e) {
+      btn.textContent = '保存失败（本地预览无接口，可改用导出 JSON）';
+    }
+  };
   refreshCount();
 }
 
@@ -848,10 +873,20 @@ async function init() {
   }
   $('meta').textContent = `共 ${DATA.total.toLocaleString()} 条 · 更新于 ${DATA.updated}`;
 
-  // 隐藏清单（管理后台导出）随数据目录一并加载
+  // 隐藏清单：优先云端 KV（管理后台即时保存），其次数据目录文件
+  try {
+    const ar = await fetch('/api/hide', { cache: 'no-cache' });
+    if (ar.ok) {
+      const arr = await ar.json();
+      if (Array.isArray(arr)) arr.forEach(k => HIDDEN.add(k));
+    }
+  } catch (_) { /* 本地预览无接口 */ }
   try {
     const hr = await fetch('data/hidden.json', { cache: 'no-cache' });
-    if (hr.ok) HIDDEN = new Set(await hr.json());
+    if (hr.ok) {
+      const arr = await hr.json();
+      if (Array.isArray(arr)) arr.forEach(k => HIDDEN.add(k));
+    }
   } catch (_) { /* 无隐藏清单 */ }
 
   WORK = buildWork(DATA.records);
