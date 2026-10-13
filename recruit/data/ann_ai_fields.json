@@ -425,5 +425,960 @@
  },
  "https://www.gzw.sh.gov.cn/shgzw_xxgk_cqzp/20260526/383e7d09b67849b79f260c11c80dbc62.html": {
   "deadline": "2026-05-31"
+ },
+ "https://gzw.ningbo.gov.cn/col/col1229116730/art/2026/art_f9e5d1fd4bbe4d059f0a7eb218950edf.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.icrc.org/zh/work-with-us/jobs-opportunity/china-communication-intern?sessionid=": {
+  "_skip": "fetch-fail"
+ },
+ "https://cascxianmti.zhiye.com/campus/jobs": {
+  "_skip": "thin"
+ },
+ "https://app.mokahr.com/campus-recruitment/geely/78436?locale=zh-CN#/jobs?commitment[0]=": {
+  "_skip": "fetch-fail"
+ },
+ "https://gzw.henan.gov.cn/2026/05-08/3349425.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://96885.hrss.jl.gov.cn/app/article/content/1014195.shtml?type=2": {
+  "_skip": "fetch-fail"
+ },
+ "https://gzw.jiangxi.gov.cn/jxsgzw/rczp/content/content_2047512930591764480.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.shanxi.gov.cn/zfxxgk/tzgg/202605/t20260528_10135775.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202603/7822191d58154959a42e6a7b8230c4f4.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://rsj.beijing.gov.cn/xxgk/gkzp/202606/t20260610_4693704.html": {
+  "deadline": "2026-06-19"
+ },
+ "https://www.sydwgkzp.cn/mohrss/index.html#/zpDetails?yjTitles=": {
+  "_skip": "fetch-fail"
+ },
+ "https://rsj.beijing.gov.cn/xxgk/gkzp/202603/t20260330_4569666.html": {
+  "deadline": "2026-04-20",
+  "edu": "硕士、博士"
+ },
+ "https://gzw.cq.gov.cn/gqzp/202606/t20260612_15751011.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://rs.railshj.cn/recruitment-posts/recruitment-details?id=50056": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/xxgk2020/fdzdgknr/rcrs_4225/sydwrsgl/202603/t20260331_571217.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.gzw.sh.gov.cn/shgzw_xxgk_cqzp/20260330/c06acc4cb9274fdcb33547f56a230033.html": {
+  "major": "经济学、金融学、管理科学与工程、工商管理、物理学、计算机科学与技术、大数据技术、文化产业、艺术设计、新媒体技术",
+  "deadline": "2026-04-19",
+  "edu": "本科、硕士、博士"
+ },
+ "https://www.shanxi.gov.cn/zfxxgk/tzgg/202605/t20260515_10122994.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202604/t20260403_572048.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://jngzw.jinan.gov.cn/col/col23870/art/2026/art_5385d80678174cb19459fd53c2334e8c.html": {
+  "deadline": "2026-05-20"
+ },
+ "https://www.sdhsg.com/article/category/rlzyZcyz?sessionid=": {
+  "_skip": "no-field"
+ },
+ "https://rst.hunan.gov.cn/rst/xxgk/zpzl/sydwzp/202606/t20260610_33998237.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://app.mokahr.com/campus-recruitment/vanke/147055?locale=zh-CN#/jobs?&zhineng[0]=237497": {
+  "_skip": "fetch-fail"
+ },
+ "https://arcuxy2026.zhaopin.com/zk/#/notice_new?prantMenuid=06d526fef72845c597af5f1033c39b33": {
+  "_skip": "fetch-fail"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info_del.html?parentId=387&jmetazpxxid=11235": {
+  "_skip": "thin"
+ },
+ "https://job.cscec8b.com.cn/recruitment/job/detail/id/2749/": {
+  "major": "城乡规划、市政工程、城市管理、区域经济学、能源动力、环境工程、暖通、电气自动化、材料学、计算机、软件工程、人工智能、自动化、土木+IT交叉学科等",
+  "deadline": "2026-07-31",
+  "edu": "本科、硕士、博士"
+ },
+ "https://zhaopin.chinacoal.com/recruitNoticeDetail?s=IEwNM5lbYASz5EomTawcar2AdGA8hEkVzq9ldbKDdAQRl0dCnSpvPiUSPSkNQcUyqUiLi0OgxHLZTJTb4y4alNUvy3wm02IFSR5kY0&noticeId=418": {
+  "_skip": "thin"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/zpgg/202605/t20260525_576901.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info_del.html?parentId=386&jmetazpxxid=11179": {
+  "_skip": "thin"
+ },
+ "https://gzw.fuzhou.gov.cn/zwgk/zpxx/202606/t20260601_5328937.htm": {
+  "deadline": "2026-06-06",
+  "edu": "本科"
+ },
+ "https://www.njmetro.com.cn/njdtweb/portal/main-article-detail.do?rowId=4028d4819d993c2b019eaefcf4e301da&columnId=8a808007653ccf3101654053a0780002&columnName=xyzp": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.chengdurail.com/info/2422/127594.htm": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.csnwd.com.cn/xxgk/cpyc/202605/t20260509_2109983.html": {
+  "deadline": "2026-05-25"
+ },
+ "https://www.gzw.sh.gov.cn/shgzw_xxgk_cqzp/20260515/5315060ec9a44997b28a413cac9c4b28.html": {
+  "deadline": "2026-05-20"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info_del.html?parentId=391&jmetazpxxid=10914": {
+  "_skip": "thin"
+ },
+ "http://gzw.shandong.gov.cn/articles/ch00223/202604/5a3e9e00-11eb-498a-9b13-4f36941ae4f7.html": {
+  "_skip": "fetch-fail"
+ },
+ "http://wxpta.ahwxhr.com/recruit/detail?id=7985": {
+  "_skip": "thin"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202605/t20260512_576016.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info.html?parentId=383": {
+  "_skip": "thin"
+ },
+ "http://www.csnwd.com.cn/xxgk/cpyc/202604/t20260416_2107918.html": {
+  "deadline": "2026-04-28"
+ },
+ "http://www.rushan.gov.cn/art/2026/4/25/art_79883_6313225.html?sessionid=-843451909": {
+  "deadline": "2026-05-15",
+  "edu": "本科、硕士、博士"
+ },
+ "https://jngzw.jinan.gov.cn/col/col23870/art/2026/art_0d119eda0a1a41969da6f3d75fb71409.html": {
+  "deadline": "2026-04-27"
+ },
+ "https://rsj.beijing.gov.cn/xxgk/gkzp/202603/t20260330_4569818.html": {
+  "deadline": "2026-04-24",
+  "edu": "本科、硕士、博士"
+ },
+ "https://www.cfdi.org.cn/cfdi/resource/news/16692.html": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.gzns.gov.cn/zwgk/zdlyxxgk/jycy/zpxx/content/post_10747016.html?sessionid=1063772337": {
+  "deadline": "2026-04-10"
+ },
+ "https://www.xiaohongshu.com/explore/6a0564bd0000000036001ed0?app_platform=android&ignoreEngage=true&app_version=9.30.0&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBh0tOdMx1g2sqpzi6aZVTP2GAxS1fn6CQOgW0dGxcueQ=&author_share=1&x": {
+  "_skip": "thin"
+ },
+ "https://cnooc.zhaopin.com/job/index.html": {
+  "_skip": "thin"
+ },
+ "https://chinare.zhiye.com/intern/detail?jobAdId=43a95940-057b-40ba-ab3c-588f447b9dc1": {
+  "_skip": "thin"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info_del.html?parentId=388&jmetazpxxid=11237": {
+  "_skip": "thin"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202603/b14b12cee37f4113ab8aca0e5640264c.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/zpgg/202604/t20260401_571505.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://wecruit.hotjob.cn/SU643e3338bef57c46afe6213d/mc/position/intern?projectCode=102201&showProjectBanner=true": {
+  "_skip": "fetch-fail"
+ },
+ "http://zp.cmatec.cn/cms/preview/article.do?id=25054": {
+  "major": "气象类专业",
+  "deadline": "2026-05-27",
+  "edu": "本科、硕士、博士"
+ },
+ "https://rst.hunan.gov.cn/rst/xxgk/zpzl/sydwzp/202606/t20260601_33991495.html?": {
+  "_skip": "fetch-fail"
+ },
+ "https://psbcgdsx.zhaopin.com/post/index.html": {
+  "_skip": "thin"
+ },
+ "https://ahgzcz.pzhl.net/index.php/exam/notice/?doc_id=22102&EXAMID=9044": {
+  "deadline": "2026-04-29"
+ },
+ "https://www.mohurd.gov.cn/zhengcefabu/art/2026/art_1523882411.html?sessionid=": {
+  "deadline": "2026-06-24"
+ },
+ "https://zjzx.91job.org.cn/index.php?m=home&c=article&a=show&site=1&id=10482": {
+  "deadline": "2026-04-14"
+ },
+ "https://www.by.gov.cn/zwgk/zdlyxxgkzl/jycyxxgkzl/zpxx/qnzpxx/content/post_10778243.html": {
+  "deadline": "2026-04-29",
+  "edu": "本科、硕士、博士"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/zpgg/202603/t20260324_569278.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://jshrss.jiangsu.gov.cn/art/2026/5/6/art_78506_11765767.html": {
+  "_skip": "no-field"
+ },
+ "https://www.sxyc.gov.cn/col/col1229446491/art/2026/art_27e886b3d8c54c84a3cd7a9be505262d.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://yntrust.zhiye.com/campus/jobs": {
+  "_skip": "thin"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202603/t20260324_569285.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.sx.gov.cn/col/col1229429798/art/2026/art_2a97e8db19482c49bd8ac21390330315.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://fcn5hvc5qbfs.jobs.feishu.cn/668262/?spread=A2B3G4G": {
+  "_skip": "fetch-fail"
+ },
+ "https://govjob.zhaopin.com/home/detail?id=3a8d23e6cd4f1f2ab29845c98c762df8&typeId=2": {
+  "_skip": "thin"
+ },
+ "https://gzw.my.gov.cn/mysgzw/c101662/202606/9530a730d14f420fabd012119c2a7a18.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202606/f6ce405b081c46d980eb678b50efe1c6.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://jshrss.jiangsu.gov.cn/art/2026/6/9/art_78506_11782919.html": {
+  "major": "专业参考目录",
+  "deadline": "2026-06-14",
+  "edu": "本科、硕士、博士"
+ },
+ "https://gzw.cq.gov.cn/gqzp/202605/t20260509_15664319.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://gzw.ningbo.gov.cn/col/col1229116730/art/2026/art_8b534ccaef324068b3efe651a062561e.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.szpsq.gov.cn/zwgk/rsxx/zkzp/content/post_12807349.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://gzw.jiangxi.gov.cn/jxsgzw/rczp/content/content_2065335224066957312.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://jobs.omneegames.com/campus": {
+  "_skip": "fetch-fail"
+ },
+ "https://gzw.ningbo.gov.cn/col/col1229116730/art/2026/art_3c66155f5c264d4f9a2fb915b3320e72.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://jngzw.jinan.gov.cn/col/col23870/art/2026/art_8d13be62e46546a98d87798e94f14751.html": {
+  "deadline": "2026-05-20",
+  "edu": "本科"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202603/965802dea580419da39391bbaeb4b61e.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.chinaopera.com.cn/yczx_1/237.html": {
+  "deadline": "2026-05-08"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202605/t20260525_576844.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.xiaohongshu.com/explore/69d89f59000000001a02da0f?app_platform=android&ignoreEngage=true&app_version=9.25.0&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBvxXn-dBY7aneBZ0ZrEQ5Ujvim8X0PIpTiRuuMjiom3k=&author_share=1&x": {
+  "_skip": "thin"
+ },
+ "https://www.gzw.sh.gov.cn/shgzw_xxgk_cqzp/20260323/5983c4a5792d436aa704922ffd70ea33.html": {
+  "deadline": "2026-04-03",
+  "edu": "硕士"
+ },
+ "https://www.slrsks.cn/slgg/WGf7lcGa": {
+  "deadline": "2026-03-31"
+ },
+ "https://hrss.gd.gov.cn/zwgk/sydwzp/zpgg/content/post_4888394.html": {
+  "deadline": "2026-05-29",
+  "edu": "本科、硕士、博士"
+ },
+ "https://sz.chinacnd.com/extcampushrh5/pages/jobs/jobInformation?jobId=2052563522758946817": {
+  "_skip": "thin"
+ },
+ "https://tigermed.zhiye.com/campus/jobs": {
+  "_skip": "thin"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202604/053a1eeb91384b9cba7ab7e7c512f1c5.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaokao.caidaocloud.com/rp-web/?sessionid=#/recruit-info?recruitId=37994&orgId=11673": {
+  "_skip": "thin"
+ },
+ "http://gzw.shandong.gov.cn/articles/ch00223/202605/32714bdb-7087-4ed8-ae9c-a800f76466bd.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.fzrsrc.cn/news/18_14183.html": {
+  "deadline": "2026-06-03"
+ },
+ "https://jdjyw.jlu.edu.cn/portal/jyzp/recruit/details?id=d4905344becc4c5bbaad4ea7df8f932c": {
+  "major": "化学、分析化学、精细化工、有机化学、药物化学、应用化学、人力资源管理、会计学、财务管理、工程审计、工程造价、工程管理、企业管理、植物保护",
+  "edu": "本科、硕士、博士"
+ },
+ "https://gzw.shanxi.gov.cn/xwfb/gqzp/202605/t20260515_10122814.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://jsj.top/f/HUEqdf": {
+  "_skip": "thin"
+ },
+ "https://app.mokahr.com/campus-recruitment/faurecia/146093?sessionid=-1000648541&sharePageId=4134611#/jobs?commitment[0]=": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.bjrc.com.cn/sydwzpDetails_C0C2A63313BAE85B.shtml": {
+  "deadline": "2026-06-04"
+ },
+ "https://rlsbt.zj.gov.cn/col/col1229743683/art/2026/art_fddbe4e385a841a89c8291a0998c261d.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.crtyhr.com/frontPage/noticeBulletin_content/63": {
+  "_skip": "fetch-fail"
+ },
+ "http://zp.cmatec.cn/cms/preview/article.do?id=25011": {
+  "deadline": "2026-05-19",
+  "edu": "本科以上"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/zpgg/202603/t20260327_569770.html": {
+  "_skip": "fetch-fail"
+ },
+ "http://gzw.shandong.gov.cn/articles/ch00223/202605/fc44faa3-cd91-42c6-8c2b-338d0b70ab68.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zjzx.91job.org.cn/index.php?m=home&c=article&a=show&site=1&id=10641": {
+  "deadline": "2026-12-31"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202603/t20260320_568812.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info_del.html?parentId=1503&jmetazpxxid=11054": {
+  "_skip": "thin"
+ },
+ "https://jngzw.jinan.gov.cn/col/col23870/art/2026/art_94e0b30a10964cf5aaef246a1dfeb9f8.html": {
+  "deadline": "2026-06-05"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202605/t20260507_575528.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://sanhome.zhiye.com/intern/jobs": {
+  "_skip": "thin"
+ },
+ "https://rsj.beijing.gov.cn/xxgk/gkzp/202603/t20260320_4562700.html": {
+  "deadline": "2026-03-31",
+  "edu": "本科、硕士、博士"
+ },
+ "https://is35svcbne.jobs.feishu.cn/youcash/position/list?keywords=&category=&location=&project=7354952949624342835&type=&job_hot_flag=&current=1&limit=10&functionCategory=&tag=": {
+  "_skip": "fetch-fail"
+ },
+ "https://gzw.fuzhou.gov.cn/zwgk/zpxx/202605/t20260514_5322097.htm": {
+  "deadline": "2026-12-31",
+  "edu": "本科及以上"
+ },
+ "https://job.citicbank.com/": {
+  "_skip": "no-field"
+ },
+ "https://shenergy.zhiye.com/custom/intern": {
+  "_skip": "thin"
+ },
+ "https://www.cstec.org.cn/infoDetail.html?id=98390&column=1029": {
+  "_skip": "fetch-fail"
+ },
+ "https://hr.teld.cn/recruit#/portal_job_detail?id=_HB5_NDc0OTg%3D": {
+  "_skip": "thin"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202603/t20260320_568815.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://jshrss.jiangsu.gov.cn/art/2026/6/9/art_78506_11782861.html": {
+  "deadline": "2026-12-28",
+  "edu": "博士"
+ },
+ "http://zp.cmatec.cn/cms/preview/article.do?id=25021": {
+  "major": "气象类专业",
+  "deadline": "2026-05-15",
+  "edu": "本科、研究生、博士"
+ },
+ "https://jnhrss.jinan.gov.cn/col/col18309/art/2026/art_e14aa960173f489684683bda9b6cacf4.html": {
+  "deadline": "2026-06-26"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202605/t20260507_575564.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.tingyutech.com/campus-recruitment/": {
+  "_skip": "no-field"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202604/t20260403_572066.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202604/t20260410_572967.html": {
+  "_skip": "fetch-fail"
+ },
+ "http://jngzw.jinan.gov.cn/col/col23870/art/2026/art_2c293adfb5d54c968b1a398ebe319cb0.html": {
+  "deadline": "2026-05-13"
+ },
+ "https://campus.51job.com/hbnyfzjt2026/job.html": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.cdccic.com:6066/announcementDetail/2047206389171281922": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.gzrc.com.cn/upload/gz/Ad/2026/20240108-zkxx/index-dkct.html": {
+  "deadline": "2026-05-25"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info_del.html?parentId=401&jmetazpxxid=11094": {
+  "_skip": "thin"
+ },
+ "https://www.iguopin.com/job/detail?id=192226483291294742": {
+  "_skip": "thin"
+ },
+ "https://gzw.my.gov.cn/mysgzw/c101662/202606/054a8170245346ae9fc078a08a86c73b.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.shanxi.gov.cn/zfxxgk/tzgg/202605/t20260515_10122989.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202605/789829425dd44297b7b288620cfc0849.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/zpgg/202603/t20260324_569282.html": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202603/0b2b581c052b41b9ae7632c90eaddbb3.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.gxaas.net/front/detail/115/3665/152809": {
+  "deadline": "2026-05-15",
+  "edu": "硕士"
+ },
+ "https://rsj.beijing.gov.cn/xxgk/gkzp/202604/t20260421_4598766.html": {
+  "deadline": "2026-05-05",
+  "edu": "本科、硕士"
+ },
+ "https://www.gzw.sh.gov.cn/shgzw_xxgk_cqzp/20260407/8a26da40480844308441c977c008aabd.html": {
+  "_skip": "thin"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202604/t20260420_574256.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/xxgk2020/fdzdgknr/rcrs_4225/sydwrsgl/202604/t20260402_571893.html": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202605/6ae3fc189c5a4f4f8d489b6715016d45.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://cmfchina.zhiye.com/campus/jobs": {
+  "_skip": "thin"
+ },
+ "http://gzw.shandong.gov.cn/articles/ch00223/202605/67d56310-203c-4290-bfc1-2dc19a562034.html": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202603/242a9c806e3c4bb79b3955d2b53752fc.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202604/t20260410_572968.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://rczp.zztlj.com/homepage/article/2059511615371378690/false": {
+  "_skip": "fetch-fail"
+ },
+ "https://scbank.hotjob.cn/": {
+  "_skip": "thin"
+ },
+ "https://gzw.shenyang.gov.cn/rcdwjszl/202604/t20260429_5021154.html": {
+  "_skip": "no-field"
+ },
+ "https://zjzx.91job.org.cn/index.php?m=home&c=article&a=show&site=1&id=10588": {
+  "major": "专业按《江苏省2026年度考试录用公务员专业参考目录》（见附件2）设置",
+  "deadline": "2026年5月15日16:00",
+  "edu": "本科、硕士"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202603/t20260320_568814.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://jshrss.jiangsu.gov.cn/art/2026/3/31/art_78506_11751982.html": {
+  "major": "地质类等相关专业",
+  "deadline": "4月9日16∶00"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202604/t20260410_572921.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zjzx.91job.org.cn/index.php?m=home&c=article&a=show&site=1&id=10550": {
+  "deadline": "2026-04-30"
+ },
+ "https://www.snhrm.com/ygqzp/8257396.jhtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://gzw.ah.gov.cn/ssqy/qyzp/58252061.html": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202605/38bde20a6e204a1da5fc39c5219e9b0a.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.nrta.gov.cn/art/2026/4/1/art_113_72994.html": {
+  "major": "新闻传播学、戏剧与影视、国际商务、计算机科学与技术、电子信息、信息与通信工程、软件工程、管理科学与工程、税务、工商管理学、会计、汉语言文学、秘书学、英语、俄语、德语、法语、西班牙语、商务英语、中国语言文学类、外国语言文学类、马克思主义理论类",
+  "deadline": "2026-04-10",
+  "edu": "本科、研究生"
+ },
+ "https://wecruit.hotjob.cn/SU69815a1bbe908548be0c82e9/pb/school.html": {
+  "_skip": "thin"
+ },
+ "https://rlsbj.cq.gov.cn/zwxx_182/sydw/sydwgkzp2026/202604/t20260401_15584580.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.fjtic.com.cn/tzgg/rczp/qyzp/202605/t20260522_33909.htm?sessionid=": {
+  "_skip": "fetch-fail"
+ },
+ "https://jshrss.jiangsu.gov.cn/art/2026/6/9/art_78506_11782828.html": {
+  "edu": "硕士研究生及以上学历"
+ },
+ "https://zjzx.91job.org.cn/index.php?m=home&c=article&a=show&site=1&id=10619": {
+  "major": "中文文秘类、公共管理类、法律类、审计类、财务财会类、经济类、社会政治类、计算机类、交通工程类",
+  "deadline": "2026-05-29",
+  "edu": "硕士研究生、本科"
+ },
+ "https://www.shanxi.gov.cn/zfxxgk/tzgg/202605/t20260528_10135766.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.shanxi.gov.cn/zfxxgk/tzgg/202605/t20260515_10122980.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.lysrsks.com/index.php/index/news/detail.html?id=2305": {
+  "deadline": "2026-03-30",
+  "edu": "本科、硕士"
+ },
+ "https://jngzw.jinan.gov.cn/col/col23870/art/2026/art_1e409a1ff9fb4373bcc682d370452ffb.html?sessionid=": {
+  "deadline": "2026-06-01"
+ },
+ "https://www.xiaohongshu.com/explore/69f331670000000023014a24?app_platform=android&ignoreEngage=true&app_version=9.28.0&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBwqJlizBV936-j9HNc0cwoBEY76YFope0RgwnZorZf0g=&author_share=1&x": {
+  "_skip": "thin"
+ },
+ "https://www.xzjtkg.com/joinUs/jobDetail?id=27": {
+  "_skip": "thin"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202606/t20260610_578081.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://jobs.hisense.com/7/jobs": {
+  "_skip": "thin"
+ },
+ "https://gzw.jiangxi.gov.cn/jxsgzw/rczp/content/content_2043612947444989952.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://gzw.cq.gov.cn/gqzp/202604/t20260403_15590678.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://jngzw.jinan.gov.cn/col/col23870/art/2026/art_deb123226ac74422bd3f9bc37464e0f6.html": {
+  "deadline": "2026-06-16"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info_del.html?parentId=324&jmetazpxxid=11134": {
+  "_skip": "thin"
+ },
+ "http://jngzw.jinan.gov.cn/col/col23870/art/2026/art_dfece97965944a5584287266a1293847.html": {
+  "deadline": "2026-06-05"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202604/e5fcb57cdd134ed38c570ae57411bbbd.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://rsj.beijing.gov.cn/xxgk/gkzp/202604/t20260409_4578041.html": {
+  "deadline": "2026-04-30"
+ },
+ "http://www.qianwan.gov.cn/art/2026/4/27/art_1229023676_59032821.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://job.bit.edu.cn/frontpage/bit/html/recruitmentinfoForm.html?positionDetailId=f1e43bfa054548f4ae48b61a66ea8f4f&": {
+  "_skip": "thin"
+ },
+ "http://www.sasac.gov.cn/n2588035/n2588325/n2588350/c35428690/content.html": {
+  "deadline": "2026-05-29",
+  "edu": "本科及以上"
+ },
+ "https://www.szrc.cn/#/notice/detail?id=653&newsType=2": {
+  "_skip": "fetch-fail"
+ },
+ "https://gzw.ningbo.gov.cn/col/col1229116730/art/2026/art_fa3f7654fa3949b9b31a39adfc9d12a6.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://gzw.fuzhou.gov.cn/zwgk/zpxx/202603/t20260323_5299158.htm": {
+  "deadline": "2026-04-10"
+ },
+ "https://www.cnbm.com.cn/CNBM/000000020001/69845.html": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202605/2add64c61c874d72b3fc4730938b0771.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.csnwd.com.cn/xxgk/cpyc/202604/t20260418_2108271.html": {
+  "_skip": "thin"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202604/8ea1bdac7f144f26ab9d919b9f571e57.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202603/t20260320_568840.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://ealklohoih0.jobs.feishu.cn/668247/position/7373832859825506571/detail": {
+  "_skip": "fetch-fail"
+ },
+ "https://campus.10jqka.com.cn/job/list?type=school": {
+  "_skip": "thin"
+ },
+ "https://www.qwhg.cn/newsinfo/11168341.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://govjob.zhaopin.com/home/detail?id=f2a281e5a007da9127a69fbb2a3cad7b&typeId=2": {
+  "_skip": "thin"
+ },
+ "https://www.cqrc.net/gzw/index/postitem-26393.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://xiaoyuan.zhaopin.com/job/CCL1282573400J40872214313?jobSourceType=2&jobfrom=practicesearch&productId=-1&channelId=-1&sessionid=": {
+  "major": "计算机类，大数据类，人工智能类等；冶金类，材料类，矿物加工，焊接等；自动化类，电器类，机械类，仪器仪表类等",
+  "edu": "本科，硕士"
+ },
+ "http://www.ybdj.gov.cn/gsgg/202606/t20260608_575673.html?sessionid=": {
+  "_skip": "fetch-fail"
+ },
+ "https://sinosure.zhaopin.com/xyzp/index.html": {
+  "_skip": "thin"
+ },
+ "https://gzw.shenyang.gov.cn/rcdwjszl/202604/t20260403_5011151.html": {
+  "_skip": "no-field"
+ },
+ "https://gzw.jiangxi.gov.cn/jxsgzw/rczp/content/content_2046788786698907648.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://hrss.suzhou.gov.cn/jsszhrss/gsgg/202604/1868a77ab42c49ff9febfb6ab2dbf5be.shtml": {
+  "deadline": "2026-05-11",
+  "edu": "博士研究生、硕士研究生、本科"
+ },
+ "https://www.jobhb.com/content/2/2309": {
+  "_skip": "no-field"
+ },
+ "https://www.szrc.cn/#/notice/detail?id=642&newsType=2": {
+  "_skip": "fetch-fail"
+ },
+ "https://zjtlcb.zhiye.com/intern/detail?jobAdId=b0be306c-d50e-4eda-a281-529d3bfde564": {
+  "_skip": "thin"
+ },
+ "https://jshrss.jiangsu.gov.cn/art/2026/6/9/art_78506_11782923.html?sessionid=": {
+  "major": "专业参考目录为《江苏省2026年度考试录用公务员专业参考目录》",
+  "deadline": "2026-08-28",
+  "edu": "本科、硕士、博士"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202604/1cef591e47b04afaaa53c04da55b8a19.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://chinalife.zhiye.com/custom/intern?hideMenu=1": {
+  "_skip": "thin"
+ },
+ "https://zjzx.91job.org.cn/index.php?m=home&c=article&a=show&site=1&id=10586": {
+  "deadline": "2026-05-15"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info_del.html?parentId=318&jmetazpxxid=11174": {
+  "_skip": "thin"
+ },
+ "https://gzw.sjz.gov.cn/columns/530903f2-869c-46ff-b967-c08efc94d81f/202605/13/4b64427b-5541-4675-b4f9-5cd25c095a3f.html": {
+  "deadline": "2026-05-27",
+  "edu": "本科及以上"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202604/22b7b624d07e4dbeb4580881e346c4da.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://hun.chinamine-safety.gov.cn/zwgk/tzgg/202603/t20260330_598536.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://cjpension1.zhiye.com/intern/jobs": {
+  "_skip": "thin"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202604/t20260408_572630.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://campus.51job.com/hnyz2026/xq.html": {
+  "_skip": "no-field"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info_del.html?parentId=387&jmetazpxxid=11234": {
+  "_skip": "thin"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info_del.html?parentId=388&jmetazpxxid=11236": {
+  "_skip": "thin"
+ },
+ "https://rsj.sh.gov.cn/tzpgg_17408/20260520/t0035_1440895.html": {
+  "deadline": "2026-06-04",
+  "edu": "本科"
+ },
+ "https://v.wjx.cn/vm/wdFw2J1.aspx": {
+  "_skip": "thin"
+ },
+ "https://www.gxbzhp.org.cn/article/content/2603201134565690150700007.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info_del.html?parentId=320&jmetazpxxid=11177": {
+  "_skip": "thin"
+ },
+ "https://www.snhrm.com/ygqzp/8183701.jhtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://rsj.beijing.gov.cn/xxgk/gkzp/202603/t20260323_4563616.html": {
+  "deadline": "2026-03-31",
+  "edu": "本科、硕士、博士"
+ },
+ "https://www.hzrc.com/CounselingDetails?id=2051920649956827137": {
+  "_skip": "thin"
+ },
+ "https://www.xiaoshan.gov.cn/col/col1229893469/art/2026/art_41a3d53e2d8a476ebb2236fcc79548ad.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.cncc.cn/ryzp/zsqyzp/202604/t20260430_3261.html?sessionid=": {
+  "deadline": "2026-05-14"
+ },
+ "https://lanhevip.jobs.feishu.cn/s/18zPFnd8Gmg": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.iguopin.com/job/detail?id=197335017167261540": {
+  "_skip": "thin"
+ },
+ "https://gzw.shanxi.gov.cn/xwfb/gqzp/202605/t20260528_10135459.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.iguopin.com/company/jobs?id=10685384847608206": {
+  "_skip": "thin"
+ },
+ "https://campus.51job.com/hncxjk2026/job.html": {
+  "edu": "硕士及以上, 本科"
+ },
+ "https://www.gdhjs.com/view/368.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://job.chinatelecom.com.cn/wt/TELE/web/index#/internRecruitment": {
+  "_skip": "thin"
+ },
+ "https://rsj.beijing.gov.cn/xxgk/gkzp/202603/t20260325_4565819.html": {
+  "deadline": "2026-04-17",
+  "edu": "本科、硕士、博士"
+ },
+ "https://rsj.beijing.gov.cn/xxgk/gkzp/202604/t20260423_4605244.html": {
+  "deadline": "2026-05-11",
+  "edu": "本科、硕士"
+ },
+ "https://gzw.cq.gov.cn/gqzp/202605/t20260529_15714283_wap.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.snhrm.com/zdxyzp/8257084.jhtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.scfortune.com.cn/public/products.aspx?mid=227&sid=97&id=98&did=3305": {
+  "_skip": "fetch-fail"
+ },
+ "https://gzw.fuzhou.gov.cn/zwgk/zpxx/202604/t20260420_5310795.htm": {
+  "deadline": "2026-04-24"
+ },
+ "https://rs.railshj.cn/recruitment-posts/recruitment-details?id=50055": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.xiaohongshu.com/explore/69fef7c5000000003502aacd?note_flow_source=wechat&xsec_token=CB2wlUX-yt-Zt6aJ5Kyzbzo5mZX_P8KfXNPABW92JLBJ0=": {
+  "_skip": "thin"
+ },
+ "https://zhaokao.caidaocloud.com/rp-web/#/recruit-info?recruitId=37987&orgId=11663": {
+  "_skip": "thin"
+ },
+ "https://www.cd-rail.com/zp/#/Remix/noticeDetail?pk=Yjg0ODI0ZWM5YjM1NDRlMjgzYWZkNWE4OGI4NTZjNzI": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/zpgg/202605/t20260507_575564.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://gtgrs.gzrailway.com.cn/#/mh-detail?id=0cefa3d9627f4ed89b8de880310d24b5": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.cdxctz.com/giftedinfo.aspx?t=52&ContentId=292": {
+  "_skip": "fetch-fail"
+ },
+ "http://gzw.shandong.gov.cn/articles/ch00223/202604/aecd0137-769f-4bab-a8b3-8934d34a5e74.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://jobtaikang.zhiye.com/custom/internlist": {
+  "_skip": "thin"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202604/6d07c01aa18643acb3672ac01baf5484.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://rczp.china-railway.com.cn/page/platform/company_info_del.html?parentId=400&jmetazpxxid=11194": {
+  "_skip": "thin"
+ },
+ "https://www.by.gov.cn/ywdt/tzgg/content/post_10747119.html": {
+  "deadline": "2026-04-09",
+  "edu": "本科、硕士、博士"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202604/t20260427_574965.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://xiaomi.jobs.f.mioffice.cn/internship/?keywords=2027": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/zpgg/202604/t20260429_575174.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202606/t20260608_577863.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.wind.com.cn/portal/zh/JoinUs/recruit.html?positionType=9002": {
+  "_skip": "no-field"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202605/t20260507_575529.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.gx966888.com/zpgg/11737.jhtml?sessionid=": {
+  "major": "法律、信息科技、经济类、金融类、管理类、软件工程、算法、人工智能、智能科学与技术、数据科学与大数据技术、计算机科学与技术、会计、审计、统计、税务、资产评估、数学、人力资源管理、中文",
+  "edu": "本科、硕士、博士"
+ },
+ "https://govjob.zhaopin.com/home/detail?id=f590a6fe6d479aaac89698ebef9c0220&typeId=2": {
+  "_skip": "thin"
+ },
+ "https://jngzw.jinan.gov.cn/col/col23870/art/2026/art_73f7dda6a5a84f0ca14bad18fe511c8e.html?sessionid=": {
+  "deadline": "2026-06-01"
+ },
+ "https://zhaopin.bsam.com.cn/default/bsam#/noticeDetail?id=30&wt=0&token=41D10552263": {
+  "_skip": "thin"
+ },
+ "https://gzw.jiangxi.gov.cn/jxsgzw/rczp/content/content_2041721876871970816.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://jsrg.zhaopin.com/zk/#/notice_new?prantMenuid=b907a0f330f6474fb68e01926916dcf1": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202605/bed87dd8dda54aef94e834bca3c3542f.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202603/5cc8fcd395104b44a1bba7d66048198e.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.dzbchina.com/dzbchina/2026-06/15/article_2026061511440095669.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.shanxi.gov.cn/zfxxgk/tzgg/202605/t20260515_10122991.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.ms.gov.cn/info/6611/1199249.htm": {
+  "_skip": "fetch-fail"
+ },
+ "http://gzw.shandong.gov.cn/articles/ch00223/202606/a4b83d9d-1aa4-44f5-992d-b89a6673d1a5.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://gzw.cq.gov.cn/gqzp/202606/t20260612_15751028_wap.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202604/t20260414_573434.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zxbm.tjtalents.com.cn/wsbm_ggfb//beifang/WebPage.aspx?id=d6e0b36dc3624b5cb3898c6f749c4e86": {
+  "deadline": "2026-05-23",
+  "edu": "本科、硕士、博士"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/zpgg/202603/t20260324_569277.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202605/t20260507_575569.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.sctv.com/news/2033511744044081153": {
+  "_skip": "fetch-fail"
+ },
+ "https://campus.chinahr.com/pages/gjlswzj2026/#/announ?sx=69ca13d4d337df09aa5dd926": {
+  "_skip": "thin"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202604/t20260429_575127.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202605/t20260512_576018.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://hrzp.buct.edu.cn/zp.html#/notice/hjev-OZLdQQC4Ep76hHtCEhZkBQ": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.szrc.cn/#/notice/detail?id=641&newsType=2": {
+  "_skip": "fetch-fail"
+ },
+ "https://wecruit.hotjob.cn/SU5fe5ad319b0d78e6f422f6f8/pb/interns.html": {
+  "_skip": "thin"
+ },
+ "https://www.cqrc.net/gzw/index/postitem-26394.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://job.cib.com.cn/portal/#/positionDetails/1234468855197646848": {
+  "_skip": "thin"
+ },
+ "https://gzw.shanxi.gov.cn/xwfb/gqzp/202605/t20260528_10135592.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.jxrczp.com/index.php?m=&c=zknotice&a=detail&id=391": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.sse.com.cn/aboutus/recruitment/sseinfo/c/c_20260409_10814681.shtml": {
+  "major": "计算机相关专业",
+  "edu": "本科、硕士、博士"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202604/t20260403_572065.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.nbcb.com.cn/#/dashboard": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.shanxi.gov.cn/zfxxgk/tzgg/202605/t20260528_10135777.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202605/e345dfc2f0ef460880ede3a26419cc8f.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://app.mokahr.com/apply/antahr/140444?sessionid=205421049&sourceToken=b7b5f618637b86be8161b57683d04956#/jobs?page=1&anchorName=jobsList&keyword=ANTA": {
+  "_skip": "fetch-fail"
+ },
+ "http://gzw.shandong.gov.cn/articles/ch00223/202606/839a7908-ba58-47f3-8cf9-55b9279e3b36.html": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202606/523ed5b25b334afaa71f16319a3213e0.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.sasac.gov.cn/n2588035/n2588325/n2588350/c35453721/content.html": {
+  "_skip": "thin"
+ },
+ "https://jngzw.jinan.gov.cn/col/col23870/art/2026/art_ba073f263c96476b99b2174a54554fa1.html": {
+  "deadline": "2026-06-05"
+ },
+ "https://hahr.hazq.com:8083/eip4ha-hyapp/recruitment/socialApply?type=03": {
+  "edu": "硕士"
+ },
+ "http://jngzw.jinan.gov.cn/col/col23870/art/2026/art_cfba679d64794b749e581069b51b1384.html": {
+  "major": "计算机相关专业、材料科学、电子信息等相关专业",
+  "deadline": "2026-05-13",
+  "edu": "本科、硕士、博士"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202604/t20260427_575001.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.slrsks.cn/slgg/zqgOTslg": {
+  "deadline": "2026-03-31",
+  "edu": "本科"
+ },
+ "https://zybxsxs2026.zhaopin.com/job/index.html": {
+  "_skip": "thin"
+ },
+ "https://zjzx.91job.org.cn/index.php?m=home&c=article&a=show&site=1&id=10594": {
+  "deadline": "2026-05-13"
+ },
+ "http://jx.cma.gov.cn/zwxx/tzgg/202606/t20260607_7840781.html": {
+  "major": "气象类专业",
+  "deadline": "2026-06-16",
+  "edu": "硕士、博士"
+ },
+ "https://rsj.beijing.gov.cn/xxgk/gkzp/202606/t20260608_4691245.html": {
+  "deadline": "2026-06-22",
+  "edu": "本科、硕士、博士"
+ },
+ "http://gzw.shandong.gov.cn/articles/ch00223/202606/9356991e-f544-4c7c-b87a-da2450fac072.html": {
+  "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202603/fdeeafd1fad74a85844b2a5cbf1d7719.shtml": {
+  "_skip": "fetch-fail"
+ },
+ "http://sx.cma.gov.cn/zfxxgk/zwgk/ggtz/202603/t20260326_7688838.html": {
+  "major": "专业根据中国气象局人事司《气象部门人员招录专业目录（2026年版）》认定，专业名称、专业代码须与岗位表中要求完全一致",
+  "deadline": "2026-04-08",
+  "edu": "大学本科及以上"
  }
 }
