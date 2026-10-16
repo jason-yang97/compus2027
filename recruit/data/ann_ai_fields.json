@@ -2984,5 +2984,510 @@
  },
  "https://zhaopin.cnpc.com.cn/web/recruitInfoshow.html?id=8b8b6c9ea07c29cc01a07fa8e465001e": {
   "_skip": "fetch-fail"
+ },
+ "https://zhaopin.cnpc.com.cn/web/recruitInfoshow.html?id=8b8b6c9ea07c29cc01a07fa723d7001a": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.xiaohongshu.com/explore/6aa4d094000000002a02e40d?xsec_token=CBN_zppx7_FkO4yNWr_tjCtgZ4PI-9_FKbt453_wl89WQ=&xsec_source=app_share": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.cnpc.com.cn/web/recruitInfoshow.html?id=8b8b6c9ea07c29cc01a07f978ea7000e": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.cnpc.com.cn/web/recruitInfoshow.html?id=8b8b6c9ea07c29cc01a07fa7d6d2001b": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.cnpc.com.cn/web/recruitInfoshow.html?id=8b8b6c9ea07c29cc01a081478c7a0092": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.cnpc.com.cn/web/recruitInfoshow.html?id=8b8b6c9ea07c29cc01a07fbeef5c002f": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.cnpc.com.cn/web/recruitInfoshow.html?id=8b8b6c9ea07c29cc01a07faa68e40022": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.cnpc.com.cn/web/recruitInfoshow.html?id=8b8b6c9ea07c29cc01a07fa8347f001c": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.cnpc.com.cn/web/recruitInfoshow.html?id=8b8b6c9ea07c29cc01a07fa121460016": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.cnpc.com.cn/web/recruitInfoshow.html?id=8b8b6c9ea07c29cc01a07fb2262e0028": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.cnpc.com.cn/web/recruitInfoshow.html?id=8b8b6c9ea07c29cc01a07fcc2d25003c": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.cnpc.com.cn/web/recruitInfoshow.html?id=8b8b6c9ea07c29cc01a07fab45900023": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.fzrsrc.cn/news/18_14828.html": {
+  "deadline": "2026-09-20"
+ },
+ "https://zhaopin.cnpc.com.cn/web/recruitInfoshow.html?id=8b8b6c9ea07c29cc01a0810b7bb60090": {
+  "_skip": "fetch-fail"
+ },
+ "https://xmgdjt.zhiye.com/campus/jobs": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000051&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000179&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000131&columnId=24": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000096&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.sgcc.com.cn/sgcchr/static/dynaAument.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://wecruit.hotjob.cn/SU64464d3abef57c46aff3357c/pb/interns.html?currentPage=3": {
+  "_skip": "thin"
+ },
+ "https://xyz.51job.com/consumer/pc/home/index?ctmid=9588582": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000203&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000235&columnId=25": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000108&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://govjob.zhaopin.com/zk/#/pages/project-detail/index?id=b0423749c525b93f2019deeb5b593227": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000253&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://govjob.zhaopin.com/home/detail?id=d103e768d4cdcbceb20ece0680eced77&typeId=2": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000149&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000227&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://www.cdxctz.com/giftedinfo.aspx?t=52&contentid=430": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000094&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/zpgg/202610/t20261010_589712.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000116&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000123&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.sgcc.com.cn/sgcchr/static/unitPart.html?bullet_id=af34189fe3f948d0947aa4cb4b9769e8&particulars=flase": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000121&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000255&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://govjob.zhaopin.com/zk/#/pages/project-detail/index?id=e1d7ddf531d887dd61db6313da64109a": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000060&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000109&columnId=24": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000199&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000151&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000265&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000130&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000171&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://gzw.cq.gov.cn/gqzp/202609/t20260918_16097140.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/gxbyszpzl/202609/t20260920_584204.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000158&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000114&columnId=24": {
+  "_skip": "thin"
+ },
+ "https://www.cdenvironment.com/show/1164-90545.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000134&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000034&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000172&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000143&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000180&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://gzw.cq.gov.cn/gqzp/202609/t20260918_16097237.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.whxc-airport.com/index.php?m=content&c=index&a=show&catid=28&id=1514": {
+  "_skip": "fetch-fail"
+ },
+ "https://exam.hfhrs.com/index.php/exam/notice/?doc_id=23960&EXAMID=9575": {
+  "deadline": "2026-09-28",
+  "edu": "本科、硕士、博士"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000112&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000154&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000038&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://www.bocd.com.cn/zyxxfb/rczp/zhaopingonggao/1297971392687509504.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://ksbm.hxrc.com/PG/SHOW.ASPX?ID=115850": {
+  "_skip": "thin"
+ },
+ "https://baiya.zhiye.com/": {
+  "_skip": "thin"
+ },
+ "https://www.chengdurail.com/info/2422/136474.htm": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000084&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000187&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000184&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000117&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000050&columnId=24": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000246&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000100&columnId=24": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000135&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000216&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000156&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000040&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000064&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://crrc-kcgs.hotjob.cn/SU64ccbbb71c240e7cb6c45b39/pb/news.html#/detail?detailId=1789111741819&detailType=0": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000124&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://www.cdci.cn/show-128-177-1.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000075&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000183&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000119&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://www.cdxctz.com/giftedinfo.aspx?t=52&contentid=431": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.cdgjbus.com/article?articleId=2097953173471760386&activeIndex=8&activeIndexSub=16&cardTypeCode": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000202&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000146&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000033&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000043&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000083&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://gzw.hunan.gov.cn/gzw/xxgk_71571/tzgg/202610/t20261010_34078738.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000113&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000150&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000115&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://www.fzrsrc.cn/news/18_14873.html": {
+  "major": "专业要求（如 计算机相关专业；原文没写就空字符串）",
+  "deadline": "2026-09-27",
+  "edu": "学历要求（如 本科、硕士、博士，顿号分隔；没写就空字符串）"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000218&columnId=24": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000168&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000197&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000145&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000166&columnId=25": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000163&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://sydw.gxrc.com/Sydw/ArticleDetail/a92ed554-ca1f-42e1-a4b0-03cfbe194e0b": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000071&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000073&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://chinalco2027.iguopin.com/notice": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000030&columnId=24": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000167&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000222&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000059&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://www.cdrcb.com/pin/zpdetail.htm?id=267": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.cdctg.com/#/recDetailInfo?recruitId=2100424593283813377": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000186&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000028&columnId=24": {
+  "_skip": "thin"
+ },
+ "https://www.fjsrlzy.cn/article/detail/a9f4a54bc19b11f1a83100163e4961b4": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000177&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000048&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://www.cdjzjk.com/information/show/?articleId=2100397326171656192": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000247&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000120&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000232&columnId=23": {
+  "_skip": "thin"
+ },
+ "http://gzw.shandong.gov.cn/articles/ch00223/202610/933ee398-2f4d-4260-a98c-97f53e3e36e3.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.cdccic.com:6066/announcementDetail/2100453921518964738": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.ncrczpw.com/kaoshi/489.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000086&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000077&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000212&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://www.whzsrc.com/hanpintong/societyProcalmationDetail/MCS995C4N_u16z27B9Ewxhtq_hSxiko05Q4usBYJm4yKMWxl6TuVDFe5UtXL_b6KxKCHp_G20to4xlvChXiLOg~~": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.ejintai.com/querySOERecProjInfo/23357.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000170&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000267&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://www.gx966888.com/zpgg/12423.jhtml": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.xiaohongshu.com/explore/6aacb84f000000002902ff20?xsec_token=CBw13xJh86f-QhIQCuDns-xdk2xi4GL20LP9dfkQIydyw=&xsec_source=app_share": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000233&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000223&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://www.jxcc.com/recruitmentAnnouncement/details_475_7154.html": {
+  "deadline": "2026-10-15"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000189&columnId=24": {
+  "_skip": "thin"
+ },
+ "https://www.xiaohongshu.com/explore/6aab7bf30000000029018ead?xsec_token=CBI8VikA5DNYl9_bsV3jg5FuJZKWgVKYCCImExlcQ6FNY=&xsec_source=app_share": {
+  "_skip": "thin"
+ },
+ "https://rsj.sh.gov.cn/tzpgg_17408/20260914/t0035_1443675.html": {
+  "deadline": "2026-09-22"
+ },
+ "https://zbcg.cmgchengdu.com/#/official/recruitment/detail?id=25": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000217&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000103&columnId=24": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000072&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://ksbm.hxrc.com/PG/SHOW.ASPX?ID=115948": {
+  "_skip": "thin"
+ },
+ "https://gzw.cq.gov.cn/gqzp/202609/t20260918_16097201.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000025&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://www.cdxctz.com/giftedinfo.aspx?t=52&contentid=436": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000101&columnId=24": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000076&columnId=24": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000052&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000193&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://gzw.ningbo.gov.cn/col/col1229116730/art/2026/art_ff64184e90464fc6b1c4c4bc670b0aef.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://www.cddc2021.com/recruitinfo/621.html?step=1": {
+  "deadline": "2026-10-25",
+  "edu": "本科、硕士、博士"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000221&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://gzw.cq.gov.cn/gqzp/202609/t20260918_16097226.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000095&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chinacoal.com/notice": {
+  "_skip": "thin"
+ },
+ "https://jiufanglogistics.zhiye.com/campus/jobs": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000165&columnId=25": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000148&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://jnhrss.jinan.gov.cn/col/col18309/art/2026/art_5598db50061047f4857e8e07ded5433a.html": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000243&columnId=24": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000044&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000174&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://zhaopin.chng.com.cn/h5/#/pages/noticeDetail/noticeDetail?id=2000162&columnId=23": {
+  "_skip": "thin"
+ },
+ "https://ksbm.hxrc.com/PG/SHOW.ASPX?ID=115849": {
+  "_skip": "thin"
+ },
+ "https://www.cd-jyjt.com/jtweb/portal/#/talentRecruitmentDetails?artId=b85409d7b96e4cec82b7e915bf967f1a": {
+  "_skip": "thin"
  }
 }
