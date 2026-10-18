@@ -3489,5 +3489,17 @@
  },
  "https://www.cd-jyjt.com/jtweb/portal/#/talentRecruitmentDetails?artId=b85409d7b96e4cec82b7e915bf967f1a": {
   "_skip": "thin"
+ },
+ "https://invt.zhiye.com/campus/jobs?shareId=8c56cc0e-7a5a-4004-8b1b-359fbd3bd462&shareSource=2": {
+  "_skip": "thin"
+ },
+ "https://www.xiaohongshu.com/explore/6ad0c27a000000000a024df7?xsec_token=CBaYjN2TCd-kSHcCl03QADLzpJSp8MeiQtKLqiXxQqu7I=&xsec_source=app_share": {
+  "_skip": "thin"
+ },
+ "https://cht-group3.zhiye.com/campus/jobs?shareId=712aa4d1-5608-4bf1-a591-57caee909a75&shareSource=2": {
+  "_skip": "thin"
+ },
+ "https://gzw.ningbo.gov.cn/col/col1229116730/art/2026/art_336b6aba53444750999172513e6da910.html": {
+  "_skip": "fetch-fail"
  }
 }
