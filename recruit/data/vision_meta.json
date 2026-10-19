@@ -1,8 +1,8 @@
 {
  "gateway": "default",
- "gateway_calls": 0,
- "articles_processed": 0,
- "cache_total": 289,
+ "gateway_calls": 1,
+ "articles_processed": 1,
+ "cache_total": 290,
  "cache_with_location": 93,
- "last_run": "2026-10-18T12:10:22"
+ "last_run": "2026-10-19T12:18:30"
 }
