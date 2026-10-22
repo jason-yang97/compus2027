@@ -3501,5 +3501,8 @@
  },
  "https://gzw.ningbo.gov.cn/col/col1229116730/art/2026/art_336b6aba53444750999172513e6da910.html": {
   "_skip": "fetch-fail"
+ },
+ "http://www.tobacco.gov.cn/gjyc/zpxx/202610/f39b2bd080dc4d3d87d069b7fe1c4840.shtml": {
+  "_skip": "fetch-fail"
  }
 }
