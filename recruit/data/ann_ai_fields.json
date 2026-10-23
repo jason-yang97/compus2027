@@ -3504,5 +3504,34 @@
  },
  "http://www.tobacco.gov.cn/gjyc/zpxx/202610/f39b2bd080dc4d3d87d069b7fe1c4840.shtml": {
   "_skip": "fetch-fail"
+ },
+ "https://zhaopin.airchina.com.cn/campus/jobs/2026/10/185641.shtml": {
+  "major": "法学类、计算机类、电子信息类、工商管理类",
+  "deadline": "2026-11-15",
+  "edu": "本科、硕士、博士"
+ },
+ "https://gzw.shenyang.gov.cn/rcdwjszl/202610/t20261020_5105555.html": {
+  "_skip": "no-field"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/zpgg/202610/t20261019_594609.html": {
+  "_skip": "fetch-fail"
+ },
+ "https://zhaopin.airchina.com.cn/campus/jobs/2026/10/185703.shtml": {
+  "major": "经济学类、管理学类、工学类、理学类、哲学类、法学类、历史学类、文学类、教育学类",
+  "deadline": "2026-11-15",
+  "edu": "硕士研究生及以上"
+ },
+ "https://zhaopin.airchina.com.cn/campus/jobs/2026/10/185625.shtml": {
+  "major": "理学、法学、经济学、管理学、文学、教育学、工学、哲学、历史学",
+  "deadline": "2026-11-15",
+  "edu": "本科、硕士、博士"
+ },
+ "https://zhaopin.airchina.com.cn/campus/jobs/2026/10/185693.shtml": {
+  "major": "理学、工学、管理学、农学、医学、经济学、文学（外语类）",
+  "deadline": "2026-11-15",
+  "edu": "本科、硕士、博士"
+ },
+ "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/zpgg/202610/t20261019_594641.html": {
+  "_skip": "fetch-fail"
  }
 }
