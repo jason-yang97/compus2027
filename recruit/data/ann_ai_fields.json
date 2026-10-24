@@ -3533,5 +3533,12 @@
  },
  "https://www.mohrss.gov.cn/SYrlzyhshbzb/fwyd/SYkaoshizhaopin/zyhgjjgsydwgkzp/zpgg/202610/t20261019_594641.html": {
   "_skip": "fetch-fail"
+ },
+ "https://www.forestry.gov.cn/lyj/1/gsgg/20261023/693126.html": {
+  "deadline": "2026-11-05",
+  "edu": "硕士、博士"
+ },
+ "https://govjob.zhaopin.com/zk/#/pages/project-detail/index?id=bb92fc75ab8c2f119150bcf10811022a": {
+  "_skip": "thin"
  }
 }
